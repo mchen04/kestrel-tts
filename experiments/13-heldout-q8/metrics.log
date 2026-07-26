@@ -1,0 +1,75 @@
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+ho_lotm05    mel_l1=0.117 mcd=3.35 f0=7.9
+ho_lotm02    mel_l1=0.125 mcd=3.48 f0=5.3
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+ho_lotm04    mel_l1=0.150 mcd=3.70 f0=6.1
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+ho_lotm01    mel_l1=0.151 mcd=3.72 f0=6.8
+ho_lotm00    mel_l1=1.305 mcd=6.04 f0=20.7
+ho_lotm03    mel_l1=0.644 mcd=5.43 f0=11.8
+ho_ri01      mel_l1=0.115 mcd=3.27 f0=4.1
+ho_lotm06    mel_l1=0.827 mcd=5.77 f0=12.8
+ho_ri02      mel_l1=0.120 mcd=3.52 f0=4.5
+ho_ri04      mel_l1=0.128 mcd=3.41 f0=3.1
+ho_lotm07    mel_l1=0.898 mcd=6.19 f0=14.8
+ho_ri03      mel_l1=0.120 mcd=3.35 f0=1.9
+ho_ri05      mel_l1=0.134 mcd=3.59 f0=9.2
+ho_ri06      mel_l1=0.121 mcd=3.36 f0=5.7
+ho_ri00      mel_l1=0.158 mcd=3.79 f0=5.6
+ho_ri07      mel_l1=0.117 mcd=3.32 f0=3.1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/266 [00:00<?, ?it/s]Loading weights: 100%|██████████| 266/266 [00:00<00:00, 49205.47it/s]
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/torch/nn/functional.py:6441: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  key_padding_mask = _canonical_mask(
+{
+ "dur_drift_pct": {
+  "mean": 0.0368,
+  "median": 0.0,
+  "worst": 0.1992
+ },
+ "mel_l1": {
+  "mean": 0.3269,
+  "median": 0.1311,
+  "worst": 1.3054
+ },
+ "mcd_db": {
+  "mean": 4.0809,
+  "median": 3.552,
+  "worst": 6.194
+ },
+ "stft_lmag": {
+  "mean": 0.4887,
+  "median": 0.2995,
+  "worst": 1.452
+ },
+ "stft_sc": {
+  "mean": 0.2493,
+  "median": 0.0915,
+  "worst": 0.9063
+ },
+ "f0_rmse_hz": {
+  "mean": 7.7106,
+  "median": 5.875,
+  "worst": 20.7
+ },
+ "vuv_err_pct": {
+  "mean": 7.4494,
+  "median": 4.99,
+  "worst": 22.37
+ },
+ "spk_cos": {
+  "mean": 0.9997,
+  "median": 0.9997,
+  "worst": 0.9992
+ }
+}
+wrote experiments/13-heldout-q8/metrics.json

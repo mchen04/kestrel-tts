@@ -41,7 +41,15 @@ def main():
         f = cand / f"{item['id']}.wav"
         if not f.exists():
             continue
-        r = mlx_whisper.transcribe(str(f), path_or_hf_repo=args.model, language="en", temperature=0.0)
+        # condition_on_previous_text=False + fallback temperature schedule:
+        # long fiction reads at temperature=0.0 with conditioning trigger the
+        # classic whisper repetition-loop hallucination.
+        r = mlx_whisper.transcribe(
+            str(f),
+            path_or_hf_repo=args.model,
+            language="en",
+            condition_on_previous_text=False,
+        )
         hyp = normalize(r["text"])
         ref = normalize(item["text"])
         refs.append(ref)

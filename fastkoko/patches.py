@@ -25,6 +25,64 @@ from mlx_audio.tts.models.kokoro.istftnet import (
     weight_norm,
 )
 
+def _patch_rng_and_interp():
+    """Match torch reference semantics in two stochastic/interp paths:
+
+    1. SineGen initial harmonic phase: torch uses rand() (uniform), the MLX
+       port used normal() — different harmonic-phase distribution, a systematic
+       timbre delta on every voiced frame.
+    2. interpolate1d(align_corners=False): source coords go negative for the
+       first outputs; torch clamps to 0, MLX negative indexing wraps to the
+       LAST frame — corrupting the first half-frame of upsampled phase.
+    Both are idempotent monkeypatches, applied at optimize_model() time.
+    """
+    from mlx_audio.tts.models import interpolate as _interp_mod
+    from mlx_audio.tts.models.kokoro.istftnet import SineGen as _SG
+
+    if not getattr(_interp_mod, "_fastkoko_clamped", False):
+        _orig1d = _interp_mod.interpolate1d
+
+        def clamped_interpolate1d(input, size, mode="linear", align_corners=None):
+            out = _orig1d(input, size, mode=mode, align_corners=align_corners)
+            if mode == "linear" and not align_corners and size > 1 and input.shape[-1] > 1:
+                # recompute first sample against clamped coord 0 when needed
+                scale = input.shape[-1] / size
+                x0 = 0.5 * scale - 0.5
+                if x0 < 0:
+                    n_neg = int(np.ceil((0.5 - 0.5 * scale) / scale))
+                    out[:, :, :n_neg] = input[:, :, :1]
+            return out
+
+        _interp_mod.interpolate1d = clamped_interpolate1d
+        _interp_mod._fastkoko_clamped = True
+
+    if not getattr(_SG, "_fastkoko_uniform", False):
+        from mlx_audio.tts.models.interpolate import interpolate as _interp
+
+        def uniform_f02sine(self, f0_values):
+            # torch-reference implementation (non-pulse branch, which Kokoro uses):
+            # initial harmonic phases drawn UNIFORM [0,1), zero for the fundamental.
+            rad_values = (f0_values / self.sampling_rate) % 1
+            rand_ini = mx.random.uniform(shape=(f0_values.shape[0], f0_values.shape[2]))
+            rand_ini[:, 0] = 0
+            rad_values[:, 0, :] = rad_values[:, 0, :] + rand_ini
+            rad_values = _interp(
+                rad_values.transpose(0, 2, 1),
+                scale_factor=1 / self.upsample_scale,
+                mode="linear",
+            ).transpose(0, 2, 1)
+            phase = mx.cumsum(rad_values, axis=1) * 2 * mx.pi
+            phase = _interp(
+                phase.transpose(0, 2, 1) * self.upsample_scale,
+                scale_factor=self.upsample_scale,
+                mode="linear",
+            ).transpose(0, 2, 1)
+            return mx.sin(phase)
+
+        _SG._f02sine = uniform_f02sine
+        _SG._fastkoko_uniform = True
+
+
 _ORIG_SOURCE_CALL = SourceModuleHnNSF.__call__
 
 
@@ -192,6 +250,7 @@ def optimize_model(model, dtype=None, fp32_paths=(), cast_paths=None):
     MLXSTFT.inverse = _fast_inverse
     AdainResBlk1d._residual = _exact_residual
     SourceModuleHnNSF.__call__ = _fp32_source_call
+    _patch_rng_and_interp()
 
     def cast_to(target):
         def cast(p):

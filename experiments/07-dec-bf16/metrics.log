@@ -10,63 +10,63 @@
   import pkg_resources
 /Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   import pkg_resources
-long03       mel_l1=0.119 mcd=3.38 f0=3.4
-long04       mel_l1=0.126 mcd=3.50 f0=5.8
-long05       mel_l1=0.726 mcd=8.08 f0=12.6
-long01       mel_l1=0.564 mcd=13.92 f0=12.5
-para01       mel_l1=0.133 mcd=3.67 f0=3.9
-long02       mel_l1=0.155 mcd=4.06 f0=6.6
-long00       mel_l1=0.367 mcd=8.89 f0=8.6
-para00       mel_l1=0.124 mcd=3.43 f0=4.6
-para06       mel_l1=0.110 mcd=3.28 f0=4.2
-para03       mel_l1=0.122 mcd=3.44 f0=5.8
-para02       mel_l1=0.127 mcd=3.46 f0=4.5
-para04       mel_l1=0.281 mcd=4.42 f0=8.2
-para09       mel_l1=0.113 mcd=3.25 f0=10.0
-para08       mel_l1=0.110 mcd=3.28 f0=2.5
-long06       mel_l1=0.927 mcd=17.49 f0=14.2
-para11       mel_l1=0.143 mcd=3.62 f0=4.9
-para07       mel_l1=0.121 mcd=3.42 f0=4.6
-patho01      mel_l1=0.110 mcd=3.24 f0=3.9
-patho02      mel_l1=0.125 mcd=3.52 f0=1.7
-patho03      mel_l1=0.123 mcd=3.51 f0=2.0
-short00      mel_l1=0.126 mcd=3.29 f0=5.9
-short01      mel_l1=0.124 mcd=3.24 f0=4.2
-patho04      mel_l1=0.106 mcd=3.12 f0=2.2
-short03      mel_l1=0.117 mcd=3.38 f0=16.9
-short02      mel_l1=0.118 mcd=3.22 f0=1.0
-para12       mel_l1=0.912 mcd=6.15 f0=15.7
-short05      mel_l1=0.115 mcd=3.12 f0=2.5
-short04      mel_l1=0.122 mcd=3.36 f0=2.8
-short07      mel_l1=0.117 mcd=3.29 f0=0.7
-short09      mel_l1=0.109 mcd=2.96 f0=1.1
-short08      mel_l1=0.117 mcd=3.27 f0=18.8
-short06      mel_l1=0.119 mcd=3.45 f0=1.4
-short10      mel_l1=0.117 mcd=3.34 f0=1.8
-short12      mel_l1=0.117 mcd=3.25 f0=2.8
-short11      mel_l1=0.112 mcd=3.12 f0=1.1
-short13      mel_l1=0.116 mcd=3.22 f0=2.0
-short15      mel_l1=0.117 mcd=3.12 f0=1.1
-short14      mel_l1=0.109 mcd=3.11 f0=3.1
-short16      mel_l1=0.116 mcd=3.15 f0=4.2
-short17      mel_l1=0.121 mcd=3.46 f0=1.6
-short18      mel_l1=0.122 mcd=3.35 f0=1.0
-short19      mel_l1=0.110 mcd=3.08 f0=2.3
-para10       mel_l1=0.121 mcd=3.35 f0=4.8
-patho00      mel_l1=0.128 mcd=3.51 f0=4.2
-stress03     mel_l1=0.109 mcd=3.05 f0=1.5
-stress02     mel_l1=0.114 mcd=3.29 f0=7.2
-para05       mel_l1=0.794 mcd=5.92 f0=16.6
-stress00     mel_l1=0.111 mcd=3.30 f0=2.2
-stress05     mel_l1=0.117 mcd=3.35 f0=4.3
-stress08     mel_l1=0.113 mcd=3.19 f0=2.1
-stress04     mel_l1=0.127 mcd=3.61 f0=4.7
-stress01     mel_l1=0.131 mcd=3.54 f0=3.8
-stress07     mel_l1=0.111 mcd=3.20 f0=2.2
-stress06     mel_l1=0.114 mcd=3.26 f0=6.6
+long03       mel_l1=0.120 mcd=3.42 f0=4.2
+long04       mel_l1=0.126 mcd=3.54 f0=5.9
+long05       mel_l1=0.727 mcd=8.12 f0=13.0
+long01       mel_l1=0.564 mcd=13.96 f0=12.3
+para01       mel_l1=0.134 mcd=3.75 f0=3.8
+long00       mel_l1=0.368 mcd=8.88 f0=8.8
+long02       mel_l1=0.156 mcd=4.10 f0=6.5
+para00       mel_l1=0.124 mcd=3.46 f0=4.1
+para04       mel_l1=0.280 mcd=4.43 f0=6.8
+para03       mel_l1=0.123 mcd=3.46 f0=4.5
+para06       mel_l1=0.110 mcd=3.28 f0=8.8
+para02       mel_l1=0.127 mcd=3.51 f0=4.3
+para08       mel_l1=0.112 mcd=3.33 f0=2.9
+long06       mel_l1=0.927 mcd=17.52 f0=14.4
+para09       mel_l1=0.116 mcd=3.38 f0=4.2
+para07       mel_l1=0.121 mcd=3.44 f0=2.1
+patho01      mel_l1=0.112 mcd=3.21 f0=3.6
+patho02      mel_l1=0.123 mcd=3.47 f0=1.2
+para11       mel_l1=0.143 mcd=3.63 f0=6.7
+patho03      mel_l1=0.123 mcd=3.56 f0=16.3
+short00      mel_l1=0.128 mcd=3.38 f0=9.4
+short01      mel_l1=0.126 mcd=3.38 f0=4.2
+short02      mel_l1=0.115 mcd=3.14 f0=2.7
+patho04      mel_l1=0.106 mcd=3.15 f0=2.1
+short03      mel_l1=0.116 mcd=3.39 f0=15.9
+short04      mel_l1=0.118 mcd=3.22 f0=5.7
+short05      mel_l1=0.115 mcd=3.17 f0=2.9
+short06      mel_l1=0.122 mcd=3.58 f0=1.2
+short07      mel_l1=0.119 mcd=3.32 f0=0.6
+short08      mel_l1=0.119 mcd=3.22 f0=18.8
+short10      mel_l1=0.121 mcd=3.40 f0=3.1
+short09      mel_l1=0.110 mcd=3.09 f0=2.0
+short11      mel_l1=0.110 mcd=3.12 f0=8.6
+short12      mel_l1=0.117 mcd=3.28 f0=3.6
+short14      mel_l1=0.110 mcd=3.15 f0=2.7
+short13      mel_l1=0.120 mcd=3.34 f0=7.2
+short16      mel_l1=0.116 mcd=3.23 f0=2.4
+short15      mel_l1=0.120 mcd=3.26 f0=1.4
+short18      mel_l1=0.120 mcd=3.32 f0=17.7
+short17      mel_l1=0.124 mcd=3.63 f0=1.9
+short19      mel_l1=0.111 mcd=3.11 f0=6.0
+para12       mel_l1=0.912 mcd=6.19 f0=15.1
+para10       mel_l1=0.121 mcd=3.39 f0=6.3
+stress00     mel_l1=0.112 mcd=3.42 f0=2.8
+para05       mel_l1=0.797 mcd=5.93 f0=17.5
+stress03     mel_l1=0.107 mcd=3.06 f0=1.1
+stress02     mel_l1=0.113 mcd=3.27 f0=1.9
+patho00      mel_l1=0.129 mcd=3.55 f0=5.0
+stress01     mel_l1=0.126 mcd=3.55 f0=4.7
+stress05     mel_l1=0.120 mcd=3.45 f0=6.7
+stress08     mel_l1=0.112 mcd=3.20 f0=1.2
+stress04     mel_l1=0.126 mcd=3.60 f0=3.7
+stress07     mel_l1=0.112 mcd=3.28 f0=2.6
+stress06     mel_l1=0.113 mcd=3.28 f0=6.1
 stress09     mel_l1=0.113 mcd=3.30 f0=3.6
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights:   0%|          | 0/266 [00:00<?, ?it/s]Loading weights: 100%|██████████| 266/266 [00:00<00:00, 51592.36it/s]
+Loading weights:   0%|          | 0/266 [00:00<?, ?it/s]Loading weights: 100%|██████████| 266/266 [00:00<00:00, 65643.97it/s]
 /Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/torch/nn/functional.py:6441: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
   key_padding_mask = _canonical_mask(
 {
@@ -76,39 +76,39 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
   "worst": 0.2268
  },
  "mel_l1": {
-  "mean": 0.187,
-  "median": 0.1192,
+  "mean": 0.1876,
+  "median": 0.1203,
   "worst": 0.9275
  },
  "mcd_db": {
-  "mean": 4.0866,
-  "median": 3.348,
-  "worst": 17.487
+  "mean": 4.123,
+  "median": 3.386,
+  "worst": 17.522
  },
  "stft_lmag": {
-  "mean": 0.3294,
-  "median": 0.2542,
-  "worst": 1.0985
+  "mean": 0.3302,
+  "median": 0.257,
+  "worst": 1.0982
  },
  "stft_sc": {
-  "mean": 0.1381,
-  "median": 0.0771,
-  "worst": 0.6876
+  "mean": 0.1384,
+  "median": 0.0774,
+  "worst": 0.6879
  },
  "f0_rmse_hz": {
-  "mean": 5.14,
-  "median": 3.91,
+  "mean": 6.0491,
+  "median": 4.25,
   "worst": 18.81
  },
  "vuv_err_pct": {
-  "mean": 5.3847,
-  "median": 4.73,
-  "worst": 16.45
+  "mean": 5.0785,
+  "median": 4.26,
+  "worst": 14.99
  },
  "spk_cos": {
   "mean": 0.9994,
-  "median": 0.9995,
-  "worst": 0.9958
+  "median": 0.9996,
+  "worst": 0.995
  }
 }
-wrote experiments/06-fp32base/metrics.json
+wrote experiments/07-dec-bf16/metrics.json
