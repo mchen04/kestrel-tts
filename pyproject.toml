@@ -1,0 +1,13 @@
+[project]
+name = "fastkoko"
+version = "0.1.0"
+description = "Optimized MLX Kokoro-82M inference (fixed, fused, quantized) for Apple Silicon"
+requires-python = ">=3.10"
+dependencies = ["mlx>=0.30", "mlx-audio>=0.4", "numpy"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["fastkoko"]

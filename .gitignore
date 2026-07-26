@@ -1,0 +1,9 @@
+__pycache__/
+*.egg-info/
+.DS_Store
+# bulk audio & artifacts (regenerable; keep meta/results)
+baseline/ref_fp32*/**/*.wav
+baseline/ref_fp32*/*.wav
+experiments/*/render/
+artifacts/*.safetensors
+listen/

@@ -1,0 +1,114 @@
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/pyworld/__init__.py:13: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+long03       mel_l1=2.066 mcd=13.34 f0=42.6
+long04       mel_l1=1.888 mcd=12.82 f0=37.4
+long05       mel_l1=1.529 mcd=10.91 f0=29.7
+long01       mel_l1=2.301 mcd=18.58 f0=42.8
+para01       mel_l1=1.410 mcd=8.46 f0=19.4
+long02       mel_l1=1.624 mcd=13.06 f0=31.5
+long00       mel_l1=2.152 mcd=14.99 f0=38.5
+para00       mel_l1=1.108 mcd=6.29 f0=21.1
+para04       mel_l1=1.637 mcd=6.33 f0=30.0
+para06       mel_l1=0.417 mcd=5.53 f0=9.2
+para03       mel_l1=1.408 mcd=5.40 f0=23.7
+para02       mel_l1=1.147 mcd=6.15 f0=24.0
+long06       mel_l1=1.435 mcd=13.22 f0=25.6
+para08       mel_l1=0.524 mcd=5.57 f0=8.4
+para09       mel_l1=0.332 mcd=5.11 f0=8.5
+para07       mel_l1=0.657 mcd=6.12 f0=14.1
+patho01      mel_l1=0.741 mcd=6.86 f0=13.9
+patho02      mel_l1=0.971 mcd=7.13 f0=16.9
+patho03      mel_l1=0.408 mcd=5.23 f0=6.8
+para11       mel_l1=0.395 mcd=5.31 f0=10.3
+short00      mel_l1=0.308 mcd=5.44 f0=8.1
+short01      mel_l1=0.254 mcd=5.49 f0=16.9
+short02      mel_l1=0.245 mcd=4.97 f0=6.5
+patho04      mel_l1=0.390 mcd=5.18 f0=8.5
+short03      mel_l1=0.703 mcd=6.29 f0=11.3
+short04      mel_l1=0.569 mcd=5.90 f0=22.4
+short05      mel_l1=0.153 mcd=3.87 f0=4.1
+short06      mel_l1=0.677 mcd=6.78 f0=16.0
+short07      mel_l1=0.681 mcd=6.13 f0=14.8
+short08      mel_l1=0.610 mcd=5.79 f0=13.1
+short09      mel_l1=0.148 mcd=3.93 f0=4.1
+short10      mel_l1=0.604 mcd=5.87 f0=12.9
+para12       mel_l1=0.804 mcd=6.61 f0=16.6
+short11      mel_l1=0.474 mcd=5.53 f0=11.3
+short12      mel_l1=0.530 mcd=5.80 f0=10.8
+short13      mel_l1=0.172 mcd=4.38 f0=9.5
+short14      mel_l1=0.723 mcd=6.19 f0=15.8
+short15      mel_l1=0.296 mcd=4.87 f0=10.5
+short16      mel_l1=0.801 mcd=6.54 f0=22.0
+short17      mel_l1=0.518 mcd=5.88 f0=9.5
+short18      mel_l1=0.548 mcd=5.23 f0=21.6
+short19      mel_l1=0.641 mcd=5.72 f0=12.7
+para05       mel_l1=1.135 mcd=6.59 f0=22.2
+stress03     mel_l1=0.477 mcd=5.37 f0=6.8
+para10       mel_l1=1.140 mcd=5.72 f0=19.1
+stress02     mel_l1=0.862 mcd=6.75 f0=14.4
+stress00     mel_l1=1.175 mcd=6.64 f0=17.7
+stress05     mel_l1=1.047 mcd=7.03 f0=17.7
+patho00      mel_l1=1.511 mcd=9.67 f0=23.9
+stress08     mel_l1=0.258 mcd=4.65 f0=8.6
+stress04     mel_l1=1.351 mcd=7.11 f0=28.4
+stress01     mel_l1=0.909 mcd=5.86 f0=13.1
+stress07     mel_l1=0.335 mcd=5.26 f0=10.0
+stress06     mel_l1=0.470 mcd=5.74 f0=9.4
+stress09     mel_l1=1.152 mcd=6.94 f0=21.7
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/266 [00:00<?, ?it/s]Loading weights: 100%|██████████| 266/266 [00:00<00:00, 43028.46it/s]
+/Users/michaelchen/Epub_Listener/venv/lib/python3.12/site-packages/torch/nn/functional.py:6441: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+  key_padding_mask = _canonical_mask(
+{
+ "dur_drift_pct": {
+  "mean": 0.7514,
+  "median": 0.5988,
+  "worst": 2.1739
+ },
+ "mel_l1": {
+  "mean": 0.8513,
+  "median": 0.6814,
+  "worst": 2.301
+ },
+ "mcd_db": {
+  "mean": 6.9476,
+  "median": 5.902,
+  "worst": 18.576
+ },
+ "stft_lmag": {
+  "mean": 1.0005,
+  "median": 0.8628,
+  "worst": 2.2753
+ },
+ "stft_sc": {
+  "mean": 0.614,
+  "median": 0.6216,
+  "worst": 1.1649
+ },
+ "f0_rmse_hz": {
+  "mean": 17.2122,
+  "median": 14.81,
+  "worst": 42.8
+ },
+ "vuv_err_pct": {
+  "mean": 16.2713,
+  "median": 13.46,
+  "worst": 42.34
+ },
+ "spk_cos": {
+  "mean": 0.9973,
+  "median": 0.9982,
+  "worst": 0.9863
+ }
+}
+wrote experiments/03b-q6/metrics.json

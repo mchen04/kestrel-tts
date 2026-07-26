@@ -1,0 +1,515 @@
+{
+ "short00": {
+  "samples": 32400,
+  "seconds": 1.35,
+  "wall": 0.38,
+  "chunks": 1,
+  "phonemes": [
+   "həlˈO."
+  ]
+ },
+ "short01": {
+  "samples": 31200,
+  "seconds": 1.3,
+  "wall": 0.25,
+  "chunks": 1,
+  "phonemes": [
+   "wˈAt!"
+  ]
+ },
+ "short02": {
+  "samples": 43200,
+  "seconds": 1.8,
+  "wall": 0.352,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi nˈɑdᵻd slˈOli."
+  ]
+ },
+ "short03": {
+  "samples": 43200,
+  "seconds": 1.8,
+  "wall": 0.321,
+  "chunks": 1,
+  "phonemes": [
+   "ðə dˈɔɹ kɹˈikt ˈOpᵊn."
+  ]
+ },
+ "short04": {
+  "samples": 42600,
+  "seconds": 1.775,
+  "wall": 0.325,
+  "chunks": 1,
+  "phonemes": [
+   "nˈO wˈʌn ˈænsəɹd."
+  ]
+ },
+ "short05": {
+  "samples": 39000,
+  "seconds": 1.625,
+  "wall": 0.303,
+  "chunks": 1,
+  "phonemes": [
+   "klˈIn fɹˈWnd."
+  ]
+ },
+ "short06": {
+  "samples": 45600,
+  "seconds": 1.9,
+  "wall": 0.346,
+  "chunks": 1,
+  "phonemes": [
+   "ˌɪt wʌz ˌɔlɹˈɛdi tˈu lˈAt."
+  ]
+ },
+ "short07": {
+  "samples": 44400,
+  "seconds": 1.85,
+  "wall": 0.34,
+  "chunks": 1,
+  "phonemes": [
+   "ʃˌi lˈæft kwˈIətli."
+  ]
+ },
+ "short08": {
+  "samples": 39000,
+  "seconds": 1.625,
+  "wall": 0.306,
+  "chunks": 1,
+  "phonemes": [
+   "ʧˈæptəɹ twˈɛlv."
+  ]
+ },
+ "short09": {
+  "samples": 50400,
+  "seconds": 2.1,
+  "wall": 0.387,
+  "chunks": 1,
+  "phonemes": [
+   "ðə fˈɔɡ θˈɪkənd ˌWtsˈId."
+  ]
+ },
+ "short10": {
+  "samples": 48000,
+  "seconds": 2.0,
+  "wall": 0.37,
+  "chunks": 1,
+  "phonemes": [
+   "ˌɑɹ ju sˈɜɹtn əbˈWt ðˈɪs?"
+  ]
+ },
+ "short11": {
+  "samples": 49800,
+  "seconds": 2.075,
+  "wall": 0.367,
+  "chunks": 1,
+  "phonemes": [
+   "nˈʌθɪŋ hˈæpənd æt fˈɜɹst."
+  ]
+ },
+ "short12": {
+  "samples": 46200,
+  "seconds": 1.925,
+  "wall": 0.342,
+  "chunks": 1,
+  "phonemes": [
+   "ɐ ɡˈʌnʃˌɑt ɹˈæŋ ˈWt."
+  ]
+ },
+ "short13": {
+  "samples": 45000,
+  "seconds": 1.875,
+  "wall": 0.342,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi dɹˈu ðə ɹəvˈɔlvəɹ."
+  ]
+ },
+ "short14": {
+  "samples": 51600,
+  "seconds": 2.15,
+  "wall": 0.392,
+  "chunks": 1,
+  "phonemes": [
+   "ðə kˈændᵊl flˈɪkəɹd twˈIs."
+  ]
+ },
+ "short15": {
+  "samples": 49800,
+  "seconds": 2.075,
+  "wall": 0.367,
+  "chunks": 1,
+  "phonemes": [
+   "sˈIləns fˈɛl ˈOvəɹ ðə ɹˈum."
+  ]
+ },
+ "short16": {
+  "samples": 45000,
+  "seconds": 1.875,
+  "wall": 0.341,
+  "chunks": 1,
+  "phonemes": [
+   "ðˈæt wʌz ˌʌnəkspˈɛktᵻd."
+  ]
+ },
+ "short17": {
+  "samples": 54600,
+  "seconds": 2.275,
+  "wall": 0.4,
+  "chunks": 1,
+  "phonemes": [
+   "ɡˈʊd mˈɔɹnɪŋ, mˈɪstəɹ mˈɔɹTi."
+  ]
+ },
+ "short18": {
+  "samples": 48000,
+  "seconds": 2.0,
+  "wall": 0.358,
+  "chunks": 1,
+  "phonemes": [
+   "ðə ɹˈɪʧəwəl hæd bəɡˈʌn."
+  ]
+ },
+ "short19": {
+  "samples": 60600,
+  "seconds": 2.525,
+  "wall": 0.439,
+  "chunks": 1,
+  "phonemes": [
+   "ˈɛvəɹiθˌɪŋ ʧˈAnʤd ˈæftəɹ ðˈæt nˈIt."
+  ]
+ },
+ "para00": {
+  "samples": 372600,
+  "seconds": 15.525,
+  "wall": 2.365,
+  "chunks": 1,
+  "phonemes": [
+   "“ðə fˈɔɹθ ˈɛpək…” kˈOən mˈʌTəɹd wɪð ɐ fɹˈWn. ðə bɹˌɑnzskˈɪnd ænd wˈɪɹi ˈIz ʌv ˈæzɪk wˈɛnt blˈæŋk fˈɜɹst bəfˈɔɹ hi ɪnhˈAld. hˌi ɹˈʌbd hɪz tˈɛmpᵊl wɪð hɪz nˈuzpˌApəɹwˌildɪŋ lˈɛft hˈænd ænd sˈɛd, “ˌæntɪɡˈOnəs… ɹˈɪŋz ɐ bˈɛl… bˌʌt wˌI kˈænt ˌI ɹəmˈɛmbəɹ…”"
+  ]
+ },
+ "para01": {
+  "samples": 193200,
+  "seconds": 8.05,
+  "wall": 1.271,
+  "chunks": 1,
+  "phonemes": [
+   "sˈɪs, wˌI ɪz jʊɹ ɹiˈækʃən kəmplˈitli dˈɪfəɹənt fɹʌm hˌW ɪt plˈAd ˈWt ɪn mI hˈɛd… klˈInz ɪkspɹˈɛʃən wˈɛnt blˈæŋk wˌɛn hi hˈɜɹd hɪz sˈɪstəɹ."
+  ]
+ },
+ "para02": {
+  "samples": 395400,
+  "seconds": 16.475,
+  "wall": 2.499,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi lˈind bˈæk, wɪθdɹˈu hɪz ɹˈIt hˈænd, ænd kɹˈɔst hɪz tˈɛn fˈɪŋɡəɹz, plˈAsɪŋ ðˌɛm bəlˈO hɪz ʧˈɪn. hˌi ɡˈAv ðə dˈuO ɐ fˈAnt smˈIl. “jˌu kæn ədɹˈɛs mˌi æz…” əpˈɑn sˈAɪŋ ðˈɪs, hi pˈɔzd fɔɹ ɐ mˈOmᵊnt. hˌi sˈɛd ˈAmiəbli ænd kˈɑmli, “ðə fˈul.” lˈæŋɡwɪʤ ʌv ʤˈIənts."
+  ]
+ },
+ "para03": {
+  "samples": 359400,
+  "seconds": 14.975,
+  "wall": 2.304,
+  "chunks": 1,
+  "phonemes": [
+   "“ʤˈʌst ɐ lˈɪTᵊl. ˌɪts ðə pɹˈIs ʌv ɐ dˈɛləkəsi.” məlˈɪsəz ˈIz twˈɪŋkᵊld, hɜɹ ɪkspɹˈɛʃən ʧˈAnʤɪŋ fɔɹ ɐ fjˈu mˈOmᵊnts, bəfˈɔɹ ʃi fˈInᵊli sˈɛd, “lˈɛt mˌi kˈʊk ɪn ðə fjˈuʧəɹ.” “ˈʌm… jˌu hæv tə hˈɜɹi ˌʌp ænd pɹipˈɛɹ fɔɹ ði ˈɪntəɹvjˌu. jˌu hæv tə θˈɪŋk əbˈWt jʊɹ ʤˈɑb.”"
+  ]
+ },
+ "para04": {
+  "samples": 264600,
+  "seconds": 11.025,
+  "wall": 1.691,
+  "chunks": 1,
+  "phonemes": [
+   "ðˈæt sˌɪləwˈɛt wʌz pˈɑɹtli kˈæməflˌɑʤd ɪn ðə dˈɑɹknəs, bˈAðɪŋ ɪn ðə kɹˈɪmzᵊn mˈunlˌIt. ðˈæt sˌɪləwˈɛt tˈɜɹnd əɹˈWnd slˈOli. hˌɪz ˈIz dˈip, ɡɹˈA, ænd kˈOld. dˈʌn smˈɪθ!"
+  ]
+ },
+ "para05": {
+  "samples": 556800,
+  "seconds": 23.2,
+  "wall": 3.477,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi ʃˈɪftᵻd hɪz ɡˈAz ænd kˈɛɹfᵊli sˈIzd ˌʌp ˈOld nˈil wˌɛn sˈʌdᵊnli hi sˈɔ ɐ tɹænzlˈusənt pˈɛɹ ʌv kˈOld ænd ɹˈuθləs ˈIz wɪðˈWt ˈɛni bɹˈWz ɪn ðə vˈYd bəhˈInd hˌɪm! ðˌiz nˈɪɹli ɪlˈusəɹi ˈIz wɜɹ stˈɛɹɪŋ æt ˈOld nˈil ɪntˈɛntli, æz wˈɛl æz hˌɪm! ðˈɪs… klˈIn ʃˈʌdəɹd æz hi ɡˈæpt ænd sˈɛd, “jˌu hæv ɐ pˈɛɹ ʌv ˈIz bəhˈInd ju!” ˈOld nˈil wʌz tˈAkən əbˈæk bəfˈɔɹ hi fˈɔɹst ɐ smˈIl. “ɪɡnˈɔɹ ðˌɛm.”"
+  ]
+ },
+ "para06": {
+  "samples": 181200,
+  "seconds": 7.55,
+  "wall": 1.184,
+  "chunks": 1,
+  "phonemes": [
+   "ði ˈʌðəɹ kəntˈɪnjud, “ɪn ðˈæt kˈAs, wi ʃˌæl ɡˈɪv ju ɐ ʧˈæns. ˌæz lˈɔŋ æz ju kæn sˈA ˌWəɹ nˈAm, wi wɪl əlˈW ju tə jˈuz ˌʌs.”"
+  ]
+ },
+ "para07": {
+  "samples": 360600,
+  "seconds": 15.025,
+  "wall": 2.304,
+  "chunks": 1,
+  "phonemes": [
+   "“mˈAbi ˌI ʃˈʊdəv pˈAd ɐ bˈɪt mˈɔɹ pɹImˈivᵊl stˈOnz, mˈAbi hi mˌIt hæv ɡˈɪvən ɪt tə mˌi. ðˈæts ɹˈIt, hiz ʤˈʌst ɐ stˈudᵊnt. ˌɪf ˌI ˈɔfəɹd ɐ hˈʌndɹəd pɹImˈivᵊl stˈOnz, ðɛɹz nˈO wˈA hid nˌɑt bi mˈuvd. wˌI dˈɪdᵊnt ˌI dˈu ðˈæt?” ʤˈiə ʤˈɪn ʃˈɛŋ wʌz fˈʊl ʌv ɹəɡɹˈɛt."
+  ]
+ },
+ "para08": {
+  "samples": 253800,
+  "seconds": 10.575,
+  "wall": 1.627,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi kʊd ˈOnli vˈAɡli ɹəkˈɔl, ðæt dˈʊɹɪŋ ðɪs jˈɪɹ ˌɔn ðə fˈɜɹst nˈIt ðə kˈɛɹəvˌæn əɹˈIvd, ɐ lˈʌki bˈɜɹd spˈɛnt tˈɛn pɹImˈivᵊl stˈOnz tə bˈI ɐ fˈɑsᵊl wɪð pˈɜɹpᵊl ɡˈOld lˈʌstəɹ."
+  ]
+ },
+ "para09": {
+  "samples": 226800,
+  "seconds": 9.45,
+  "wall": 1.443,
+  "chunks": 1,
+  "phonemes": [
+   "ɔlðˈO ðə fˈInᵊl pˈɜɹpᵊl ɡˈOld fˈɑsᵊl dˈɪd nˌɑt hæv ɐ ɡˈu wˈɜɹm, fˈæŋ juˈɑn wʌz nˌɑt dˌɪsəpˈYntᵻd. ɪn fˈækt hi lˈʊkt æt ðə pˈIl ʌv ɹˈɑk pˈWdəɹ ænd"
+  ]
+ },
+ "para10": {
+  "samples": 454200,
+  "seconds": 18.925,
+  "wall": 2.999,
+  "chunks": 1,
+  "phonemes": [
+   "sˌʌm kˈɔl ɪt ðə pˈɜɹpᵊl pɹˈifˌɛkʧəɹ; sˌʌm kˈɔl ɪt ðə ʧˌInˈiz pˈul. hWˈɛvəɹ mˈɛni nˈO ɪt æz ðə pɹImˈivᵊl sˈi ˈæpəɹʧˌʊɹ. ði əntˈIəɹ bˈɑdi ɪz sfˈɪɹəkᵊl ænd ðə sˈɜɹfəs ʌv ɪt ɪz kˈʌvəɹd ɪn flˈOɪŋ wˈIt lˈIt, lˈIk ɐ θˈɪn lˈAəɹ ʌv lˈIt kˈOTɪŋ. ˌɪt wʌz ðə lˈAəɹ ʌv lˈIt fɹʌm ðə hˈOp ɡˈu ðæt pɹˈiviəsli ɪksplˈOdᵻd."
+  ]
+ },
+ "para11": {
+  "samples": 303600,
+  "seconds": 12.65,
+  "wall": 2.143,
+  "chunks": 1,
+  "phonemes": [
+   "jˈuzɪŋ ðə ɡˈu juˈA vˈɪlɪʤ æz ɐn ɪɡzˈæmpəl, ðɛɹ wɜɹ əɹˈWnd twˈɛnti pˈipᵊl wˈɔkɪŋ ˌɔn ðə stɹˈits, ænd sˈɪks wɜɹ ɡˈu mˈæstəɹz. ɪn ðiz sˈɪks, ðɛɹ wʌz ɐ fˈɪfti pəɹsˈɛnt ʧˈæns ʌv hˈævɪŋ wˈʌn ɹˈæŋk tˈu ɡˈu mˈæstəɹ."
+  ]
+ },
+ "para12": {
+  "samples": 361800,
+  "seconds": 15.075,
+  "wall": 2.862,
+  "chunks": 1,
+  "phonemes": [
+   "(θɹˈi) bˈI tˈu dəɹˈɛktli mˈinz wˈIt hˈɛd,(fˈɔɹ)pˈæn ʃi ɪz mˈɑnəlˌɪθ, (fˈIv)ɡˈu mjˈu mˈinz ˈAnʧənt ɡɹˈAv ænd (sˈɪks)kˈæŋ ʤˈɪŋ ɪz pˈAl wˈAl. tə bi ˈɑnəst mˈOst ʌv ðiz mˈWntᵊnz wɪl nˈɛvəɹ əpˈɪɹ əɡˈɛn, sˌO ju dˈOnt hæv tə ɹəmˈɛmbəɹ ðˌɛm."
+  ]
+ },
+ "stress00": {
+  "samples": 190800,
+  "seconds": 7.95,
+  "wall": 1.811,
+  "chunks": 1,
+  "phonemes": [
+   "ˌɔn mˈɑɹʧ θˈɜɹd, θˌɜɹtˈin fˈɔɹTi nˈIn, ðə fˈɔɹθ ˈɛpək ˈɛndᵻd; fˈɔɹ θˈWzᵊnd tˈu hˈʌndɹəd ˈATi sˈɪks pˈipᵊl vˈænɪʃt ˌOvəɹnˈIt."
+  ]
+ },
+ "stress01": {
+  "samples": 255600,
+  "seconds": 10.65,
+  "wall": 1.694,
+  "chunks": 1,
+  "phonemes": [
+   "ði ˈɪnvˌYs tˈOTᵊld wˈʌn θˈWzᵊnd tˈu hˈʌndɹəd fˈɔɹTi sˈɛvən dˈɑləɹz ænd sˈɪksti θɹˈi sˈɛnts, dˈu bI ɪlˈɛvən:fˈɪfti nˈIn pˌiˈɛm ˌɔn twˈɛlv θˈɜɹTi wˈʌn twˈɛnti twˈɛnti sˈɪks."
+  ]
+ },
+ "stress02": {
+  "samples": 178200,
+  "seconds": 7.425,
+  "wall": 1.189,
+  "chunks": 1,
+  "phonemes": [
+   "dˈɑktəɹ sənt. ʤˈɑn sˈITᵻd ðə nˈATO, junˈɛskO, ænd ˌɛmˈI sˈɪks ˈɑɹkˌIvz — ˈɔl sˈiᵊld sˈɪns dˌʌbᵊljudˌʌbᵊljuˌIˈI."
+  ]
+ },
+ "stress03": {
+  "samples": 92400,
+  "seconds": 3.85,
+  "wall": 0.637,
+  "chunks": 1,
+  "phonemes": [
+   "“dˈOnt,” ʃi wˈɪspəɹd, “nˌɑt ənlˈɛs ju mˈin ɪt — tɹˈuli mˈin ɪt.”"
+  ]
+ },
+ "stress04": {
+  "samples": 197400,
+  "seconds": 8.225,
+  "wall": 1.294,
+  "chunks": 1,
+  "phonemes": [
+   "ðə jˌuˌɑɹˈɛl wʌz ˌAʧtˌitˈipˌiˈɛs:slˈæʃslæʃ bˈækwɔTəɹ.ɛɡzˈæmpᵊl.kˈɑm slˈæʃ ˈɑɹkIvz, bˌʌt ðə dˌiˌɛnˈɛs hæd ɪkspˈIəɹd."
+  ]
+ },
+ "stress05": {
+  "samples": 123000,
+  "seconds": 5.125,
+  "wall": 0.827,
+  "chunks": 1,
+  "phonemes": [
+   "ʤˈO wˈɛnʤʌn ænd ʧˈi zˌIəˈOkiən kɹˈɔst ðə dˈuænh ɹˈɪvəɹ nˌɪɹ jˈuənwˌu mˈWntᵊn."
+  ]
+ },
+ "stress06": {
+  "samples": 203400,
+  "seconds": 8.475,
+  "wall": 1.321,
+  "chunks": 1,
+  "phonemes": [
+   "hˌi mˈɛʒəɹd θɹˈi pYnt sˈɛvən kˌAʤˈi ʌv ˈækənˌIt, tˈu hˈʌndɹəd fˈɪfti ˌɛmˈɛl ʌv ˈɛθənˌɔl, ænd zˈɪɹO pYnt fˈIv ʤˈi ʌv sˈɪlvəɹ nˈItɹˌAt."
+  ]
+ },
+ "stress07": {
+  "samples": 182400,
+  "seconds": 7.6,
+  "wall": 1.155,
+  "chunks": 1,
+  "phonemes": [
+   "ðə sˈɛkənd bətˈæljən lˈɔst wˈʌn θˈWzᵊnd twˈɛnti fˈɔɹ mˈɛn; ðə θˈɜɹd, ˈOnli ˈATi sˈɛvən — ɐ twˈɛlv:wˈʌn dəspˈɛɹəTi."
+  ]
+ },
+ "stress08": {
+  "samples": 111000,
+  "seconds": 4.625,
+  "wall": 0.748,
+  "chunks": 1,
+  "phonemes": [
+   "ɛmlˈɪn wˈIt, ðə vˈæmpˌIəɹ, snˈɪɹd: “ɐ mˈɪɹ sˈikwəns ˈAt? hˌW kwˈAnt.”"
+  ]
+ },
+ "stress09": {
+  "samples": 253200,
+  "seconds": 10.55,
+  "wall": 1.62,
+  "chunks": 1,
+  "phonemes": [
+   "ˌIˌɛsbˌiˈɛn nˈIn hˈʌndɹəd sˈɛvənti ˈAtzˌɪɹOθɹˈi sˌɪkstˈinsˈɛvən sˈɪks nˈIn fˈɔɹ ˈAtzˌɪɹO wʌz fˈIld ˈʌndəɹ “əkˈʌlt — ɹəstɹˈɪktᵻd” æt fˈɔɹ:zˈiəɹO zˈiəɹO ˌAˈɛm"
+  ]
+ },
+ "patho00": {
+  "samples": 775200,
+  "seconds": 32.3,
+  "wall": 5.036,
+  "chunks": 2,
+  "phonemes": [
+   "ðə ɡɹˈA fˈɔɡ ɹˈOld ˈɪn fɹʌm ðə hˈɑɹbəɹ ænd swˈɑlOd ðə ɡˈæs lˈæmps wˈʌn bI wˈʌn wˌIl ðə ʧˈɜɹʧ bˈɛlz ʌv sˈAnt sɛlˈinə tˈOld θˌɜɹtˈin tˈImz wˌɪʧ wʌz ɪmpˈɑsəbᵊl bəkˈʌz ðə tˈWəɹ ˈOnli hæd twˈɛlv bˈɛlz ænd ˈɛvəɹi lˈɪsᵊnəɹ ɪn ðə skwˈɛɹ ˌʌndəɹstˈʊd æt ðə sˈAm tˈɛɹəbᵊl ˈɪnstᵊnt ðæt sˈʌmθˌɪŋ ˈOldəɹ ðən ðə sˈɪTi ɪtsˈɛlf hæd wˈOkən bənˈiθ ðə kəθˈidɹəl ænd wʌz kˈWntɪŋ ðˌɛm ænd ðə kɹˈWd bəɡˈæn tə ɹˈʌn wɪðˈWt nˈOɪŋ wˌɛɹ tə ɹˈʌn bəkˈʌz ðə fˈɔɡ wʌz ˈɛvɹiwˌɛɹ ænd ðə bˈɛlz kˈɛpt ɹˈɪŋɪŋ ænd sˈʌmhwˌɛɹ əbˈʌv ðə klˈWdz ɐ vˈæst",
+   "ˌʌnblˈɪŋkɪŋ ˈI tˈɜɹnd ɪts ətˈɛnʧən dˈWnwəɹd."
+  ]
+ },
+ "patho01": {
+  "samples": 83400,
+  "seconds": 3.475,
+  "wall": 0.571,
+  "chunks": 1,
+  "phonemes": [
+   "hˈi skɹˈimd ðə nˈAm ˈʌv ðə tɹˈu kɹiˈATəɹ ˈɪntu ðə stˈɔɹm."
+  ]
+ },
+ "patho02": {
+  "samples": 112200,
+  "seconds": 4.675,
+  "wall": 0.753,
+  "chunks": 1,
+  "phonemes": [
+   "wˈɛl... hmm... nˈO — wˈAt; ˈækʧəwəli: jˈɛs?! fˈIn!!! (ˌɔɹ... pəɹhˈæps nˌɑt?)"
+  ]
+ },
+ "patho03": {
+  "samples": 100200,
+  "seconds": 4.175,
+  "wall": 0.676,
+  "chunks": 1,
+  "phonemes": [
+   "tˈɪk. tˈɑk. tˈɪk. tˈɑk. tˈɪk. tˈɑk. ðə klˈɑk. ðə klˈɑk. ðə klˈɑk."
+  ]
+ },
+ "patho04": {
+  "samples": 102600,
+  "seconds": 4.275,
+  "wall": 0.686,
+  "chunks": 1,
+  "phonemes": [
+   "ɐ bˈi sˈi dˈi ˈi ˈɛf ʤˈi, wˈʌn tˈu θɹˈi fˈɔɹ fˈIv sˈɪks sˈɛvən."
+  ]
+ },
+ "long00": {
+  "samples": 2205000,
+  "seconds": 91.875,
+  "wall": 14.106,
+  "chunks": 4,
+  "phonemes": [
+   "hˌi lˈind bˈæk, wɪθdɹˈu hɪz ɹˈIt hˈænd, ænd kɹˈɔst hɪz tˈɛn fˈɪŋɡəɹz, plˈAsɪŋ ðˌɛm bəlˈO hɪz ʧˈɪn. hˌi ɡˈAv ðə dˈuO ɐ fˈAnt smˈIl. “jˌu kæn ədɹˈɛs mˌi æz…” əpˈɑn sˈAɪŋ ðˈɪs, hi pˈɔzd fɔɹ ɐ mˈOmᵊnt. hˌi sˈɛd ˈAmiəbli ænd kˈɑmli, “ðə fˈul.” lˈæŋɡwɪʤ ʌv ʤˈIənts.",
+   "nˈɔTəkəl əkˈædəmi, tˈu ɹˈYᵊl ʃˈɪpjˌɑɹdz, ˈɔlmOst hˈʌndɹəd fˈæktəɹiz fɔɹ spˈɛɹ pˈɑɹts, ɐn ˈædməɹəlti, ɐ ʃˈɪp bˈɪldɪŋ kəmˈɪTi, ɐ kˈæbᵊnət, ɐ dətˈɜɹmənd kˈɪŋ wɪð ˈɛksᵊlənt fˈɔɹsˌIt, ænd ɐ ɡɹˈAt kˈʌntɹi wɪð ɐn ˈænjəwəl stˈil pɹədˈʌkʃən ʌv twˈɛlv mˈɪljᵊn tˈʌnz! “ðə pˈIɹəts wɪl nˈɛvəɹ əʧˈiv ɪt.” hˈævɪŋ sˈɛd ðˈæt, hi pˈɔzd ænd ɹˈAzd hɪz ˈɑɹmz bəfˈɔɹ ʃˈWTɪŋ ɪn ˌæʤətˈAʃən, “lˈAdiz ænd ʤˈɛntəlmɛn, ði ˈɛɹə ʌv kˈænənz ænd wˈɔɹʃˌɪps hæz dˈɔnd əpˈɑn ˌʌs!”",
+   "ðə ɡɹˈinˌId pəlˈis ɪnspˈɛktəɹ wɪð ɐ pˈOəts tˈɛmpəɹəmənt smˈIld ænd sˈɛd, “ʤˈɛnəɹəli spˈikɪŋ, ðə nˈɔɹm ɪz fɔɹ ˈɔl ði ɪnvˈɑlvd pˈɑɹTiz tə dˈI ɪn sˈʌʧ ɐn əvˈɛnt. wˌi ɑɹ vˈɛɹi ɡlˈæd ænd fˈɔɹʧᵊnət tə sˈi ju stˈɪl əlˈIv.” ˈæftəɹ ðˈæt, hi ˈɛɡzəTᵻd ðə ɹˈum ænd klˈOzd ðə dˈɔɹ bəhˈInd hˌɪm pəlˈItli. ðə nˈɔɹm ɪz fɔɹ ˈɛvɹiwən tə dˈI təɡˈɛðəɹ? vˈɛɹi ɡlˈæd ðæt ˌIm stˈɪl əlˈIv? fˈɔɹʧᵊnət ðæt ˌIm stˈɪl əlˈIv? ˌɔn ðɪs ʤˈun ˌæftəɹnˈun, klˈIn wʌz ʧˈɪlɪŋ ˈɔl ˈOvəɹ. “ʤˈʌst ɐ lˈɪTᵊl. ˌɪts ðə pɹˈIs ʌv ɐ dˈɛləkəsi.”",
+   "məlˈɪsəz ˈIz twˈɪŋkᵊld, hɜɹ ɪkspɹˈɛʃən ʧˈAnʤɪŋ fɔɹ ɐ fjˈu mˈOmᵊnts, bəfˈɔɹ ʃi fˈInᵊli sˈɛd, “lˈɛt mˌi kˈʊk ɪn ðə fjˈuʧəɹ.” “ˈʌm… jˌu hæv tə hˈɜɹi ˌʌp ænd pɹipˈɛɹ fɔɹ ði ˈɪntəɹvjˌu. jˌu hæv tə θˈɪŋk əbˈWt jʊɹ ʤˈɑb.” ðˈæt sˌɪləwˈɛt wʌz pˈɑɹtli kˈæməflˌɑʤd ɪn ðə dˈɑɹknəs, bˈAðɪŋ ɪn ðə kɹˈɪmzᵊn mˈunlˌIt. ðˈæt sˌɪləwˈɛt tˈɜɹnd əɹˈWnd slˈOli. hˌɪz ˈIz dˈip, ɡɹˈA, ænd kˈOld. dˈʌn smˈɪθ!"
+  ]
+ },
+ "long01": {
+  "samples": 2348400,
+  "seconds": 97.85,
+  "wall": 15.116,
+  "chunks": 4,
+  "phonemes": [
+   "hˌi ʃˈɪftᵻd hɪz ɡˈAz ænd kˈɛɹfᵊli sˈIzd ˌʌp ˈOld nˈil wˌɛn sˈʌdᵊnli hi sˈɔ ɐ tɹænzlˈusənt pˈɛɹ ʌv kˈOld ænd ɹˈuθləs ˈIz wɪðˈWt ˈɛni bɹˈWz ɪn ðə vˈYd bəhˈInd hˌɪm! ðˌiz nˈɪɹli ɪlˈusəɹi ˈIz wɜɹ stˈɛɹɪŋ æt ˈOld nˈil ɪntˈɛntli, æz wˈɛl æz hˌɪm! ðˈɪs… klˈIn ʃˈʌdəɹd æz hi ɡˈæpt ænd sˈɛd, “jˌu hæv ɐ pˈɛɹ ʌv ˈIz bəhˈInd ju!” ˈOld nˈil wʌz tˈAkən əbˈæk bəfˈɔɹ hi fˈɔɹst ɐ smˈIl. “ɪɡnˈɔɹ ðˌɛm.” ˈæftəɹ ɐ lˈɔŋ wˌIl, hi lˈɛt ˈWt ɐ sˈI. “ˌɪts stˈɪl ðˈæt məɹˈækjələs.",
+   "ˌI wʌz ˌʌnˈAbᵊl tə fˈɪɡjəɹ ˈWt ˈɛni spəsˈɪfɪk dətˈAlz æt ˈɔl…” dəspˈIt hˈævɪŋ mˌAd səfˈɪʃənt pɹˌɛpəɹˈAʃənz, hi fˈAld tʊ ˌʌndəɹstˈænd hˌW ðə fˈul hæd kəmplˈiTᵻd ðə sˈʌmənɪŋ… hˌi mˈuvd hɪz ɡˈAz dˌWn ænd lˈʊkt æt ðə ɡˈOtskˌɪn pˈɑɹʧmᵊnt ˌɔn ðə tˈAbᵊl ɪn fɹˈʌnt ʌv hˌɪm. ˌæt ðə tˈITᵊl hˈɛd ʌv ðə jˈɛlOɪʃbɹˌWn pˈɑɹʧmᵊnt, ðɛɹ wʌz ɐ hˈɜɹmiz sˈɛntᵊns ɹˈɪtn ɪn dˈɑɹk blˈu ˈɪŋk. “sˈɛvən sˈifˌɛɹəɹ.”",
+   "“ˌɪt lˈIkli hæz tə dˈu wɪð hˌW ði ˌʌnnˈOn ɪɡzˈɪstᵊns mˌAd mˌi tˈAk ði ˌæntɪɡˈOnəs fˈæmᵊliz nˈOtbˌʊk əwˈA tə hˈId ɪt,” ˈænsəɹd klˈIn wɪð ði əfˈɪʃᵊl səɹmˈIz. lˈɛnəɹd pˈAst əɹˈWnd bəfˈɔɹ tˈɜɹnɪŋ tə lˈʊk stɹˈAt ˈɪntu klˈInz ˈIz. “ˌɪf jʊɹ sˈuəsˌId wʌz mˈɛnt tə sˈIləns ju ænd wˈIp ˈWt ˈɛni klˈuz, wˌI wˌɜɹnt ju mˌAd tə dəstɹˈY ðə nˈOtbˌʊk ðɛɹ ænd ðˈɛn?” ðˌɪs ɪz ɐ klˈæsɪk ʧˌInˈiz sˈAɪŋ tə sˈʌmwˌʌn. ˌɪt jˈuʒəwəli ɪmplˈIz ɐn ˈɑmənəs pˈɔɹtˌɛnt. “wˌI bi ɐ kˈɪdnˌæpəɹ? wˌI kˈænt ju hˈæpəli bi sˈɪvəlˌIzd pˈɜɹsᵊn?”",
+   "hˌi pˌʊt dˌWn ðə bˈæɡ wɪð ˈɛliəts klˈOðz ænd tˈʊk tˈu stˈɛps fˈɔɹwəɹd. hˌɪz ɪkspɹˈɛʃən sˈʌdᵊnli tˈɜɹnd səɹˈin ænd mˌɛlᵊnkˈɑlɪk. hˌɪz mæɡnˈɛTɪk ænd dˈip vˈYs ɡɹˈæʤəwəli sˈWndᵻd. “ˈO, ðə θɹˈɛt ʌv hˈɔɹəɹ, ðə hˈOp ʌv kɹˈɪmzᵊn kɹˈIz! “wˈʌn θˈɪŋ æt lˈist ɪz sˈɜɹtn—ðæt ðɪs lˈIf flˈIz; “wˈʌn θˈɪŋ ɪz sˈɜɹtn, ænd ðə ɹˈɛst ɪz lˈIz; “ðə flˈWəɹ ðæt wˈʌns hæz blˈumd fəɹˈɛvəɹ dˈIz…”"
+  ]
+ },
+ "long02": {
+  "samples": 2213400,
+  "seconds": 92.225,
+  "wall": 14.2,
+  "chunks": 4,
+  "phonemes": [
+   "ði ˈæpəɹʧˌʊɹ wʌz məstˈɪɹiəs ænd ˌʌnjˈuʒəwəl. ɔlðˈO ɪt wʌz lˈOkˌATᵻd ɪnsˈId fˈæŋ juˈɑnz bˈɑdi, ɪt wʌz æt ðə sˈAm tˈIm, nˌɑt ʃˈɛɹɪŋ ðə sˈAm spˈAs wɪð hɪz ɪntˈɜɹnəl ˈɔɹɡᵊnz. jˌu kʊd sˈA ðæt ɪt wʌz ˈɛndləsli hjˈuʤ, jˈɛt æt ðə sˈAm tˈIm ˈɪnfənətli smˈɔl. sˌʌm kˈɔl ɪt ðə pˈɜɹpᵊl pɹˈifˌɛkʧəɹ; sˌʌm kˈɔl ɪt ðə ʧˌInˈiz pˈul. hWˈɛvəɹ mˈɛni nˈO ɪt æz ðə pɹImˈivᵊl sˈi ˈæpəɹʧˌʊɹ. ði əntˈIəɹ bˈɑdi ɪz sfˈɪɹəkᵊl ænd ðə sˈɜɹfəs ʌv ɪt ɪz kˈʌvəɹd ɪn flˈOɪŋ wˈIt lˈIt, lˈIk ɐ θˈɪn lˈAəɹ ʌv lˈIt kˈOTɪŋ.",
+   "ˌɪt wʌz ðə lˈAəɹ ʌv lˈIt fɹʌm ðə hˈOp ɡˈu ðæt pɹˈiviəsli ɪksplˈOdᵻd. ðˌɪs θˈɪn mˈɛmbɹˌAn ʌv lˈIt səpˈɔɹTᵻd ði ˈæpəɹʧˌʊɹ sˌO ɪt wʊd nˌɑt kəlˈæps, ænd ɪnsˈId ði ˈæpəɹʧˌʊɹ wʌz nˈæʧəɹəli, ðə pɹImˈivᵊl sˈi. ðə sˈiwˌɔTəɹz wɜɹ smˈuð lˈIk ɐ mˈɪɹəɹ, ʃˈOɪŋ ɐ ɡɹˈinɪʃ blˈu kˈʌləɹ, jˈɛt ðə wˈɔTəɹ wʌz dˈɛns ænd bɹˈɔt əbˈWt ɐ kˈɑpəɹ lˈʌstəɹ. ˈOnli ɹˈæŋk wˈʌn ɡˈu mˈæstəɹz kæn fˈɔɹm ðɪs ɡɹˈin kˈɑpəɹi pɹImˈivᵊl ˈɛsᵊns, nˈOn æz ðə ɡɹˈin kˈɑpəɹ sˈi.",
+   "ðə hˈIt ʌv ðə sˈi sˈɜɹfəs wʌz nˌɑt ˌʌp tə hˈæf ʌv ði ˈæpəɹʧˌʊɹ — ɪt wʌz ˈOnli ˌʌp tə fˈɔɹTi fˈɔɹ pəɹsˈɛnt. ðˌɪs wʌz ˈɔlsO ðə lˌɪmətˈAʃən ʌv ɐ sˈi ɡɹˈAd tˈælənt. ˈɛvəɹi dɹˈɑp ʌv sˈiwˌɔTəɹ wʌz pjˈʊɹ pɹImˈivᵊl ˈɛsᵊns, ɹˌɛpɹᵻzˈɛntɪŋ ðə kˌɑndˌɛnsˈAʃən ʌv fˈæŋ juˈɑnz ˈɛsᵊns, vItˈæləTi ænd sˈOl. ˌɪt wʌz ˈɔlsO ði əkjˌumjəlˈAʃən ʌv hɪz lˈIf pətˈɛnʧᵊl ˈOvəɹ ðə pˈæst fˌɪftˈin jˈɪɹz. ðˌɪs pɹImˈivᵊl ˈɛsᵊns ɪz jˈuzd bI ɡˈu mˈæstəɹz tə ɹˈAz ɡˈu.",
+   "ðˌɪs ˈɔlsO mˈinz ðæt fɹʌm nˈW ˈɔnwəɹdz, fˈæŋ juˈɑn hæz fˈɔɹməli ˈɛntəɹd ðə ɹˈut ʌv ɐ ɹˈæŋk wˈʌn ɡˈu mˈæstəɹ. sˈɪns ði ˈæpəɹʧˌʊɹ hæd ˈOpᵊnd, nˈO mˈɔɹ hˈOp ɡˈɛntəɹd fˈæŋ juˈɑnz bˈɑdi."
+  ]
+ },
+ "long03": {
+  "samples": 1578600,
+  "seconds": 65.775,
+  "wall": 10.608,
+  "chunks": 3,
+  "phonemes": [
+   "“bˈɪɡ bɹˈʌðəɹ…” əmˈʌŋ ðˌɛm, ɡˈu juˈA fˈæŋ ʒˈɛŋ lˈʊkt ˌʌp, wˈɑʧɪŋ wɪð ʃˈɑk æz fˈæŋ juˈɑn ɹətˈɜɹnd əkɹˈɔs ðə ɹˈɪvəɹ. hˌi kʊd nˌɑt dˈɛɹ tə bəlˈiv ɪt, hɪz ˈOn bɹˈʌðəɹ wʌz ˈOnli ɐ sˈi ɡɹˈAd? hˌi hæd ˈɔlwˌAz θˈɔt ðæt hɪz ˈOldəɹ bɹˈʌðəɹ wʊd bi ɐn ɐ ɡɹˈAd tˈælənt. nˈO, nˌɑt ʤˈʌst hˌɪm, ˈivən hɪz ˈænt ænd ˈʌŋkəl ænd sˌO mˈɛni pˈipᵊl əmˈʌŋ ðə klˈæn θˈɔt ðə sˈAm tˈu. “jˈuθs wɪð hˈIəɹ kwˈɑləTi ʌv pɹImˈivᵊl sˈi wʊd ɪndˈid dəsplˈA kˌɛɹəktəɹˈɪstɪks ðæt səɹpˈæs ði ˈɔɹdᵊnˌɛɹi mˈæn.",
+   "sˈʌʧ æz ɪntˈɛləʤᵊns, pəɹsˈɛpʃən, mˈɛməɹi, stɹˈɛŋθ, əʤˈɪləTi ænd sˌO ˌɔn. ˌɔn ði ˈʌðəɹ hˈænd, ðiz kˌɛɹəktəɹˈɪstɪks dˈu nˌɑt mˈin ðæt ðə pɹImˈivᵊl tˈælənt ɪz dˈɛfᵊnətli hˈI. ˈɛvəɹiθˌɪŋ wɪl stˈɪl bi dətˈɜɹmənd bI ðə ɹəzˈʌlts.” fˈæŋ juˈɑn wˈɔkt wɪð ðə sˈAm əmˈOʃənləs fˈAs, hɪz dˈɪstᵊns ɡˈɛTɪŋ klˈOsəɹ ænd klˈOsəɹ tˈɔɹdz ðə kɹˈWd. hˌi kʊd klˈɪɹli sˈi ði əkˈædəmi ˈɛldəɹz hˈɛvi ɪkspɹˈɛʃən, ænd wʌz əwˈɛɹ ʌv ðə stˈɛɹz θɹˈOn æt hˌɪm fɹʌm ˈOvəɹ ɐ hˈʌndɹəd jˈuθs. dˈʊɹɪŋ ðˈæt tˈIm hi fˈɛlt æz ɪf ðə skˈI hæd fˈɔlən.",
+   "wˌɛn hi kɹˈɔst ðə kˈOld ɹˈɪvəɹ hi lˈɔst hɪz fˈʊTɪŋ ænd fˈɛl, sˈOkɪŋ hɪz əntˈIəɹ bˈɑdi ɪn ðə wˈɔTəɹ, fˈilɪŋ sˌO lˈɔst. nˈO wˈʌn kˈAm fˈɔɹwəɹd tə hˈɛlp hˌɪm ˌʌp."
+  ]
+ },
+ "long04": {
+  "samples": 1743600,
+  "seconds": 72.65,
+  "wall": 11.172,
+  "chunks": 3,
+  "phonemes": [
+   "fˈIv hˈʌndɹəd jˈɪɹz ʌv lˈɪvɪŋ hæd lˈɛd hˌɪm tʊ ˌʌndəɹstˈænd ðæt ði ˈɪntɹəstɪŋ θˈɪŋz ðæt hˈæpən ɪn ɐ pˈɜɹsᵊnz lˈIf, hˈæpənz dˈʊɹɪŋ ðə pɹˈɑsˌɛs wˌɛn wˈʌn ʧˈAsᵻz ˈæftəɹ hɪz ˈOn dɹˈimz. ðˌɛɹ ɪz nˈO nˈid tʊ ˈæsk ˈʌðəɹz əɹˈWnd ju tə nˌɑt bi dˌɪsəpˈYntᵻd ɔɹ mˌAk ðˌɛm lˈIk ɪt. “ˈɑ? ˌIm hˈɪɹ, ˌIm hˈɪɹ!” fˈæŋ ʒˈɛŋ snˈæpt ˈWt ʌv hɪz ʃˈɑk ænd ɹˈæn ˈWt hˈɜɹidli. ˌʌnfˈɔɹʧᵊnətli hi tɹˈɪpt ˈOvəɹ hɪz ˈOn fˈʊt ænd fˈɛl, hˈɪTɪŋ hɪz hˈɛd wɪð ɐ ɡɹˈOn ænd tˈʌmbəld ˈɪntu ðə ɹˈɪvəɹ. “ðˌɪs ɪz sˈʌʧ ɐ hjˈuʤ əmbˈɛɹəsmənt!”",
+   "fˈæŋ ʒˈɛŋ stɹˈʌɡᵊld ænd splˈæʃt ɪn ðə wˈɔTəɹ. ðə bˈɑTəm ʌv ðə ɹˈɪvəɹ wʌz ʤˈʌst tˈu slˈɪpəɹi; hi kˌʊdᵊnt ɡɛt ˌʌp pɹˈɑpəɹli. tɹˈIɪŋ hɪz bˈɛst ˈOnli mˌAd hˌɪm lˈʊk mˈɔɹ stˈupəd ænd klˈʌmzi. hˌɪz hˈɑɹt ɪnkɹˈisɪŋli flˈʌstəɹd æz ðə sˈWndz ʌv lˈæftəɹ fˈɪld hɪz ˈɪɹz. “hɑhˈɑ, ðə dˈɪfəkəlt ˈOldəɹ ænd jˈʌŋɡəɹ bɹˈʌðəɹ ʌv ðə fˈæŋ fˈæmᵊli!” sˈʌmwˌʌn lˈæft æt ðə ɹˈɪvəɹbˌæŋk. ðə lˈæfəɹ ɡɹˈu lˈWdəɹ, jˈɛt ði əkˈædəmi ˈɛldəɹ dˈɪd nˌɑt kˈʌm ˈWt ænd stˈɑp ɪt. hˌi wʌz dˈipli fɹˈWnɪŋ, dˌɪsəpˈYntmᵊnt fˈɪlɪŋ hɪz hˈɑɹt.",
+   "fˈæŋ ʒˈɛŋ kʊd nˌɑt hˈɛlp bˌʌt ˈOpᵊn hɪz mˈWθ ɪn səɹpɹˈIz. fˈæŋ juˈɑnz bˈæk wʌz fˈAsɪŋ ðə kɹˈWd sˌO ðA kʊd nˌɑt sˈi pɹˈɑpəɹli, bˌʌt fˈæŋ ʒˈɛŋ kʊd klˈɪɹli fˈil ðə kˈɑmnəs ɹˈAdɪˌATɪŋ fɹʌm fˈæŋ juˈɑn. ˌæz hɪz ˈOldəɹ bɹˈʌðəɹ spˈOk ðə kˈɔɹnəɹz ʌv hɪz mˈWθ wɜɹ slˈItli ɹˈAzd, ɹəvˈilɪŋ ɐ dˈip ænd θˈɔtfᵊl smˈIl."
+  ]
+ },
+ "long05": {
+  "samples": 1504800,
+  "seconds": 62.7,
+  "wall": 9.723,
+  "chunks": 3,
+  "phonemes": [
+   "hˌi lˈOəɹd hɪz hˈɛd, wˈɔkɪŋ fˈɔɹwəɹd ˌæbsəntmˈIndᵻdli. jˈɛt hi dˈɪd nˌɑt nˈO ðæt hi wʌz plˈAɪŋ ˈWt ɐ məɹˈækjələs sˈin. wˌɛn hi fˈInᵊli snˈæpt ˈWt ʌv hɪz ɹˈɛvəɹi, hi wʌz ˌɔlɹˈɛdi dˈip ɪn ðə sˈi ʌv flˈWəɹz, stˈændɪŋ ɪn ɐ dˈɪstᵊns ðæt nˈO wˈʌn ˈɛls hæd ɹˈiʧt bəfˈɔɹ hˌɪm. “wˈɛl, ðə fˈæŋ blˈʌdlˌIn əɹˈɪʤənˌATᵻd fɹʌm ˌʌs kˈI blˈʌdlˌIn. sˌO wi kˈI fˈæmᵊli wɪl ədˈɑpt ɪn ðɪs ɡ juˈA fˈæŋ ʒˈɛŋ,” ɡ juˈA kˈI lˈIən ɪmˈidiətli ənˈWnst. “hˌW ɪz ðˈæt pˈɑsəbᵊl?",
+   "jˌu ˈOld bˈæɡ kˈI lˈIən, jʊɹ mˈɔɹᵊlz ænd əbˈɪləTiz ɑɹ ˈWt ʌv ˈɔɹdəɹ, bˌʌt jʊɹ dˈɛfᵊnətli ɡˈʊd æt mˌɪslˈidɪŋ jˈʌŋ bˈYz. ˌɪts bˈɛTəɹ tə pˈæs ðɪs kˈɪd tʊ ˌI, ɡˈu juˈA mˈO ʧˈɛn tə ɹˈAz!” ɡˈu juˈA mˈO ʧˈɛn ɹˈɔɹd bˈæk ˈɪnstəntli. “stˈɑp ˈɑɹɡjuɪŋ. nˈO wˈʌn ɪz mˈɔɹ kwˈɑləfˌId tə ɹˈAz ðɪs ʧˈIld ðən ðə kˈɜɹənt klˈæn lˈidəɹ. huˈɛvəɹ hæz ˈɛni əbʤˈɛkʃənz ɪz tə ɡˌO əɡˈɛnst mˌi, ɡˈu juˈA bˈO!” ðə ɡˈu juˈA klˈæn hˈɛd hæd ɡɔn kɹˈAzi ænd swˈɛpt hɪz fˈIəɹi ɹˈɛd ɡˈAz ˈOvəɹ ðə dˌɪsəpˈYntᵻd ænd dəskˈɜɹɪʤd lˈʊks.",
+   "ˈɔlsO ɪf ju hˈævᵊnt nˈOTəst bI nˈW, ænd sˈɪns ði ˈɔθəɹ mˈɛnʧᵊnz ðɪs ɪn hɪz nˈOt ɪn ʧˈæptəɹ wˈʌn, ðə mˈAn kˈɛɹəktəɹ ɪz ɐ vˈɪlən. hˌiz dˈɛfᵊnətli kɹˈuᵊl"
+  ]
+ },
+ "long06": {
+  "samples": 1714800,
+  "seconds": 71.45,
+  "wall": 11.2,
+  "chunks": 3,
+  "phonemes": [
+   "“ˌænd ˈɔl ʌv ju hæv səksˈɛsfəli ˈOpᵊnd jʊɹ ˈæpəɹʧˌʊɹ ɪn ði əwˈAkənɪŋ sˈɛɹəmˌOni sˈɛvən dˈAz əɡˈO. wˌɪð ðə kOˌæɡjəlˈAʃən ʌv ðə pɹImˈivᵊl sˈi, ɹˈIt nˈW ju ɑɹ ˈɔl ɹˈæŋk wˈʌn ɡˈu mˈæstəɹz.” ðə mˈɪstəɹi ænd stɹˈɛŋθ ʌv ɐ ɡˈu mˈæstəɹ hæd bɪn dˈipli ɹˈuTᵻd ɪn ðə hˈɑɹts ʌv ðə jˈuθs ɐ lˈɔŋ tˈIm əɡˈO. ðˈʌs ˈɛvəɹiθˌɪŋ ðæt ði ˈɛldəɹ tˈɔt ænd sˈɛd, ðə stˈudᵊnts wɜɹ vˈɛɹi ˈɪntɹəstᵻd ˈɪn. ðə ɡˈu juˈA tˈiʧəɹ nˈɑdᵻd ænd wˈAvd hɪz hˈænd tʊ ˈæsk ðə jˈʌŋ mˈæn tə sˈɪt dˌWn.",
+   "“ɡˈu mˈæstəɹz hæv nˈIn ɹˈæŋks, fɹʌm bˈɑTəm tə ðə tˈɑp — ɹˈæŋk wˈʌn, ɹˈæŋk tˈu, ɹˈæŋk θɹˈi ˈɔl ðə wˈA ˌʌp tə ɹˈæŋk nˈIn. ˈɛvəɹi ɹˈæŋk ɪz kənsˈɪdəɹd ɐ bˈɪɡ ɹˈɛlm, ænd ɪt ɪz dəvˈIdᵻd ˈɪntu fˈɔɹ smˈɔl ɹˈɛlmz — ɪnˈɪʃᵊl stˈAʤ, mˈɪdᵊl stˈAʤ, ˈʌpəɹ stˈAʤ ænd pˈik stˈAʤ. jˌu hæv ˈɔl ʤˈʌst bəkˈʌm ɡˈu mˈæstəɹz, sˌO ˈɔl ʌv ju ɑɹ ɹˈæŋk wˈʌn ɪnˈɪʃᵊl stˈAʤ.” “ˌɪf ju ˈɔl wˈɜɹk hˈɑɹd ɪn jʊɹ kˌʌltəvˈAʃən, jʊɹ kˌʌltəvˈAʃən bˈAs wɪl nˈæʧəɹəli ədvˈæns tə ɹˈæŋk tˈu, ˈivən ɹˈæŋk θɹˈi.",
+   "ˌʌv kˈɔɹs, ðə hˈIəɹ jʊɹ tˈælənt ðə bˈɪɡəɹ jʊɹ ʧˈæns ʌv pɹəmˈOTɪŋ.” “ˌæz fɔɹ ɡˈu mˈæstəɹz hˌu ɑɹ ɹˈæŋk sˈɪks ænd əbˈʌv, ðA ɑɹ ˈɔl lˈɛʤəndz. ˌI ɐm nˌɑt klˈɪɹ əbˈWt ðə spəsˈɪfɪks ˈiðəɹ. ɪn ðə ɡˈu juˈA klˈæn, ðɛɹ hæz nˈɛvəɹ bɪn ði əpˈɪɹəns ʌv ɐ ɹˈæŋk sˈɪks ɡˈu mˈæstəɹ, bˌʌt ɹˈæŋk fˈɔɹ ænd ɹˈæŋk fˈIv ɡˈu mˈæstəɹz wi hæv hæd bəfˈɔɹ.”"
+  ]
+ }
+}
