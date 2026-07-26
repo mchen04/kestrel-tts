@@ -235,6 +235,19 @@ def _fast_inverse(self, magnitude, phase):
     return mx.stack(outs, axis=0)[:, None, :]
 
 
+def _fix_stft_window(model):
+    """torch uses a periodic hann for BOTH stft directions; the mlx-audio
+    string path gives dsp.stft a symmetric window (and dsp.istft a periodic
+    one). Materialize the periodic window on the generator's MLXSTFT so the
+    harmonic-source analysis matches the reference."""
+    try:
+        stft_obj = model.decoder.generator.stft
+    except AttributeError:
+        return
+    if isinstance(stft_obj.window, str):
+        stft_obj.window = mx.array(np.hanning(stft_obj.win_length + 1)[:-1].astype(np.float32))
+
+
 def optimize_model(model, dtype=None, fp32_paths=(), cast_paths=None):
     """Apply exact inference optimizations in place. Returns count of fused convs.
 
@@ -251,6 +264,7 @@ def optimize_model(model, dtype=None, fp32_paths=(), cast_paths=None):
     AdainResBlk1d._residual = _exact_residual
     SourceModuleHnNSF.__call__ = _fp32_source_call
     _patch_rng_and_interp()
+    _fix_stft_window(model)
 
     def cast_to(target):
         def cast(p):
