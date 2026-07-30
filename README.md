@@ -1,0 +1,79 @@
+# Kestrel
+
+**Kestrel** is a distilled, frame-rate text-to-speech engine for Apple Silicon (MLX), built by
+compressing and re-architecting [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) for a
+single-voice audiobook workload. Like its namesake falcon it is small, very fast, and holds
+its timing precisely.
+
+Renders a 163-second chapter on an M2 MacBook (16 GB) in:
+
+| preset | wall | real-time factor | vs stock Kokoro | character |
+|---|---|---|---|---|
+| `student-fast` | **0.239 s** | ×706 | **57× faster** | max speed, ~2–5 % timing drift |
+| `student` | **1.117 s** | ×146 | **12.3× faster** | bit-exact durations vs the teacher |
+| `ship-q8` (phase 1) | ~13 s | ×11–12 | ~1× | fully gate-passing, 2.7× smaller |
+
+Quality (measured, not marketed): ASR intelligibility at parity with the teacher
+(WER 5.42 % vs 5.65 %), same voice/pacing/pitch (F0 ≈ 9 Hz RMSE, speaker-cos 0.98),
+but texture is audibly hazier than Kokoro under direct A/B (MCD ~11.8 vs the 3.9 pass bar) —
+the frozen zero-loss battery is **not** fully passed and we say so plainly.
+See [docs/REPORT.md](docs/REPORT.md) and the independent no-cheating audit
+([experiments/23-final/AUDIT.md](experiments/23-final/AUDIT.md)).
+
+## Architecture
+
+```
+text ──FastG2P (4 ms)──▶ phonemes
+      ├─ student:      batch-exact Kokoro phoneme path (masked fp16 BiLSTM scans)
+      │                → bit-exact durations + t_en/d features
+      └─ student-fast: distilled phoneme encoder (regression durations)
+──▶ F0/N student (ConvNeXt on d-features)
+──▶ decode-blocks student (frame-rate ConvNeXt, L1-distilled)
+──▶ MaskHead vocoder: per-bin complex mask over an exact-phase harmonic template
+    (phase from float64 F0 cumsum) + full-band noise env → iSTFT hop 300 @ 24 kHz
+```
+~10 M active parameters vs Kokoro's 82 M; the whole chapter runs as a handful of
+batched, `mx.compile`d GPU stages — the vocoder never leaves frame rate.
+
+## Usage
+
+```python
+from fastkoko import from_preset            # package name kept for compatibility
+engine = from_preset("student-fast")        # or "student", "ship-q8" (default), "ship-q4", "exact"
+audio = engine.synth_all("Your chapter text here.")   # np.float32 @ 24 kHz
+```
+Epub_Listener integration: `EPUB_KOKORO_PRESET=student-fast`. The gate-passing `ship-q8`
+remains the default provider; Kestrel presets are opt-in until the texture gap closes.
+
+## Repository layout
+
+- `fastkoko/` — the engine package
+  - `models/` — every shipped network (`vocoder`, `decode`, `prosody`, `dsp`, `blocks`)
+  - `student.py` — Kestrel engines · `batch_teacher.py` — bit-exact batched teacher path
+  - `fastg2p.py` — fast G2P · `engine.py`/`patches.py`/`quant.py` — phase-1 teacher engine
+- `weights/` — the four distilled checkpoints (also on the Hub)
+- `experiments/` — numbered trail: data capture, training scripts, Metal kernels, final gates
+- `bench/`, `eval/`, `baseline/` — the frozen quality battery (do not modify)
+- `docs/` — [ARCHITECTURE](docs/ARCHITECTURE.md) · [REPORT](docs/REPORT.md) ·
+  [PROCESS](docs/PROCESS.md) · [MODEL_CARD](docs/MODEL_CARD.md) ·
+  [phase-1 report](docs/PHASE1_REPORT.md) · design notes
+- `artifacts/` — rendered chapters (`kestrel_lotm_ch1.wav`: 9.8 min rendered in 4.9 s)
+- `listen_student/` — blind A/B listening test page (the final human gate)
+
+## Open weights
+
+Kestrel is **open weights**: the four distilled checkpoints (~51 MB total) ship in
+[`weights/`](weights/) under Apache-2.0 (same as the Kokoro-82M teacher):
+`kestrel_maskhead` (vocoder), `kestrel_decode`, `kestrel_f0n`, `kestrel_prosody`.
+Clone the repo and the presets load them automatically; they are also mirrored on the
+Hugging Face Hub at **[mchen04/kestrel-tts](https://huggingface.co/mchen04/kestrel-tts)**. The `student` preset additionally
+uses the original Kokoro-82M weights (pulled from Hugging Face on first run) for its
+bit-exact phoneme path; `student-fast` is fully self-contained.
+
+## Honest limits
+
+Kestrel was built under a "1000×, zero loss, no cheating" goal. The 1000× was **not** reached
+(57× is the honest ceiling on this hardware; the floor is GPU dispatch overhead) and the
+zero-loss spectral gates fail (texture, not content). The full decision trail, every measured
+dead end, and what it would take to go further are in [docs/PROCESS.md](docs/PROCESS.md).
+Weights are trained on-device from a frozen Kokoro teacher; voice: `af_heart`.

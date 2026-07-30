@@ -1,45 +1,40 @@
 # GOAL
 
-Take **Kokoro-82M** and make it **100× faster and 100× smaller — without losing any quality.**
+Make audio generation **1000× faster — without losing any quality.**
 
-Platform: **Apple MLX**, M2, 16 GB. It's already running here at `~/Epub_Listener` (PyTorch `kokoro` and
-`mlx-community/Kokoro-82M-bf16`), rendering audiobooks with the `af_heart` voice. That's the real workload.
+Baseline: the stock Kokoro-82M path on Apple MLX renders the 163 s reference chapter in ~13.7 s
+(RTF ×11.9). 1000× means that chapter in **~14 ms** on the same machine.
 
----
+**Do anything to get there** — new architecture, training, distillation, replacing the model
+entirely, batching, fusion, a different representation. The direction is yours to find.
 
-## That's the whole goal. The direction is yours to find.
+## No cheating
 
-This is deliberately not a plan. Research it, decide the approach, change your mind when the evidence says to.
+- **Same hardware.** One M2, 16 GB. This is not about throwing more compute at the problem —
+  it's about how fast the model itself can be made. No bigger GPUs, no clusters, no remote calls.
+- **It has to be generation.** Pre-rendered or cached audio counted as "generation" doesn't count.
+- **The quality gate doesn't move.** The calibrated battery (`eval/`, `bench/`, `baseline/`) and a
+  blind human listen are the definition of "no loss." Weakening them until they pass is failure.
 
-Three things are worth knowing before you start:
+## The arithmetic that shapes any real plan
 
-**Start from the current literature, not from priors.** It's July 2026 and this field moves in weeks. Anything
-you already "know" about compressing speech models is probably stale. Sweep the research, check whether someone
-has already shipped what you're about to build, and check whether a newer small model has simply beaten
-Kokoro-82M outright — if switching models wins, that's a real answer and a good one.
+At 1000×, the M2's compute budget is **~13 kFLOP per output sample**; the current stack spends
+~2 MFLOP at low utilization. The gap only closes as a *product* of factors — roughly:
+(frame-rate vocoder head instead of the sample-rate generator that eats 80% of the time)
+× (distilled, much smaller prosody stack) × (whole-chapter batching — sentences are independent)
+× (fusion to near-peak utilization; 14 ms affords only ~2,700 kernel dispatches total).
+No single technique gets close. One genuine opening: the teacher is stochastic, so "no loss" is a
+distribution property, not bit-exactness — distillation and sub-threshold approximation are fair game.
 
-**"Without losing quality" needs a definition before it can be a constraint.** Figuring out how to measure
-quality — well enough that you can *prove* a 100× smaller model didn't lose any — is part of the work, and
-probably the part that determines whether the rest is trustworthy. Casual listening won't catch what aggressive
-compression does. Decide what "no loss" means, build something that measures it, and be skeptical of any single
-number that says you succeeded.
+## Ground
 
-**100× on both axes at zero loss is beyond anything published.** It may not be reachable by compression alone.
-Getting there likely means questioning what's being preserved, not just how it's stored — and possibly finding
-something that isn't in the literature yet. Chase it seriously. Ship the intermediate wins along the way rather
-than holding out for the full 100×.
+- It's mid-2026 — sweep the current literature first; switching to a newer, faster model is a
+  legitimate answer if it wins.
+- Measure chapter wall-clock: quiet machine, warm, median of 5. That number carries the claim.
+- `notes/REPORT.md` is the previous phase (2.7× smaller, throughput parity — proof compression alone
+  buys no speed here). Its §6 dead ends are already walked; `notes/vocoder-head-design.md` sketches
+  the frame-rate head. `baseline/` holds the frozen teacher references — don't regenerate them.
 
----
-
-## Working notes
-
-- `baseline/` `eval/` `bench/` `experiments/` `notes/` — use them however you want.
-- `notes/prior-brainstorm.md` is an earlier detailed dump of ideas. **Non-binding.** Read it after forming your
-  own view, or ignore it. It is not a plan and following it is not the goal.
-- Measure on a quiet machine, warm runs, medians. An M2 will fabricate speedups that don't exist.
-- Report both axes always — a 100× smaller model that runs at the same speed is a common, useless outcome.
-- Write down what fails. On a goal this aggressive most things will, and the dead ends are the real map.
-
-**Done means:** a configuration that is provably faster and smaller by a stated factor, with quality loss you
-have genuinely tried and failed to detect — plus a drop-in MLX provider for `Epub_Listener` and a full chapter
-rendered with it that a human has listened to end to end.
+**Done means:** the reference chapter renders ~1000× faster than stock on this M2, the battery passes
+against the frozen floor, a human can't tell the difference, and it ships as the default
+`Epub_Listener` provider.

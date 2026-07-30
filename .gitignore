@@ -7,3 +7,30 @@ baseline/ref_fp32*/*.wav
 experiments/*/render/
 artifacts/*.safetensors
 listen/
+/data/
+experiments/2*-*/render_*
+experiments/22-head-eval/render_*
+listen_student/*.wav
+*.output
+.claude/scheduled_tasks.lock
+experiments/20-distill/*ckpt*/
+artifacts/student_chapter.wav
+hf/_upload/
+listen_student/audio/
+listen_student/key.json
+
+# harness scratch
+.claude/
+# workload-derived corpora: contain verbatim copyrighted novel text
+experiments/21-fastg2p/corpus.json
+experiments/21-fastg2p/tagged*.jsonl
+experiments/21-fastg2p/chunk_cache.json
+# renders of copyrighted source texts (keep local, do not publish)
+artifacts/*lotm*
+artifacts/*audiobook*
+
+# shipped G2P tables must be committed (they are part of the model)
+!fastkoko/data/
+# copyrighted source texts / transcripts must never be published
+eval/*.epub
+artifacts/*transcript*

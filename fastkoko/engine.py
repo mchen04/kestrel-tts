@@ -48,7 +48,13 @@ PRESETS = {
 }
 
 
-def from_preset(name: str, **overrides) -> "FastKokoro":
+def from_preset(name: str, **overrides):
+    if name in ("student", "student-exact-prosody"):
+        from .student import StudentAdapter
+        return StudentAdapter(fast=False)
+    if name in ("student-fast",):
+        from .student import StudentAdapter
+        return StudentAdapter(fast=True)
     cfg = dict(PRESETS[name])
     cfg.update(overrides)
     return FastKokoro(**cfg)

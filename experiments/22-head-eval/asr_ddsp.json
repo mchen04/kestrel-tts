@@ -1,0 +1,281 @@
+{
+ "wer": 5.5,
+ "cer": 2.1044992743105952,
+ "per_item": {
+  "short00": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "hello"
+  },
+  "short01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "wait"
+  },
+  "short02": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he nodded slowly"
+  },
+  "short03": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the door creaked open"
+  },
+  "short04": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "no one answered"
+  },
+  "short05": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "klein frowned"
+  },
+  "short06": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "it was already too late"
+  },
+  "short07": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "she laughed quietly"
+  },
+  "short08": {
+   "wer": 50.0,
+   "cer": 42.86,
+   "hyp": "chapter 12"
+  },
+  "short09": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the fog thickened outside"
+  },
+  "short10": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "are you certain about this"
+  },
+  "short11": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "nothing happened at first"
+  },
+  "short12": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "a gunshot rang out"
+  },
+  "short13": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he drew the revolver"
+  },
+  "short14": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the candle flickered twice"
+  },
+  "short15": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "silence fell over the room"
+  },
+  "short16": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "that was unexpected"
+  },
+  "short17": {
+   "wer": 50.0,
+   "cer": 25.93,
+   "hyp": "good morning mr morty"
+  },
+  "short18": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the ritual had begun"
+  },
+  "short19": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "everything changed after that night"
+  },
+  "para00": {
+   "wer": 4.65,
+   "cer": 1.27,
+   "hyp": "the fourth epic cohen muttered with a frown the bronze skinned and weary eyes of azek went blank first before he inhaled he rubbed his temple with his newspaper wielding left hand and said antigonus rings a bell but why can't i remember"
+  },
+  "para01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "sis why is your reaction completely different from how it played out in my head klein's expression went blank when he heard his sister"
+  },
+  "para02": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he leaned back withdrew his right hand and crossed his ten fingers placing them below his chin he gave the duo a faint smile you can address me as upon saying this he paused for a moment he said amiably and calmly the fool language of giants"
+  },
+  "para03": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "just a little it's the price of a delicacy melissa's eyes twinkled her expression changing for a few moments before she finally said let me cook in the future um you have to hurry up and prepare for the interview you have to think about your job"
+  },
+  "para04": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "that silhouette was partly camouflaged in the darkness bathing in the crimson moonlight that silhouette turned around slowly his eyes deep gray and cold dunn smith"
+  },
+  "para05": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he shifted his gaze and carefully sized up old neil when suddenly he saw a translucent pair of cold and ruthless eyes without any brows in the void behind him these nearly illusory eyes were staring at old neil intently as well as him this klein shuddered as he gapped and said you have a pair of eyes behind you old neil was taken aback before he forced a smile ignore them"
+  },
+  "para06": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the other continued in that case we shall give you a chance as long as you can say our name we will allow you to use us"
+  },
+  "para07": {
+   "wer": 20.0,
+   "cer": 2.88,
+   "hyp": "maybe i should have paid a bit more primeval stones maybe he might have given it to me that's right he's just a student if i offered a hundred primeval stones there's no way he'd not be moved why didn't i do that jia jin sheng was full of regret"
+  },
+  "para08": {
+   "wer": 3.23,
+   "cer": 1.19,
+   "hyp": "he could only vaguely recall that during this year on the first night the caravan arrived a lucky bird spent ten primeval stones to buy a fossil with purple gold luster"
+  },
+  "para09": {
+   "wer": 3.57,
+   "cer": 1.43,
+   "hyp": "although the final purple gold fossil did not have a goo worm fang yuan was not disappointed in fact he looked at the pile of rock powder and"
+  },
+  "para10": {
+   "wer": 1.75,
+   "cer": 0.66,
+   "hyp": "some call it the purple prefecture some call it the chinese pool however many know it as the primeval sea aperture the entire body is spherical and the surface of it is covered in flowing white light like a thin layer of light coating it was the layer of light from the hope goo that previously exploded"
+  },
+  "para11": {
+   "wer": 13.51,
+   "cer": 9.73,
+   "hyp": "using the gu yue village as an example there were around 20 people walking on the streets and 6 were gu masters in these 6 there was a 50 chance of having 1 rank 2 gu master"
+  },
+  "para12": {
+   "wer": 18.18,
+   "cer": 4.27,
+   "hyp": "3 by 2 directly means whitehead 4 pan shi is monolith 5 gou mu means ancient grave and 6 kang jing is pale whale to be honest most of these mountains will never appear again so you don't have to remember them"
+  },
+  "stress00": {
+   "wer": 7.69,
+   "cer": 2.78,
+   "hyp": "on march 3 1349 the fourth epoch ended 4 286 people vanished overnight"
+  },
+  "stress01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the invoice totaled 1 247 63 due by 11 59 p m on 12 31 2026"
+  },
+  "stress02": {
+   "wer": 14.29,
+   "cer": 4.23,
+   "hyp": "dr st john's sited the nato unesco and mi6 archives all sealed since wwii"
+  },
+  "stress03": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "don't she whispered not unless you mean it truly mean it"
+  },
+  "stress04": {
+   "wer": 75.0,
+   "cer": 122.86,
+   "hyp": "the url was https backwater example com slash archives but the dns had expired"
+  },
+  "stress05": {
+   "wer": 33.33,
+   "cer": 9.59,
+   "hyp": "zhou wenjun and qi ziyaoqian cross the duan river near yuanmu mountain"
+  },
+  "stress06": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he measured 3 7 kg of aconite 250 ml of ethanol and 0 5 g of silver nitrate"
+  },
+  "stress07": {
+   "wer": 13.33,
+   "cer": 6.15,
+   "hyp": "the 2nd battalion lost 1 024 men the 3rd only 87 at 12 one disparity"
+  },
+  "stress08": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "emlyn white the vampire sneered a mere sequence 8 how quaint"
+  },
+  "stress09": {
+   "wer": 62.5,
+   "cer": 14.29,
+   "hyp": "isbn 97803 16769480 was filed under a cult restricted at 4 00 am"
+  },
+  "patho00": {
+   "wer": 3.06,
+   "cer": 1.06,
+   "hyp": "the gray fog rolled in from the harbor and swallowed the gas lamps one by one while the church bells of st selina told thirteen times which was impossible because the tower only had twelve bells and every listener in the square understood at the same terrible instant that something older than the city itself had woken beneath the cathedral and was counting them and the crowd began to run without knowing where to run because the fog was everywhere and the bells kept ringing and somewhere above the clouds a vast unblinking eye turned its attention downward"
+  },
+  "patho01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he screamed the name of the true creator into the storm"
+  },
+  "patho02": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "well hmm no wait actually yes fine or perhaps not"
+  },
+  "patho03": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "tick tock tick tock tick tock the clock the clock the clock"
+  },
+  "patho04": {
+   "wer": 100.0,
+   "cer": 82.98,
+   "hyp": "abcdefg 1234567"
+  },
+  "long00": {
+   "wer": 1.11,
+   "cer": 0.2,
+   "hyp": "he leaned back withdrew his right hand and crossed his ten fingers placing them below his chin he gave the duo a faint smile you can address me as upon saying this he paused for a moment he said amiably and calmly the fool language of giants nautical academy two royal shipyards almost hundred factories for spare parts an admiralty a shipbuilding committee a cabinet a determined king with excellent foresight and a great country with an annual steel production of 12 million tons the pirates will never achieve it having said that he paused and raised his arms before shouting in agitation ladies and gentlemen the era of cannons and warships has dawned upon us the green eyed police inspector with a poet's temperament smiled and said generally speaking the norm is for all the involved parties to die in such an event we are very glad and fortunate to see you still alive after that he exited the room and closed the door behind him politely the norm is for everyone to die together very glad that i'm still alive fortunate that i'm still alive on this june afternoon klein was chilling all over just a little it's the price of a delicacy melissa's eyes twinkled her expression changing for a few moments before she finally said let me cook in the future um you have to hurry up and prepare for the interview you have to think about your job that silhouette was partly camouflaged in the darkness bathing in the crimson moonlight that silhouette turned around slowly his eyes deep gray and cold dunn smith"
+  },
+  "long01": {
+   "wer": 0.33,
+   "cer": 0.06,
+   "hyp": "he shifted his gaze and carefully sized up old neil when suddenly he saw a translucent pair of cold and ruthless eyes without any brows in the void behind him these nearly illusory eyes were staring at old neil intently as well as him this klein shuddered as he gapped and said you have a pair of eyes behind you old neil was taken aback before he forced a smile ignore them after a long while he let out a sigh it's still that miraculous i was unable to figure out any specific details at all despite having made sufficient preparations he failed to understand how the fool had completed the summoning he moved his gaze down and looked at the goatskin parchment on the table in front of him at the title head of the yellowish brown parchment there was a hermes sentence written in dark blue ink 7 seafarer it likely has to do with how the unknown existence made me take the antigonus family's notebook away to hide it answered klein with the official surmise leonard paced around before turning to look straight into klein's eyes if your suicide was meant to silence you and wipe out any clues why weren't you made to destroy the notebook there and then this is a classic chinese saying to someone it usually implies an ominous portent why be a kidnapper why can't you happily be civilized person he put down the bag with elliot's clothes and took two steps forward his expression suddenly turned serene and melancholic his magnetic and deep voice gradually sounded oh the threat of horror the hope of crimson cries one thing at least is certain that this life flies one thing is certain and the rest is lies the flower that once has bloomed forever dies"
+  },
+  "long02": {
+   "wer": 4.78,
+   "cer": 1.44,
+   "hyp": "the aperture was mysterious and unusual although it was located inside fang yuan's body it was at the same time not sharing the same space with his internal organs you could say that it was endlessly huge yet at the same time infinitely small some call it the purple prefecture some call it the chinese pool however many know it as the primeval sea aperture the entire body is spherical and the surface of it is covered in flowing white light like a thin layer of light coating it was the layer of light from the hope goo that previously exploded this thin membrane of light supported the aperture so it would not collapse and inside the aperture was naturally the primeval sea the seawaters were smooth like a mirror showing a greenish blue color yet the water was dense and brought about a copper luster only rank 1 goo masters can form this green coppery primeval essence known as the green copper sea the height of the sea surface was not up to half of the aperture it was only up to 44 this was also the limitation of a sea grade talent every drop of seawater was pure primeval essence representing the condensation of fang yuan's essence vitality and soul it was also the accumulation of his life potential over the past 15 years this primeval essence is used by gu masters to raise gu this also means that from now onwards fang yuan has formally entered the root of a rank 1 gu master since the aperture had opened no more hope gtered fang yuan's body"
+  },
+  "long03": {
+   "wer": 2.99,
+   "cer": 1.19,
+   "hyp": "big brother among them gu yue fang zheng looked up watching with shock as fang yuan returned across the river he could not dare to believe it his own brother was only a c grade he had always thought that his older brother would be in a grade talent no not just him even his aunt and uncle and so many people among the clan thought the same too youths with higher quality of primeval c would indeed display characteristics that surpass the ordinary man such as intelligence perception memory strength agility and so on on the other hand these characteristics do not mean that the primeval talent is definitely high everything will still be determined by the results feng yuan walked with the same emotionless face his distance getting closer and closer towards the crowd he could clearly see the academy elder's heavy expression and was aware of the stares thrown at him from over a hundred youths during during that time he felt as if the sky had fallen when he crossed the cold river he lost his footing and fell soaking his entire body in the water feeling so lost no one came forward to help him up"
+  },
+  "long04": {
+   "wer": 5.13,
+   "cer": 1.34,
+   "hyp": "five hundred years of living had led him to understand that the interesting things that happen in a person's life happens during the process when one chases after his own dreams there is no need to ask others around you to not be disappointed or make them like it ah i'm here i'm here fang zheng snapped out of his shock and ran out hurriedly unfortunately he tripped over his own foot and fell hitting his head with a groan and tumbled into the river this is such a huge embarrassment fang zheng struggled and splashed in the water the bottom of the river was just too slippery he couldn't get up properly trying his best only made him look more stupid and clumsy his heart increasingly flustered as the sounds of laughter filled his ears haha the difficult older and younger brother of the fang family someone laughed at the riverbank the laugher grew louder yet the academy elder did not come out and stop it he was deeply frowning disappointment filling his heart fang zheng could not help but open his mouth in surprise fang yuan's back was facing the crowd so they could not see properly but fang zheng could clearly feel the calmness radiating from fang yuan as his older brother spoke the corners of his mouth were slightly raised revealing a deep and thoughtful smile"
+  },
+  "long05": {
+   "wer": 10.34,
+   "cer": 2.29,
+   "hyp": "he lowered his head walking forward absentmindedly yet he did not know that he was playing out a miraculous scene when he finally snapped out of his reverie he was already deep in the sea of flowers standing in a distance that no one else had reached before him well the fang bloodline originated from us kai bloodline so we kai family will adopt in this gye fang zhang gye kai lion immediately announced how is that possible you old bag kai lion your morals and abilities are out of order but you're definitely good at misleading young boys it's better to pass this kid to i gu yue mo chen to raise gu yue mo chen roared back instantly stop arguing no one is more qualified to raise this child than the current clan leader whoever has any objections is to go against me gu yue bo the gu yue clan head had gone crazy and swept his fiery red gaze over the disappointed and discouraged looks also if you haven't noticed by now and since the author mentions this in his note in chapter 1 the main character is a villain he's definitely cruel"
+  },
+  "long06": {
+   "wer": 5.63,
+   "cer": 3.5,
+   "hyp": "and all of you have successfully opened your aperture in the awakening ceremony seven days ago with the coagulation of the primeval sea right now you are all rank one gu masters the mystery and strength of a gu master had been deeply rooted in the hearts of the youths a long time ago thus everything that the elder taught and said the students were very interested in the gu yue teacher nodded and waved his hand to ask the young man to sit down gu masters have 9 ranks from bottom to the top rank 1 rank 2 rank 3 all the way up to rank 9 every rank is considered a big realm and it is divided into 4 small realms initial stage middle stage upper stage and peak stage you have all just become gu masters so all of you are rank 1 initial stage if you all work hard in your cultivation your cultivation base will naturally advance to rank 2 even rank 3 of course the higher your talent the bigger your chance of promoting as for goo masters who are rank 6 and above they are all legends i am not clear about the specifics either in the goo ua clan there has never been the appearance of a rank 6 goo master but rank 4 and rank 5 goo masters we have had before"
+  }
+ }
+}

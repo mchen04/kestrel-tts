@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>Blind AB — Kokoro</title>
+<style>body{font-family:system-ui;margin:40px auto;max-width:640px}button{font-size:18px;padding:10px 18px;margin:6px}
+#tally{margin-top:24px;white-space:pre;font-family:monospace}</style>
+<h2>Blind A/B — which sounds better?</h2>
+<p>Keys: <b>1</b> play A · <b>2</b> play B · <b>A</b>/<b>B</b> prefer · <b>T</b> tie. One of each pair is the fp32 reference, sides randomized.</p>
+<div id="prog"></div>
+<audio id="pa"></audio><audio id="pb"></audio>
+<div>
+<button onclick="play('a')">▶ A (1)</button><button onclick="play('b')">▶ B (2)</button>
+<button onclick="vote('A')">Prefer A</button><button onclick="vote('B')">Prefer B</button><button onclick="vote('T')">Tie (T)</button>
+</div>
+<div id="tally"></div>
+<script>
+let key=null, i=0, votes=[];
+fetch('key.json').then(r=>r.json()).then(k=>{key=k;load();});
+function load(){
+  if(i>=key.length){finish();return;}
+  document.getElementById('prog').textContent=`Pair ${i+1} / ${key.length}  (item ${key[i].item})`;
+  document.getElementById('pa').src=`audio/p${String(i).padStart(2,'0')}_A.wav`;
+  document.getElementById('pb').src=`audio/p${String(i).padStart(2,'0')}_B.wav`;
+}
+function play(w){const a=document.getElementById('pa'),b=document.getElementById('pb');a.pause();b.pause();(w=='a'?a:b).currentTime=0;(w=='a'?a:b).play();}
+function vote(v){votes.push({pair:i,vote:v,winner:v=='T'?'tie':key[i][v]});i++;load();}
+function finish(){
+  const n=votes.length, cand=votes.filter(v=>v.winner=='cand').length, ref=votes.filter(v=>v.winner=='ref').length, tie=n-cand-ref;
+  let t=`DONE  n=${n}\nprefer candidate: ${cand}\nprefer reference: ${ref}\nties: ${tie}\n\n`;
+  t+='pair,item,vote,winner\n'+votes.map(v=>`${v.pair},${key[v.pair].item},${v.vote},${v.winner}`).join('\n');
+  document.getElementById('tally').textContent=t;
+  const blob=new Blob([t],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ab_results.csv';a.textContent='download csv';document.body.appendChild(a);
+}
+window.addEventListener('keydown',e=>{
+  if(e.key=='1')play('a'); else if(e.key=='2')play('b');
+  else if(e.key=='a'||e.key=='A')vote('A'); else if(e.key=='b'||e.key=='B')vote('B');
+  else if(e.key=='t'||e.key=='T')vote('T');
+});
+</script>
