@@ -200,7 +200,14 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   inside SBS self-noise, none beating a matched-step control, while the RI term itself was
   demonstrably being optimized. Narrow kill — specific to this head, whose phase is *pinned* to the
   F0-cumsum template. Revive only for a head where phase is a free variable.
-- Free-form GAN vocoder head from scratch on M2 — too slow to converge.
+- Free-form GAN vocoder head from scratch on M2 — too slow to converge. **Cycle 54 supplies the new
+  fact that partially reopens this:** the current head's ceiling is SBS 0.9685 vs a 0.99915 floor,
+  so "too slow to converge" is no longer a comparison against a viable alternative. A *residual*
+  formulation (template as base + learned complex correction) starts at today's quality rather than
+  from scratch and is the cheap way around the original cause of death.
+- **Improving MaskHead by any means** (cycle 54): measured ceiling SBS 0.96853 with oracle mask,
+  phase, f0 and perfect-magnitude noise; shipped head is at 99.4 % of it. 84.7 % of the gap is
+  beyond the parameterization. Needs a fact that changes the ceiling measurement, not a better loss.
 - DDSP head capacity ×2.3, cepstral loss, correlated noise, edge-masked crops, and the whole
   v3b→v3f ladder — none moved MCD >0.5 dB. **Cycle 51 closed the "blunt metric" escape hatch:**
   SpeechBERTScore, an unrelated SSL-feature metric, spreads the same ladder by less than its own
@@ -236,7 +243,9 @@ Inventing is in scope. Being wrong in public in a `RESULT.md` is in scope. Stopp
 A single concrete near-term target, so cycles have a shared direction. **Replace it when hit or
 when a cycle proves it's the wrong target** — it is a waypoint, never the goal.
 
-> **Current: halve the texture gap.** Close at least half the distance between the student's
+> **Current: halve the texture gap.** *(Cycle 54 constrains this: 84.7 % of the gap is outside the
+> current head's representational ceiling, so this milestone cannot be hit without replacing the
+> head. The target stands; the route is now specified.)* Close at least half the distance between the student's
 > current MCD and the control bar, with no regression to WER, duration drift, or speaker-cos —
 > *or* produce a recorded finding that MCD is the wrong instrument for this failure, plus a
 > validated replacement metric to steer by. **Either outcome retires this milestone.**

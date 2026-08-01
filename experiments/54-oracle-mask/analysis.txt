@@ -1,0 +1,17 @@
+n=55
+floor                         0.99915
+ORACLE CEILING (harm+noise)   0.96853   <-- best the parameterization can ever do
+oracle harmonic only          0.94547
+shipped student               0.96300
+
+total floor-to-student gap    0.03614
+reachable by any training     0.00553   (15.3% of the gap)
+UNREACHABLE (architecture)    0.03061   (84.7% of the gap)
+
+student is at 99.43% of ceiling; headroom left to its own ceiling = 0.00553
+ceiling vs student paired t = 5.28
+floor vs ceiling  paired t = 52.48
+
+spectral structure: 66.6% of bins unreachable by the harmonic template,
+holding 8.2% of teacher energy; 100.0% of the
+oracle-harmonic residual falls in exactly those bins.

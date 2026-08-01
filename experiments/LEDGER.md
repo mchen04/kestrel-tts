@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 54 | 2026-08-01 | what is MaskHead's representational ceiling, given oracle mask/phase/f0? | oracle fit lands near the floor (SBS >0.99) — parameterization is fine, training is the blocker | **ceiling SBS 0.96853** vs floor 0.99915 and shipped 0.96300: only **15.3 %** of the gap is reachable by any training, **84.7 % is architectural**; student already at **99.4 % of its own ceiling** | **KILL** (the architecture) | 66.6 % of bins are unreachable by the harmonic template, hold 8.2 % of teacher energy, and take **100 %** of the oracle residual — the haze is inter-harmonic *phase*. Improve-MaskHead is closed; next head must emit deterministic inter-harmonic energy |
 | 53 | 2026-08-01 | does a complex (real/imag) loss term close the joint magnitude×phase gap? | SBS +0.003 or better (>3x self-noise); MCD roughly unmoved | SBS −0.00006/−0.00021/−0.00014 for ri=0/1/5 — all **inside** the 0.00085 self-noise, none beating a matched-step control; MCD *did* drift −0.04 dB | **KILL** | the head reaches the same audio whether or not the loss can see phase — MaskHead's phase is pinned to the F0 template, so a phase-aware loss has nothing to move. MCD-only steering would have called this a win |
 | 52 | 2026-08-01 | does the texture gap live in the student's magnitude or its constructed phase? | oracle phase recovers most of it (MCD 11.83 → <7) | oracle phase closes **22.6 %** of the SBS gap, oracle magnitude **14.3 %** — neither alone; harness control MCD 0.093 | **KILL** | prediction falsified *and* so was its falsifier: ~63 % of the gap is the **joint** magnitude×phase term. First hard upper bound on a head direction. Also: MCD is structurally phase-blind (says 6.24 vs 11.46 dB where SBS says 0.9712 vs 0.9682) |
 | 51 | 2026-08-01 | does SpeechBERTScore resolve heads that MCD calls identical? | agrees on big gaps; separates the 0.08 dB ladder by >3x its own noise | agrees (system r=-0.965); ladder spread 0.00022 F1 **below** its own 0.00085 self-noise, 0/15 pairs \|t\|>2 | **KILL** | hypothesis "MCD is blunt" falsified by an independent SSL metric — the DDSP ladder really is flat; metric kept as an addition to the battery |
@@ -35,6 +36,13 @@ pass bar for a vocoder head.
 | F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 31.82 / 52.81 |
 | spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.980 / 0.921 |
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
+
+**MaskHead's measured ceiling (cycle 54): SBS 0.96853.** With oracle mask, oracle phase, oracle f0
+and a perfect-magnitude noise path, the current parameterization cannot exceed this. The shipped
+`student` is at **99.4 % of it**, so only **15.3 %** of the floor-to-student gap is reachable by any
+training and **84.7 % is architectural**. Cause: 66.6 % of STFT bins lie outside the harmonic
+template's reach, hold 8.2 % of teacher energy, and absorb 100 % of the oracle residual — the gap is
+inter-harmonic *phase*. Any proposed head should be checked against this ceiling before it is built.
 
 SpeechBERTScore (WavLM-large L14, added cycle 51, `experiments/51-speechbertscore/sbs.py`) is
 **additive and gates nothing**. Higher is better; its self-noise floor is 0.99915, so differences
