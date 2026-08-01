@@ -1,0 +1,4 @@
+fast+residual vs student-fast         +0.1553 MOS  t=  5.70
+fast+residual vs student-natural      +0.0044 MOS  t=  0.20
+
+fast+residual UTMOS = 4.1316  (best measured; teacher 4.4773)

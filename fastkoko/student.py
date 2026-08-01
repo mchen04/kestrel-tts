@@ -361,8 +361,9 @@ class StudentAdapter:
     def __init__(self, fast=False, natural=False):
         if natural:
             from .models.vocoder import ResMaskHead
-            self.engine = StudentKokoroV3(mckpt="experiments/55-residual-complex/res20k",
-                                          head_cls=ResMaskHead)
+            ck = "experiments/55-residual-complex/res20k"
+            self.engine = (StudentKokoro(mckpt=ck, head_cls=ResMaskHead) if fast
+                           else StudentKokoroV3(mckpt=ck, head_cls=ResMaskHead))
         else:
             self.engine = StudentKokoro() if fast else StudentKokoroV3()
 

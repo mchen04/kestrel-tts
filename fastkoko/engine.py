@@ -55,6 +55,12 @@ def from_preset(name: str, **overrides):
     if name in ("student-fast",):
         from .student import StudentAdapter
         return StudentAdapter(fast=True)
+    if name in ("student-fast-natural",):
+        # opt-in, NOT the default: +0.155 UTMOS over `student-fast` (cycle 78) and tied with
+        # `student-natural` at 4x the speed, but F0 RMSE 31.8 -> 43.9 and vuv 29.4 -> 39.7.
+        # See experiments/78-fast-residual/RESULT.md.
+        from .student import StudentAdapter
+        return StudentAdapter(fast=True, natural=True)
     if name in ("student-natural",):
         # opt-in, NOT the default: +0.114 UTMOS over `student` (cycle 75) at a 2.6x vuv-error
         # regression vs the teacher (cycle 76). See experiments/76-residual-gates/RESULT.md.
