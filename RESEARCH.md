@@ -169,7 +169,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    *distributional* objectives: a discriminator targeted at the inter-harmonic band, distribution
    matching, or conditioned-stochastic generation. `experiments/20-distill/disc.py` already exists.
    Kokoro's own decoder was GAN-trained; this student essentially was not.
-1. **The texture gap — the standing blocker.** MCD ~11.8 vs the 3.98 control bar; content and
+1. **The texture gap — now fully specified as head replacement (cycles 54, 90, 91, 92).** The
+   architectural ceiling is real on four instruments (91); the frontier's 57× speed gap needs a
+   *vocoder* improvement, not better timing (90); and there is **no two-instrument evidence of
+   unclaimed headroom** inside the existing head (92 — UTMOS says +0.187, NISQA says none). Better
+   training, better losses and better schedules are all closed. What remains is a head that can
+   express what MaskHead cannot, judged against UTMOS **and** NISQA per invariant 4b.
+   *Original framing follows.*
+   **The texture gap — the standing blocker.** MCD ~11.8 vs the 3.98 control bar; content and
    prosody are at parity but timbre is audibly hazy (diagnosed as inter-harmonic haze). Angles:
    flow-matching / consistency / rectified-flow heads; discriminator ensembles and adversarial
    schedules that fit an M2 budget; codec-domain heads (DAC/Vocos-family); SSL-feature perceptual

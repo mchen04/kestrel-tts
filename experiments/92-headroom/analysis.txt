@@ -1,0 +1,4 @@
+instrument     student   ceiling       gap       t  self-noise
+UTMOS           4.0131    4.2004   +0.1873    6.54     0.00180
+NISQA           4.6348    4.6962   +0.0614    1.18         nan
+SBS             0.9630    0.9685   +0.0055    5.28     0.00085
