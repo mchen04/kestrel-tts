@@ -1,0 +1,13 @@
+system                    ovrl     sig     bak    p808    n
+real speech (LS)        3.3695  3.6594  4.0327  3.8749   40
+teacher (ref_fp32)      3.4326  3.6462  4.2022  4.1324   55
+student                 3.1665  3.4391  4.0564  3.8918   55
+
+real - teacher on ovrl_mos : -0.0631  Welch t=-2.05
+
+real - teacher on sig_mos  : +0.0131  Welch t=+0.62
+
+real - teacher on bak_mos  : -0.1695  Welch t=-5.84
+
+-> decomposition: the teacher's ovrl advantage comes from bak_mos (no room noise),
+   while real speech is at or above the teacher on sig_mos (the speech itself).

@@ -219,11 +219,13 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    distilled exact scan — the exact path currently costs ~0.9 s.
 4. **Dispatch floor (~20–30 µs × ~10k kernels).** Fused Metal kernels, graph capture, CoreML/ANE
    export. Bounded upside (0.24 s → ~50 ms), currently moot until #1 closes.
-5. **Beyond the teacher — now measured, and promoted (cycle 72).** The teacher scores **3.43/5
-   DNSMOS ovrl_mos**, `ship-q8` matches it (t=0.17), and the student sits 7.7 % below it. The ceiling
-   is mid-scale and no amount of further distillation can pass it, so **training against real speech
-   is the only route past 3.43** — and closing the remaining 7.7 % buys less than beating it would.
-   Weigh this against §4: this is a fidelity cycle on the single-voice workload, not a generality one.
+5. **Beyond the teacher — promoted by cycle 72, demoted again by cycle 73.** The teacher scores
+   3.43/5 DNSMOS, but **real LibriSpeech speech scores 3.3695 on the same instrument** — *below* it,
+   because DNSMOS penalizes room tone (`bak_mos` −0.17) while rating the speech signal itself
+   indistinguishable (`sig_mos` +0.013). So DNSMOS **cannot measure progress past the teacher**, and
+   #5 would be an unfalsifiable experiment on the instruments available here. **Revive only with a
+   naturalness-trained predictor (UTMOSv2/NISQA, not installable offline in this environment) or a
+   human CMOS panel.** Until then this is blocked on measurement, not on ideas.
 6. **Capability gaps** *(within the single-voice workload — see §4)*. **Cycle 66 measured the
    long-form axis and found the cheapest open win in the repo:** peak RSS is *bounded* (exponent
    −0.020, 496–560 MB across a 16× input span — the memory worry was unfounded), but TTFA is linear
