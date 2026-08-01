@@ -1,0 +1,6 @@
+autocorrelation F0 RMSE vs teacher, n=30 items
+  student-fast (plain)         44.32 Hz
+  student-fast + residual      75.15 Hz
+
+independent estimator: 44.32 -> 75.15 Hz  = +69.6%
+pyworld harvest (cycle 78): 31.82 -> 43.88 Hz = +37.9%

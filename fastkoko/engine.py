@@ -57,13 +57,17 @@ def from_preset(name: str, **overrides):
         return StudentAdapter(fast=True)
     if name in ("student-fast-natural",):
         # opt-in, NOT the default: +0.155 UTMOS over `student-fast` (cycle 78) and tied with
-        # `student-natural` at 4x the speed, but F0 RMSE 31.8 -> 43.9 and vuv 29.4 -> 39.7.
-        # See experiments/78-fast-residual/RESULT.md.
+        # `student-natural` at 4x the speed. COST: pitch accuracy is measurably worse -- F0 RMSE
+        # 31.8 -> 43.9 (pyworld) and 44.3 -> 75.2 (independent autocorrelation, cycle 79), i.e. a
+        # confirmed defect and NOT a teacher-similarity artifact. vuv 29.4 -> 39.7.
+        # Prefer `student-fast` if pitch stability matters.
+        # See experiments/78-fast-residual/ and experiments/79-f0-artifact/RESULT.md.
         from .student import StudentAdapter
         return StudentAdapter(fast=True, natural=True)
     if name in ("student-natural",):
         # opt-in, NOT the default: +0.114 UTMOS over `student` (cycle 75) at a 2.6x vuv-error
-        # regression vs the teacher (cycle 76). See experiments/76-residual-gates/RESULT.md.
+        # regression vs the teacher (cycle 76). F0 is only mildly affected on this preset
+        # (16.2 -> 18.0) unlike the fast one (cycle 79). See experiments/76-residual-gates/RESULT.md.
         from .student import StudentAdapter
         return StudentAdapter(fast=False, natural=True)
     cfg = dict(PRESETS[name])

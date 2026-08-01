@@ -99,7 +99,9 @@ class ResMaskHead(MaskHead):
     The residual is zero-initialised, so an untrained ResMaskHead is bit-identical to MaskHead.
     Trained (experiments/55-residual-complex), it scores +0.1141 UTMOS over the shipped student
     (t=4.47, cycle 75) — about 25% of the teacher-student gap — at the cost of a 2.6x voiced/unvoiced
-    error regression against the teacher (cycle 76). Opt-in only; not the default preset.
+    error regression against the teacher (cycle 76). On the fast preset it also degrades pitch
+    accuracy for real -- two independent F0 estimators agree (cycle 79), so that one is a confirmed
+    defect rather than a similarity artifact. Opt-in only; not the default preset.
     """
 
     def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128, res_scale=0.01):
