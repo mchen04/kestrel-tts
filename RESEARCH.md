@@ -118,6 +118,11 @@ optimize what you cannot see.
 idea. Do not re-pick a dead end (§8) unless a *specific new fact* invalidates its cause of death —
 state that fact.
 
+**When the blocker is architectural** — when the cheap decisive experiments against it have already
+returned negative (see §8) — **(c) outranks (b)**. A bound confirmed three ways is not re-confirmed
+by a fourth cheap test; the remaining information is in the expensive swing. Preferring another
+cheap diagnostic at that point is not caution, it is avoidance.
+
 **PREDICT** — before code, write `PLAN.md`: the question, the number it should move and by roughly
 how much, the time budget (§6), and **what result would falsify the idea**. An experiment with no
 falsifying outcome is not an experiment.
@@ -153,6 +158,14 @@ The goal never completes; **a cycle** completes when it has produced a recorded,
 budget with no signal on the predicted number, stop and write the KILL. At 2× the budget, stop
 regardless of how promising it feels — sunk cost is the main way research loops die. Extending a
 budget once is fine *if written down before the extension*, not after.
+
+**Multi-cycle experiments.** A cycle may budget **multiple hours and span wakeups** via
+checkpoints, provided `PLAN.md` states the total budget and the checkpoint interval before the
+first step runs. Spanning wakeups does not reset the budget — the 1×/2× rules apply to the total
+elapsed, not to each wakeup. A spanning cycle writes its LEDGER row only at the verdict; until
+then its `PLAN.md` carries a running note of hours spent and what the last checkpoint showed, so a
+fresh context can resume it without re-deriving state. Cost alone is never a reason to reject an
+experiment the blocker requires — only the budget rules above are.
 
 **Ambiguity.** If a result needs squinting to look like a win, it is a KILL. If two axes disagree
 (one metric improves, another regresses), that disagreement is itself the finding — record it,
