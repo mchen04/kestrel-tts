@@ -242,7 +242,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    (drift 18.23 % vs 2.99 % control), reproducing cycles 57–58's `stress`/`patho` signature out of
    sample, while **rare phonemes are better than the control** — that sub-worry is closed. MCD spans
    only 12.47–14.46 dB, so *drift*, not MCD, is the instrument that sees category effects. Open:
-   6 items/category is thin; ASR/WER by category is unmeasured; and the set gates nothing yet.
+   6 items/category is thin, and the set gates nothing yet.
+   **Cycle 71 measured WER by category and it is healthy**: worst student−teacher delta **+1.67 pp**
+   (dialogue), overall −1.59 pp — `student-fast` is not losing content anywhere. Note the consequence
+   for #1: **cycle 70's worst timing category costs under 2 pp of intelligibility**, so the texture and
+   duration gaps are *naturalness* arguments, not correctness or robustness risks, and should be
+   justified as such rather than as defects.
 
 ## 8. Standing dead ends
 

@@ -1,0 +1,13 @@
+category           student WER% teacher WER%  delta pp
+dialogue                   3.89         2.22     +1.67
+rare_phonemes             34.29        34.29     +0.00
+narration_control          0.00         0.00     +0.00
+code                      84.86        85.87     -1.01
+names                     27.58        28.86     -1.28
+acronyms                   6.25         8.10     -1.85
+numbers                    2.78         8.33     -5.56
+
+OVERALL                   17.52        19.12     -1.59
+
+worst category delta = +1.67 pp   (falsifier: >+5 pp)
+dialogue delta = +1.67 pp   (cycle 70: worst on timing, drift 18.2%)

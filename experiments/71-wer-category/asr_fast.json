@@ -1,0 +1,216 @@
+{
+ "wer": 17.52212389380531,
+ "cer": 10.88065283917035,
+ "per_item": {
+  "numbers00": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the ledger showed 1 204 873 crowns on 14 march 1892 down 3 75 from the prior quarter"
+  },
+  "numbers01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "chapter 7 verse 13 he counted 0 5 grams then 250 mg then nothing at all"
+  },
+  "numbers02": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "trains depart at 6 05 7 40 and 23 15 arriving 11 hours and 45 minutes later"
+  },
+  "numbers03": {
+   "wer": 11.11,
+   "cer": 13.89,
+   "hyp": "she paid 19 99 for the first 2 340 for the second and seven cents for the third"
+  },
+  "numbers04": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the 2nd battalion lost 1 024 men the 3rd only 87 a ratio of nearly 12 to 1"
+  },
+  "numbers05": {
+   "wer": 5.56,
+   "cer": 4.11,
+   "hyp": "add 1 2 cup subtract 3 4 multiply by 8 and you arrive at 6 and 1 eighth"
+  },
+  "acronyms00": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the nato unesco and mi6 archives disagreed the fbi cia and nsa said nothing"
+  },
+  "acronyms01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he read the rfc filed a pr on github and pinged the cto via sms at 3 am"
+  },
+  "acronyms02": {
+   "wer": 25.0,
+   "cer": 5.63,
+   "hyp": "dr sint john ph d frcs addressed the agm of the rsbca in the uk on tuesday"
+  },
+  "acronyms03": {
+   "wer": 6.25,
+   "cer": 1.43,
+   "hyp": "the tts model used an lsdm a gan and a cnn exported to onnx and coreml"
+  },
+  "acronyms04": {
+   "wer": 6.25,
+   "cer": 2.82,
+   "hyp": "nasa and esa confirmed the ufo was a usaf drone per the doody and the gao"
+  },
+  "acronyms05": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "send the pdf via https to the url then cc the vp and bcc the pa"
+  },
+  "names00": {
+   "wer": 8.33,
+   "cer": 3.8,
+   "hyp": "klein morty greeted audrey hall alger wilson and leonard mitchell at backlund"
+  },
+  "names01": {
+   "wer": 54.55,
+   "cer": 15.58,
+   "hyp": "siobhan zhang g r zegors and nguyen argued outside the st selina cathedral"
+  },
+  "names02": {
+   "wer": 25.0,
+   "cer": 9.46,
+   "hyp": "dunn smith old neal and razen rasego followed azik eggers through tingen"
+  },
+  "names03": {
+   "wer": 36.36,
+   "cer": 7.04,
+   "hyp": "mademoiselle beaufort met herr schmidt and senor alvarez near skibberine"
+  },
+  "names04": {
+   "wer": 18.18,
+   "cer": 2.7,
+   "hyp": "emlyn white the vampire sneered at bernadette gustave and ariana sorceress"
+  },
+  "names05": {
+   "wer": 23.08,
+   "cer": 2.67,
+   "hyp": "forswall forsy and trissy were confusingly the same person in three guises"
+  },
+  "dialogue00": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "don't she whispered not unless you mean it truly mean it"
+  },
+  "dialogue01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "who's there nobody nobody doesn't knock three times"
+  },
+  "dialogue02": {
+   "wer": 13.33,
+   "cer": 4.76,
+   "hyp": "he said i told him leave it and he laughed she did not laugh"
+  },
+  "dialogue03": {
+   "wer": 10.0,
+   "cer": 2.04,
+   "hyp": "well hm no wait actually yes fine or perhaps not"
+  },
+  "dialogue04": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "mr klein the inspector began where were you on the night of the fire"
+  },
+  "dialogue05": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "run where anywhere and so wordlessly they ran"
+  },
+  "code00": {
+   "wer": 46.15,
+   "cer": 31.34,
+   "hyp": "run pip install e then python 3m venv venv and nsrc venv slash bin slash activate"
+  },
+  "code01": {
+   "wer": 283.33,
+   "cer": 379.17,
+   "hyp": "the url was https slash slash backwater example com slash archives ad equals 42 and sort equals desk but at 404d"
+  },
+  "code02": {
+   "wer": 37.5,
+   "cer": 50.0,
+   "hyp": "set foo equals bar export path equals dollar path slash usr slash local slash bin and reboot with sudo shutdown r now"
+  },
+  "code03": {
+   "wer": 30.0,
+   "cer": 64.06,
+   "hyp": "in python x asterisk asterisk 2 for x in range 10 if x percent 2 equals equals 0 yield 0 4 16 36 and 64"
+  },
+  "code04": {
+   "wer": 58.33,
+   "cer": 21.25,
+   "hyp": "commit a 34bc 4d touched fastcoco slash models slash vocoder pi and experiments 54 oracle mask"
+  },
+  "code05": {
+   "wer": 53.85,
+   "cer": 27.42,
+   "hyp": "curlss localhost 8080 slash v1 slash synthesized e text hello jq audio"
+  },
+  "rare_phonemes00": {
+   "wer": 20.0,
+   "cer": 12.5,
+   "hyp": "the quizzical axolotl juggled 17 turquoise zeppelins beside a xylophanist"
+  },
+  "rare_phonemes01": {
+   "wer": 27.27,
+   "cer": 10.39,
+   "hyp": "thonic wraiths gnashed through the phlegmatic myrrh of unislaz and lanphair"
+  },
+  "rare_phonemes02": {
+   "wer": 38.46,
+   "cer": 12.16,
+   "hyp": "zaza's rhythm judged bizarrely vexed the sphinx of gijavik and thingvalir"
+  },
+  "rare_phonemes03": {
+   "wer": 20.0,
+   "cer": 1.37,
+   "hyp": "aoife bought gnocchi jalapenos croissants and worcestershire in ljubljana"
+  },
+  "rare_phonemes04": {
+   "wer": 20.0,
+   "cer": 8.64,
+   "hyp": "the schwa in about differs from the diphthong in oil and the trill in pero"
+  },
+  "rare_phonemes05": {
+   "wer": 80.0,
+   "cer": 5.33,
+   "hyp": "pneumeno ultramicroscopic silicovolcano coniosis is thankfully rarely narrated"
+  },
+  "narration_control00": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the gray fog rolled in from the harbor and swallowed the gas lamps one by one"
+  },
+  "narration_control01": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "he leaned back withdrew his right hand and considered the question carefully"
+  },
+  "narration_control02": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "outside the bells of the old cathedral tolled and the square began to empty"
+  },
+  "narration_control03": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "she had walked this road before in another season under a different name"
+  },
+  "narration_control04": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "the room was quiet enough that he could hear the clock in the hall downstairs"
+  },
+  "narration_control05": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "hyp": "morning came slowly and with it the ordinary noise of an ordinary city waking"
+  }
+ }
+}
