@@ -1,0 +1,34 @@
+arm           UTMOS   MCD dB
+v3b          3.9128   11.861
+v3d          3.9707   11.845
+v3e          3.9707   11.800
+v3f          3.9829   11.783
+refactor     4.0131   11.828
+
+ladder spread: UTMOS 0.1003 MOS | MCD 0.078 dB | SBS 0.00022
+scales: UTMOS self-noise 0.0018 ; teacher-student gap 0.4642
+-> spread is 56x self-noise and 22% of the teacher-student gap
+
+pair                     dUTMOS       t    dMCD
+refactor vs v3b         +0.1003    4.20  -0.033
+refactor vs v3d         +0.0425    2.44  -0.017
+refactor vs v3e         +0.0424    2.72  +0.028
+refactor vs v3f         +0.0302    2.33  +0.045
+v3b vs v3d              -0.0579   -2.13  +0.016
+v3b vs v3e              -0.0579   -2.21  +0.061
+v3b vs v3f              -0.0701   -2.97  +0.078
+v3d vs v3e              -0.0000   -0.00  +0.045
+v3d vs v3f              -0.0122   -0.63  +0.062
+v3e vs v3f              -0.0122   -0.75  +0.017
+
+pairs with |t|>2: 7/10   (cycle 51 on SBS: 0/15)
+corr(UTMOS, MCD) across the 5 arms: r=-0.532
+
+=== killed arms, re-scored on UTMOS (shipped student = 4.0131) ===
+arm                           UTMOS  vs shipped       t  verdict then
+cycle53 ri=0 (control)       4.0079     -0.0053   -0.48          KILL
+cycle53 ri=5                 3.9939     -0.0192   -1.55          KILL
+cycle55 residual             4.1273     +0.1141    4.47          KILL
+cycle56 adversarial          3.8924     -0.1207   -6.01          PARK
+
+scales: self-noise 0.0018 | teacher-student gap 0.4642 | ladder spread 0.1003

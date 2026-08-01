@@ -275,11 +275,13 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
 - **Improving MaskHead by any means** (cycle 54): measured ceiling SBS 0.96853 with oracle mask,
   phase, f0 and perfect-magnitude noise; shipped head is at 99.4 % of it. 84.7 % of the gap is
   beyond the parameterization. Needs a fact that changes the ceiling measurement, not a better loss.
-- DDSP head capacity ×2.3, cepstral loss, correlated noise, edge-masked crops, and the whole
-  v3b→v3f ladder — none moved MCD >0.5 dB. **Cycle 51 closed the "blunt metric" escape hatch:**
-  SpeechBERTScore, an unrelated SSL-feature metric, spreads the same ladder by less than its own
-  self-noise (0/15 pairs significant) while cleanly separating every larger gap. The ladder is
-  genuinely flat. The next head attempt must be a categorical change, not another rung.
+- ~~DDSP ladder is flat (cycles 51)~~ — **REOPENED by cycle 75.** UTMOS (reference-free,
+  naturalness-trained) spreads the same v3b→v3f ladder by **0.1003 MOS — 56× its self-noise and 22 %
+  of the whole teacher−student gap — with 7/10 pairs significant**, where SBS gave 0/15. Cycle 51's
+  arbiter was reference-aware and therefore scored *teacher-similarity*, not quality. **Cycle 55's
+  residual head, killed on SBS/MCD, is +0.114 MOS above the shipped student (t=4.47) — the best
+  variant yet measured.** Steer all further texture work by UTMOS. Still dead: the RI-loss arms
+  (cycle 53, −0.005/−0.019, n.s.) and the adversarial residual as shipped (cycle 56, −0.121).
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).
 - Two hand-written Metal scan kernels — bit-correct, bandwidth-bound, lost to the compiled path.
