@@ -280,7 +280,11 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   of the whole teacher−student gap — with 7/10 pairs significant**, where SBS gave 0/15. Cycle 51's
   arbiter was reference-aware and therefore scored *teacher-similarity*, not quality. **Cycle 55's
   residual head, killed on SBS/MCD, is +0.114 MOS above the shipped student (t=4.47) — the best
-  variant yet measured.** Steer all further texture work by UTMOS. Still dead: the RI-loss arms
+  variant yet measured.** Cycles 79–81 then established what it is and costs: the gain and a **real**
+  pitch regression (two estimators) both come from the 20 k-step whole-head retrain, **not** from the
+  residual output — with the trunk frozen the residual gives +0.024 MOS and no pitch damage, and
+  without residual layers the same retrain gives nothing (cycle 53). They are inseparable at this
+  architecture; shipped opt-in as `student-natural` / `student-fast-natural`. Steer all further texture work by UTMOS. Still dead: the RI-loss arms
   (cycle 53, −0.005/−0.019, n.s.) and the adversarial residual as shipped (cycle 56, −0.121).
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).

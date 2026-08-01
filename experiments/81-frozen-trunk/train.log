@@ -1,0 +1,7 @@
+dsx: 609 train / 12 val
+step 0 loss 15.351 0.043s/it
+step 5000 loss 15.797 0.028s/it
+step 10000 loss 15.803 0.027s/it
+step 15000 loss 15.867 0.027s/it
+step 20000 loss 15.522 0.027s/it
+DONE
