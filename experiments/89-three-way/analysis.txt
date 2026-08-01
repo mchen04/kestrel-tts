@@ -1,0 +1,15 @@
+system            NISQA    UTMOS   DNSMOS
+teacher          4.9483   4.4773   3.4326
+ship-q8          4.9518   4.4757   3.4320
+student          4.6348   4.0131   3.1665
+student-fast     4.7432   3.9763   3.1439
+real speech      4.1615   3.8032   3.3695
+
+Spearman NISQA-UTMOS over 5 systems = +0.800
+Spearman NISQA-DNSMOS over 5 systems = +0.500
+Spearman UTMOS-DNSMOS over 5 systems = +0.700
+
+ordering by each instrument:
+  NISQA  : ship-q8 > teacher > student-fast > student > real speech
+  UTMOS  : teacher > ship-q8 > student > student-fast > real speech
+  DNSMOS : teacher > ship-q8 > real speech > student > student-fast

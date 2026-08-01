@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 89 | 2026-08-01 | do the three instruments agree on the shipped frontier? | NISQA reproduces teacher ≈ `ship-q8` > students | **yes** — all three put teacher ≈ `ship-q8` on top and students clearly below; Spearman NISQA–UTMOS **+0.80**, UTMOS–DNSMOS +0.70. Minor splits: `student` vs `student-fast` (tied, order flips) and where real speech sits (DNSMOS out of step, per cycle 73) | **KEEP** | the frontier ordering is stable across three independent predictors, so cycle 88's withdrawal was **not** arbitrary vote-picking: the trained heads are the *one* place UTMOS diverges sharply from both others — the signature of moving a predictor without moving quality. NISQA added to the frontier table |
 | 88 | 2026-08-01 | does a third naturalness predictor break the UTMOS/DNSMOS tie? | NISQA sides with UTMOS (same training task) | **NISQA −0.5630 (t=−7.21)** for the shipped aux head and **−0.7163 (t=−8.51)** for the residual — a *large* regression. With DNSMOS −0.013, **2 of 3 instruments say worse; UTMOS is the outlier** | **KILL** | **`student-natural` and `student-fast-natural` WITHDRAWN**, executing the falsifier written in PLAN.md. Twelve cycles (75–86) were steered by a single instrument and two of them shipped. No measured quality win survives from the residual/aux heads; the reproducibility, interaction and saturation findings do. New rule in RESEARCH.md: a ship-grade claim needs two independent instruments agreeing |
 | 87 | 2026-08-01 | does DNSMOS confirm the UTMOS-driven shipped win? | confirms the ordering with a smaller margin | **inverts it**: aux **−0.0131** (t=−0.77, n.s.) and residual **−0.0374** (t=−2.30) vs baseline, where UTMOS says +0.240 / +0.176 | **PARK** | the two reference-free instruments disagree; the shipped win rests on **one** predictor. DNSMOS is the wrong-task instrument (cycle 73: it ranks real speech below the teacher) so this is not decisive — but I cannot distinguish "right instrument" from "twelve cycles of overfitting UTMOS" from inside this battery. Nothing unshipped (opt-in; MCD/F0/vuv/WER all fine); disagreement documented. **Revival: a third naturalness predictor or a blind A/B** |
 | 86 | 2026-08-01 | is the gain about *complex residuals*, or would any auxiliary pathway do? | aux pathway gains <+0.08; insertion point matters | **aux log-magnitude pathway gains +0.1991 — MORE than the complex residual's +0.1711** — with **F0 31.57 (−0.25 vs baseline)** and **vuv 29.93 (vs 39.78)** | **KEEP** | falsifier fired at 1.6× threshold. Mechanism is **"briefly retraining a head with spare capacity"**, not complex residuals — ten cycles told the wrong story. **Re-shipped both `*-natural` presets on `AuxMaskHead` seed 2**: UTMOS **4.2162** (best measured), MCD 13.443 (better than baseline), **pitch and voicing defects both gone**. First win in the run that trades nothing away |
@@ -72,6 +73,13 @@ pass bar for a vocoder head.
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
 | DNSMOS ovrl_mos ↑ (reference-free, cycle 72) | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
 | **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | 3.9763 |
+| **NISQA ↑ (reference-free, quality-trained, cycle 88)** | **4.9483** | — | 4.9518 | 4.6348 | 4.7432 |
+| **DNSMOS ovrl ↑ (reference-free, enhancement-trained, cycle 72)** | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
+
+**Three-instrument agreement (cycle 89):** all three rank teacher ≈ `ship-q8` at the top and the
+students clearly below (Spearman NISQA–UTMOS +0.80). `student` and `student-fast` are **tied** — the
+order flips between instruments — so do not read an ordering between them. Real speech scores *below*
+the teacher on all three (see cycle 73/74 caveats).
 
 ⚠️ **Cycle 87: the two reference-free instruments disagree about the `*-natural` presets.** UTMOS
 scores the shipped aux head +0.240 over `student-fast`; **DNSMOS scores it −0.013 (t=−0.77, not
