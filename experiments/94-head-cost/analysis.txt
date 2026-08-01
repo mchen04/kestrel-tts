@@ -1,0 +1,12 @@
+component             ms    share
+trunk               9.50    39.6%
+TEMPLATE            8.63    35.9%
+output heads        1.42     5.9%
+iSTFT               4.47    18.6%
+sum                24.02   100.0%   (full synth measured 24.61 ms -> parts cover 97.6%)
+
+at chapter scale (163.4 s audio, x6.4):
+  MaskHead total        ~ 153.3 ms  of the 261 ms student-fast chapter wall (59%)
+  template-free head    ~  98.2 ms  -> saves ~55 ms (21% of the whole pipeline)
+
+teacher head (cycle 93) 11 660 ms -> a template-free head at ~98 ms is 119x cheaper
