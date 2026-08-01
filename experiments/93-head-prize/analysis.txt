@@ -1,0 +1,8 @@
+teacher chapter wall            14.27 s
+  of which the generator/head   11.66 s  (82%)
+  everything else                2.61 s
+student-fast total               0.26 s
+
+the student's ENTIRE pipeline is 45x cheaper than the teacher's head alone
+a replacement head must fit in ~0.26 s to preserve the frontier;
+the teacher head costs 11.66 s -> it must be ~45x cheaper at teacher quality
