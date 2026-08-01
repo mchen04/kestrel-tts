@@ -1,0 +1,8 @@
+train=1152 val=48  natural_only=True
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 2532.00it/s]
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 1942.69it/s]
+step 0 train_mae 0.2592 val_mae 0.2476 0.238s/it
+step 1000 train_mae 0.1226 val_mae 0.2054 0.176s/it
+step 2000 train_mae 0.1150 val_mae 0.2007 0.176s/it
+step 3000 train_mae 0.0971 val_mae 0.2096 0.176s/it
+DONE

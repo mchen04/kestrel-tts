@@ -190,9 +190,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    style-sensitive** than the student's (52.7 % vs 17.5 % spread on `patho03`) and dips sharply at the
    natural index, where the student returns its smoothed average. The student never learned a
    style-conditioned response because `capture_x.py` pairs every chunk with exactly one style
-   (`ref_s = pack[len(ps)-1]`). **Next: regenerate duration training data with style augmentation** —
-   `durations_and_features` needs no audio, so an unlimited (chunk, style, duration) corpus is cheap,
-   including the short-chunk region the current data barely covers. Then the modelling question:
+   (`ref_s = pack[len(ps)-1]`). **Cycle 60 tried the obvious remedy and it failed**: uniform-random
+   style augmentation made mean drift *worse* (8.74 % vs 4.97 %) and lost to a matched natural-only
+   control on all six battery metrics, while *reducing* style sensitivity — random styles carry no
+   information about the chunk they are paired with, so the head learns to ignore style. Untested and
+   still open: sampling styles in a **neighbourhood** of `len(ps)-1` rather than uniformly, so the
+   augmented mapping resembles the one used at inference. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.
 4. **Dispatch floor (~20–30 µs × ~10k kernels).** Fused Metal kernels, graph capture, CoreML/ANE

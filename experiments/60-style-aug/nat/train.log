@@ -1,0 +1,5 @@
+step 0 train_mae 0.2592 val_mae 0.2476 0.240s/it
+step 0 train_mae 0.2592 val_mae 0.2476 0.238s/it
+step 1000 train_mae 0.1226 val_mae 0.2054 0.176s/it
+step 2000 train_mae 0.1150 val_mae 0.2007 0.176s/it
+step 3000 train_mae 0.0971 val_mae 0.2096 0.176s/it
