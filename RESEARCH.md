@@ -204,10 +204,16 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    a learning curve over 25/50/100 % of the existing data moves val `dur` loss by only 3.6 % for 4×
    the data, with gains halving per doubling. Data is not the constraint. **Every data and objective
    lever is now eliminated** (58 coverage, 60 style-aug, 62 head-only, 63 more steps, 64 more data).
-   The one untried structural option is **capacity**: the duration path ends in a single
-   `Linear(dim→1)` imitating a teacher that runs BERT → duration encoder → BiLSTM → `duration_proj`.
-   Weigh it against `student` already shipping duration-exactness at 1.106 s — the case rests on
-   `student-fast`'s 0.261 s operating point.
+   **Cycle 65 killed capacity too** — a 296 k-parameter bidirectional
+   GRU head recovers 3.9 % over a 257-parameter linear one (1150× params), and an MLP 0.8 %. The
+   frozen features simply do not carry the teacher's duration signal.
+   **This sub-thread is closed.** Seven cycles (57, 58, 60, 62, 63, 64, 65) eliminated plumbing,
+   distribution, style, head training, more steps, more data and more capacity. `student-fast`'s
+   drift is the price of predicting durations from a distilled 80 fps representation rather than the
+   teacher's full BERT context — cycle 61 priced that at +0.72 s, most of the way to `student`'s
+   1.106 s. **Two legitimate operating points already exist and there is no third between them at
+   this architecture.** Only a genuinely different representation would reopen this; it is no longer
+   ranked as an open modelling opportunity.
    Also still untested: neighbourhood style jitter rather than uniform-random. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.
