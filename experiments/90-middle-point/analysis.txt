@@ -1,0 +1,9 @@
+preset                        NISQA    UTMOS   DNSMOS
+student-fast (0.261 s)       4.7432   3.9763   3.1439
+exact-dur (0.979 s)          4.7071   3.9574   3.1836
+student (1.106 s)            4.6348   4.0131   3.1665
+ship-q8 (15.04 s)            4.9518   4.4757   3.4320
+teacher                      4.9483   4.4773   3.4326
+
+falsifier A (>=4.90 NISQA -> ship it): 4.7071 -> not fired
+falsifier B (<=4.75 NISQA -> c61 confirmed): 4.7071 -> FIRED
