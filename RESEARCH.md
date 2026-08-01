@@ -223,9 +223,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    3.43/5 DNSMOS, but **real LibriSpeech speech scores 3.3695 on the same instrument** — *below* it,
    because DNSMOS penalizes room tone (`bak_mos` −0.17) while rating the speech signal itself
    indistinguishable (`sig_mos` +0.013). So DNSMOS **cannot measure progress past the teacher**, and
-   #5 would be an unfalsifiable experiment on the instruments available here. **Revive only with a
-   naturalness-trained predictor (UTMOSv2/NISQA, not installable offline in this environment) or a
-   human CMOS panel.** Until then this is blocked on measurement, not on ideas.
+   #5 would be an unfalsifiable experiment on the instruments available here. **Cycle 74 corrected that**: UTMOS22-strong *is* installable
+   (`torch.hub` + `torchaudio`; cycle 73's blocker was asserted untested), and on it the teacher
+   scores **4.477 vs real LibriSpeech speech at 3.803** — real speech is 0.674 *below* (t=21.6), and
+   below even `student` (t=4.5). Two instruments with different training tasks agree. **#5 stays
+   demoted on evidence.** Revive with a *studio-grade* narration reference — a data-acquisition task,
+   not a modelling one — or a human CMOS panel.
 6. **Capability gaps** *(within the single-voice workload — see §4)*. **Cycle 66 measured the
    long-form axis and found the cheapest open win in the repo:** peak RSS is *bounded* (exponent
    −0.020, 496–560 MB across a 16× input span — the memory worry was unfounded), but TTFA is linear

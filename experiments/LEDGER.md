@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 74 | 2026-08-01 | does a naturalness-trained predictor rank real speech above the teacher? | real speech > teacher by ≥0.3 MOS, reversing DNSMOS and giving backlog #5 a target | **teacher 4.477, `ship-q8` 4.476 (t=0.61), `student` 4.013 (t=13.1), real LibriSpeech 3.803** — real speech is **0.674 below** the teacher (t=21.6) and **0.21 below `student`** (t=4.5) | **KEEP** | **corrects cycle 73**: UTMOS *is* installable (needed `torchaudio`) — that blocker was asserted untested. Two instruments with different training tasks now agree the teacher out-scores LibriSpeech-grade speech, so #5 stays demoted **on evidence**. Bound: LibriVox ≠ studio narration. UTMOS sizes the student gap at **10.4 %** |
 | 73 | 2026-08-01 | how much headroom is there above the teacher? | real speech scores ≥0.4 MOS above the teacher, justifying backlog #5 | real speech **3.3695 vs teacher 3.4326 ovrl** (−0.063, t=−2.05) — *below*. Decomposition: teacher wins **bak_mos** by 0.17 (t=−5.84, no room tone) while **sig_mos is indistinguishable** (+0.013, t=0.62) | **KILL** | of the *instrument*, not the idea: DNSMOS penalizes recording conditions, so it cannot measure progress past the teacher. **Backlog #5 demoted again** — an unfalsifiable experiment. Also **qualifies cycle 72's absolute framing**: 3.43/5 is what real speech scores too, so it reflects the metric's scale, not a teacher deficiency |
 | 72 | 2026-08-01 | does a **reference-free** score agree with the reference-aware battery, and where does it place the teacher? | ordering floor ≈ teacher > `ship-q8` > `student` > `student-fast`, teacher near the top of the scale | ordering **confirmed** (`ship-q8` − teacher t=0.17; `student` − teacher t=12.9), but the student is only **7.7 % below the teacher** (3.167 vs 3.433 ovrl_mos) where MCD says 3×; `student` vs `student-fast` **indistinguishable** (t=0.96); **teacher itself is 3.43/5** | **KEEP** | closes cycle 51's loophole — a metric that never sees the teacher agrees with those that use it as reference. But the perceptual gap is far smaller than MCD implies, and the ceiling being distilled toward is mid-scale, so **backlog #5 (beat the teacher) rises above closing the gap to it** |
 | 71 | 2026-08-01 | does `student-fast` lose intelligibility on the hard categories? | student−teacher WER delta <2 pp and uniform, **including dialogue**, because drift is a timing error and ASR is pacing-insensitive | worst delta **+1.67 pp** (dialogue); overall **17.52 % vs teacher 19.12 %, −1.59 pp**; absolute WER on `code`/`rare_phonemes` is an ASR limit, identical for both engines | **KEEP** | intelligibility measured per category for the first time and it is healthy. **Cycle 70's worst timing category costs +1.67 pp of content** — the texture and duration gaps chased for 20 cycles do not damage what a listener receives; they are naturalness arguments, not correctness ones |
@@ -56,6 +57,13 @@ pass bar for a vocoder head.
 | spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.980 / 0.921 |
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
 | DNSMOS ovrl_mos ↑ (reference-free, cycle 72) | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
+| **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | 3.9763 |
+
+**UTMOS22-strong is the right-task instrument** (VoiceMOS naturalness, self-noise 0.0018). It sizes
+the teacher−`student` gap at **10.4 % (0.464 MOS, t=13.1)**, agrees `ship-q8` ≡ teacher (t=0.61), and
+finds `student` vs `student-fast` **not significant** (t=1.63). Real LibriSpeech speech scores
+**3.8032 — 0.674 *below* the teacher** (t=21.6) and 0.21 below `student`; caveat: LibriVox is not
+studio narration, so read that as "beats LibriSpeech-grade audio", not "surpasses human narration".
 
 **DNSMOS is reference-free** (added cycle 72, `experiments/72-reffree/`) — it is the only instrument
 here that can rank the teacher itself, and it does: **the teacher scores 3.43/5**. Self-noise 0.0024.

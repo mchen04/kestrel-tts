@@ -1,0 +1,17 @@
+system                         UTMOS    std    n
+teacher (ref_fp32)            4.4773  0.109   55
+floor pair                    4.4791  0.100   55
+ship-q8                       4.4757  0.109   55
+student                       4.0131  0.279   55
+student-fast                  3.9763  0.298   55
+real speech (LibriSpeech)     3.8032  0.171   40
+
+self-noise (two teacher renders) = 0.0018 MOS
+paired teacher (ref_fp32) - ship-q8: +0.0016  t=  0.61
+paired teacher (ref_fp32) - student: +0.4642  t= 13.05
+paired student - student-fast: +0.0368  t=  1.63
+
+Welch teacher - real speech: +0.6740  t=+21.62
+Welch student - real speech: +0.2099  t=+4.48
+
+student is 10.4% below the teacher on UTMOS  (DNSMOS said 7.7%, MCD says ~3x)
