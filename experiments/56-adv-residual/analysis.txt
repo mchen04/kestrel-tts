@@ -1,0 +1,10 @@
+floor 0.99915   MaskHead ceiling 0.96853
+shipped student                  0.96300
+cycle55 residual (pointwise)     0.96251
+cycle56 residual (adversarial)   0.96301
+adv vs pointwise-residual    +0.00050  t=  1.85
+adv vs shipped               +0.00001  t=  0.02
+
+residual energy %% over 11 probes across 2500 generator steps:
+   0.0019, 0.0019, 0.0023, 0.0020, 0.0017, 0.0018, 0.0020, 0.0017, 0.0018, 0.0019, 0.0017
+   first 0.0019 -> last 0.0017   (target was >0.5)
