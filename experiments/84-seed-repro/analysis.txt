@@ -1,0 +1,11 @@
+seed        UTMOS   dUTMOS      F0    dF0     vuv
+0          4.1524  +0.1761   34.42  +2.60   39.74
+1          4.1476  +0.1713   34.42  +2.60   39.64
+2          4.1423  +0.1660   33.33  +1.51   39.96
+
+shipped (c55 seed0, step2000) 4.1450  +0.1687  33.34  +1.52
+
+seed mean UTMOS gain = +0.1711  (range 0.0101)
+seed mean F0 cost    = +2.23 Hz  (range 1.09)
+
+falsifier: any seed < +0.08 MOS, or range > 0.10 -> min gain +0.1660, range 0.0101
