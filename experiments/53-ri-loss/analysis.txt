@@ -1,0 +1,8 @@
+n=55 floor=0.99915 shipped=0.96300 gap=0.03614 self-noise=0.00085
+
+arm              SBS F1  vs shipped      t  vs ctrl(ri0)      t
+ri=0 (ctrl)     0.96294    -0.00006  -0.33      +0.00000    nan
+ri=1            0.96279    -0.00021  -1.22      -0.00015  -0.96
+ri=5            0.96286    -0.00014  -0.81      -0.00008  -0.51
+
+predicted gain: >+0.003   best observed: -0.00006

@@ -1,0 +1,8 @@
+dsx: 609 train / 12 val
+step 0 loss 20.504 ema 20.504 val_mag 14.257 val_ri 1.2543 0.08s/it
+step 1000 loss 19.144 ema 19.148 val_mag 13.897 val_ri 1.0576 0.04s/it
+step 2000 loss 18.317 ema 19.076 val_mag 13.779 val_ri 1.1193 0.04s/it
+step 3000 loss 18.442 ema 18.989 val_mag 14.235 val_ri 1.0344 0.04s/it
+step 4000 loss 19.410 ema 18.978 val_mag 13.646 val_ri 1.1133 0.04s/it
+step 5000 loss 19.894 ema 18.928 val_mag 14.073 val_ri 0.9906 0.04s/it
+step 6000 loss 19.588 ema 19.196 val_mag 14.033 val_ri 0.9419 0.04s/it

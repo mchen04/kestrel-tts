@@ -194,7 +194,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
 
 Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` §3, §6.
 
-- Compression alone for speed (phase 1: 2.7× smaller, throughput parity).
+- Compression alone for speed (phase 1: 2.7× smaller, throughput parity; re-confirmed cycle 50 —
+  fp32 is *faster* than q4/q8 on current code, at identical peak RSS).
+- **Phase-aware / complex (RI) losses on the current MaskHead** (cycle 53): three weights, all
+  inside SBS self-noise, none beating a matched-step control, while the RI term itself was
+  demonstrably being optimized. Narrow kill — specific to this head, whose phase is *pinned* to the
+  F0-cumsum template. Revive only for a head where phase is a free variable.
 - Free-form GAN vocoder head from scratch on M2 — too slow to converge.
 - DDSP head capacity ×2.3, cepstral loss, correlated noise, edge-masked crops, and the whole
   v3b→v3f ladder — none moved MCD >0.5 dB. **Cycle 51 closed the "blunt metric" escape hatch:**
