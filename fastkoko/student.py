@@ -113,6 +113,40 @@ class StudentKokoro:
             self._frame_stage(x, pd, Ts40, S, sty, bk, audio_parts)
         return np.concatenate([audio_parts[b] for b in range(B)]), chunks
 
+    def stream_chapter(self, text, group=4):
+        """Yield audio per group of `group` chunks, in input order, as each completes.
+
+        Same stages and weights as synth_chapter — only the scheduling differs. Makes first-audio
+        latency flat in input length (measured exponent 0.062 vs 1.000 batched) at ~1.1x throughput
+        on a chapter and none at book scale; peak RSS is unchanged. See experiments/67-streaming/.
+
+        Note the noise excitation differs from synth_chapter's realization (the schedule consumes the
+        RNG differently), so sample values differ while the battery is unchanged.
+        """
+        chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
+        for i in range(0, len(chunks), group):
+            yield self._render_group(chunks[i:i + group])
+
+    def _render_group(self, chunks):
+        idlists = [[0, *[i for i in map(self.vocab.get, ps) if i is not None], 0] for _, ps in chunks]
+        B = len(idlists); L = max(len(x) for x in idlists)
+        IDS = np.zeros((B, L), np.int32); MASK = np.zeros((B, L), np.float32)
+        for b, x in enumerate(idlists):
+            IDS[b, :len(x)] = x; MASK[b, :len(x)] = 1
+        S = mx.concatenate([self.pack[len(ps) - 1] for _, ps in chunks], axis=0)
+        sty = S[:, :128]; S = S.astype(self.dtype)
+        IDSp = np.pad(IDS, ((0, 0), (0, 512 - L))) if L < 512 else IDS
+        if not hasattr(self, "_enc_c"):
+            self._enc_c = mx.compile(lambda i, st: self.pros.encode(i, st))
+        x = self._enc_c(mx.array(IDSp), S)[:, :L]
+        dur = nn.softplus(self.pros.dur_head(x)[..., 0]); mx.eval(dur)
+        d = np.asarray(dur) * MASK
+        pd = (np.clip(np.round(d), 1, 100) * MASK).astype(np.int64)
+        Ts40 = pd.sum(axis=1)
+        parts = [None] * B
+        self._frame_stage(x, pd, Ts40, S, sty, np.arange(B), parts)
+        return np.concatenate([parts[b] for b in range(B)])
+
     def _frame_stage(self, x, pd_all, Ts40_all, S_all, sty_all, sel, audio_parts):
         pd = pd_all[sel]; Ts40 = Ts40_all[sel]
         x = mx.take(x, mx.array(sel), axis=0)

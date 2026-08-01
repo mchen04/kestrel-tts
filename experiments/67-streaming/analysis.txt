@@ -1,0 +1,11 @@
+ mult  batched TTFA  streamed TTFA  speedup  batched wall  streamed wall
+    1         0.315          0.149      2.1x         0.315          0.351
+    4         1.152          0.157      7.3x         1.152          1.234
+   16         5.041          0.177     28.5x         5.041          4.820
+
+TTFA scaling exponent: batched 1.000  ->  streamed 0.062
+throughput cost at 1x chapter: 1.11x ; at 16x: 0.96x
+
+Extrapolated 10-hour book (214x chapter):
+  batched  TTFA ~ 67 s
+  streamed TTFA ~ 0.16 s (flat)  ->  ~419x better
