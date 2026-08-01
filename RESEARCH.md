@@ -221,9 +221,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    export. Bounded upside (0.24 s → ~50 ms), currently moot until #1 closes.
 5. **Beyond the teacher.** Does the frozen Kokoro decoder actually bound quality? A head trained
    against real speech rather than teacher output changes the entire frame.
-6. **Capability gaps** *(within the single-voice workload — see §4)*. `speed != 1.0` unsupported
-   on the student presets; >510-phoneme chunk splitting; streaming / first-audio latency as an
-   objective distinct from throughput; long-form stability across a whole book.
+6. **Capability gaps** *(within the single-voice workload — see §4)*. **Cycle 66 measured the
+   long-form axis and found the cheapest open win in the repo:** peak RSS is *bounded* (exponent
+   −0.020, 496–560 MB across a 16× input span — the memory worry was unfounded), but TTFA is linear
+   (exponent 1.051) because `synth_all` is non-streaming, so first audio equals total synthesis time:
+   **≈67 s on a 10-hour book despite 500× throughput**. **Chunk-level streaming in `synth_chapter`
+   would make TTFA near-constant (~10 ms) with no retraining, no architecture change and no gate
+   exposure** — do this before any further modelling work. Still open: `speed != 1.0` on the student
+   presets; >510-phoneme chunk splitting.
 7. **Footprint.** Ternary QAT (BitTTS-style, ~6× bounded) composed with existing specialization.
    Cheap, well-understood, unclaimed for this checkpoint.
 8. **Robustness.** Held-out sweeps over numbers, names, acronyms, dialogue, code, rare phonemes.

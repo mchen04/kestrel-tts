@@ -1,0 +1,14 @@
+ mult  audio_s  TTFA_s  RSS_MB  TTFA/audio
+    1    168.3   0.315   526.3       1.872
+    2    336.7   0.598   559.5       1.776
+    4    673.4   1.152   495.6       1.711
+    8   1346.8   3.412   495.7       2.533
+   16   2693.6   5.041   522.0       1.871
+
+TTFA scaling exponent  (log-log slope) = 1.051   (1.0 = linear)
+peak RSS scaling exponent              = -0.020   (0.0 = flat/bounded)
+RSS range across 16x input span: 496-560 MB
+
+Extrapolation to a 10-hour audiobook (36000 s audio = 214x chapter):
+  TTFA  ~ 67 s   before the first sample is available
+  RSS   ~ bounded near 520 MB (no growth term)

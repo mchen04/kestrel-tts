@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 66 | 2026-08-01 | does the batched student design scale to a whole book? | TTFA and peak RSS both grow ~linearly; a book needs 3–5 GB | **TTFA exponent 1.051 (linear); peak RSS exponent −0.020 (flat, 496–560 MB across a 16× span)** | **KEEP** | memory risk disproven — buckets bound RSS, no growth term. But TTFA = total synthesis time by construction (no streaming): **≈67 s before first audio on a 10-hour book** at 500× throughput. Opens §1's unmeasured capability axis and identifies chunk-level streaming as a cheap, unclaimed win |
 | 65 | 2026-08-01 | is the duration path capacity-limited? | `mlp`/`bilstm` beat the linear head by >10 % on val duration MAE | **linear 0.1796 (257 params) → mlp 0.1782 (66 k, −0.8 %) → bilstm 0.1726 (296 k, −3.9 %)** — 1150× params buys 3.9 %, inside the 5 % band | **KILL** | capacity is not the constraint either. The frozen features do not carry the teacher's duration signal, so no head recovers it. **Closes the duration sub-thread** (57/58/60/62/63/64/65 all negative): the drift is the price of a distilled 80 fps representation, and `student` already sells exactness at 1.106 s |
 | 64 | 2026-08-01 | is the prosody student data-limited or capacity-limited? | val `dur` loss falls >10 % from 25 % → 100 % of the corpus (data-limited) | **0.1504 → 0.1467 → 0.1449** for 1225/2450/4900 items: **−3.6 % for 4× data**, inside the ±0.006 val spread, gains halving per doubling | **KILL** | corpus scale is not the constraint — kills cycle 63's proposed 3 h generation cycle for ~1 h of measurement. Every data and objective lever is now eliminated (58/60/62/63/64); only **capacity** (widening the `Linear(dim→1)` duration path toward the teacher's BiLSTM) remains untried |
 | 63 | 2026-08-01 | is the ProsodyStudent converged, or does more joint-loss training buy duration accuracy? | drift improves on mean and worst; MCD/F0/vuv within noise | drift **4.92/51.50** — mean −1 % but **worst got worse**; F0 RMSE +2.8 %; `dur` loss flat at ~0.145 across 3000 steps | **KILL** | shipped checkpoint is converged at 36 k steps on 4900 items — more steps buy nothing. **Established: the whole prosody capture is text-only (no audio), so training data is free.** Only untried lever left is corpus scale (5 k → 25 k ≈ 3 h of generation) |
@@ -104,6 +105,14 @@ items of `eval/manifest.json` (163.4 s audio; 168.3 s for `student-fast`).
 | `ship-q8` | **15.04 s** | 10.9 | 149 ms | 825.3 MB | 39.8 M (packed) |
 | `ship-q4` | 14.60 s | 11.2 | 159 ms | 824.9 MB | 33.1 M (packed) |
 | `exact` (fp32) | 14.27 s | 11.5 | 139 ms | 824.9 MB | 81.7 M |
+
+| capability (cycle 66, `experiments/66-longform/`) | value |
+|---|---|
+| TTFA scaling in input length, `student-fast` | **exponent 1.051** — linear (no streaming: TTFA = total synthesis time) |
+| peak RSS scaling in input length | **exponent −0.020** — flat, 496–560 MB across a 16× span |
+| TTFA, 1× chapter (168 s audio) | 0.315 s |
+| TTFA, 16× chapter (2694 s audio) | 5.041 s |
+| **extrapolated TTFA, 10-hour book** | **≈67 s** (RSS stays ≈520 MB) |
 
 | other axis | value | source | status |
 |---|---|---|---|
