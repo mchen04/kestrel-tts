@@ -197,9 +197,13 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    durations cost +0.72 s (too much to ship) but are worth **mel L1 1.618 → 0.591, F0 −42 %,
    vuv −61 %** — the drift is inflating the fidelity rows, not just the exactness one. Fine-tuning
    `dur_head` on a frozen encoder saturates in <1000 steps and captures ~none of that; training the
-   encoder with a duration-only loss damages the `ten` features. **The one recipe left is the original
-   joint objective (`4·ten + 2·dur + f0 + n`) — a full ProsodyStudent retrain**, now with a measured
-   prize and a known-good script (`train_prosody.py`). That is the best-specified open cycle here.
+   encoder with a duration-only loss damages the `ten` features. **Cycle 63 ran the joint objective and found the student already
+   converged** (36 k steps on 4900 items; 3000 more move `dur` loss <0.01 and the battery not at all).
+   It also established that **the entire prosody capture is text-only — no audio — so training data is
+   free** at ~0.4 s/chunk. That leaves one untried lever with no known blocker, only a cost:
+   **scale the corpus** (5 k → 25 k chunks, ~3 h of generation) and retrain under the same joint loss.
+   Cheaper fallback if that fails: widen `dur_head` (today a single `Linear(dim→1)` imitating a full
+   BiLSTM) — capacity rather than data may bind.
    Also still untested: neighbourhood style jitter rather than uniform-random. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.

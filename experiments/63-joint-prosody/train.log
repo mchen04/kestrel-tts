@@ -1,0 +1,8 @@
+prosody dataset: 4900 train / 100 val
+step 36000 loss 0.9826 val 1.6514 [ten 0.0820 dur 0.2828 f0 0.1276 n 0.6301] 2.02s/it
+step 36500 loss 0.8496 val 0.9688 [ten 0.0795 dur 0.1487 f0 0.0951 n 0.2583] 0.99s/it
+step 37000 loss 0.8854 val 0.9634 [ten 0.0795 dur 0.1475 f0 0.0940 n 0.2566] 1.00s/it
+step 37500 loss 0.8488 val 0.9426 [ten 0.0792 dur 0.1434 f0 0.0952 n 0.2439] 1.00s/it
+step 38000 loss 0.8165 val 0.9606 [ten 0.0790 dur 0.1454 f0 0.1015 n 0.2525] 1.00s/it
+step 38500 loss 0.8109 val 0.9848 [ten 0.0790 dur 0.1574 f0 0.0988 n 0.2553] 1.00s/it
+DONE
