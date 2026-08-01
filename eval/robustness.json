@@ -1,0 +1,215 @@
+{
+ "note": "Categorized robustness held-out set, authored for cycle 70. Not drawn from the capture corpus or the eval book. Additive to the battery (RESEARCH.md invariant 3); never used for training.",
+ "items": [
+  {
+   "id": "numbers00",
+   "category": "numbers",
+   "text": "The ledger showed 1,204,873 crowns on 14 March 1892, down 3.75% from the prior quarter."
+  },
+  {
+   "id": "numbers01",
+   "category": "numbers",
+   "text": "Chapter 7, verse 13: he counted 0.5 grams, then 250 mg, then nothing at all."
+  },
+  {
+   "id": "numbers02",
+   "category": "numbers",
+   "text": "Trains depart at 6:05, 7:40 and 23:15, arriving 11 hours and 45 minutes later."
+  },
+  {
+   "id": "numbers03",
+   "category": "numbers",
+   "text": "She paid \u00a319.99 for the first, $2,340 for the second, and \u20ac0.07 for the third."
+  },
+  {
+   "id": "numbers04",
+   "category": "numbers",
+   "text": "The 2nd Battalion lost 1,024 men; the 3rd, only 87 \u2014 a ratio of nearly 12 to 1."
+  },
+  {
+   "id": "numbers05",
+   "category": "numbers",
+   "text": "Add 1/2 cup, subtract 3/4, multiply by 8, and you arrive at 6 and one eighth."
+  },
+  {
+   "id": "acronyms00",
+   "category": "acronyms",
+   "text": "The NATO, UNESCO and MI6 archives disagreed; the FBI, CIA and NSA said nothing."
+  },
+  {
+   "id": "acronyms01",
+   "category": "acronyms",
+   "text": "He read the RFC, filed a PR on GitHub, and pinged the CTO via SMS at 3 AM."
+  },
+  {
+   "id": "acronyms02",
+   "category": "acronyms",
+   "text": "Dr. St. John, PhD, FRCS, addressed the AGM of the RSPCA in the UK on Tuesday."
+  },
+  {
+   "id": "acronyms03",
+   "category": "acronyms",
+   "text": "The TTS model used an LSTM, a GAN and a CNN, exported to ONNX and CoreML."
+  },
+  {
+   "id": "acronyms04",
+   "category": "acronyms",
+   "text": "NASA and ESA confirmed the UFO was a USAF drone, per the DoD and the GAO."
+  },
+  {
+   "id": "acronyms05",
+   "category": "acronyms",
+   "text": "Send the PDF via HTTPS to the URL, then CC the VP and BCC the PA."
+  },
+  {
+   "id": "names00",
+   "category": "names",
+   "text": "Klein Moretti greeted Audrey Hall, Alger Wilson and Leonard Mitchell at Backlund."
+  },
+  {
+   "id": "names01",
+   "category": "names",
+   "text": "Siobhan, Xiuying, Grzegorz and Nguyen argued outside the Saint Selena cathedral."
+  },
+  {
+   "id": "names02",
+   "category": "names",
+   "text": "Dunn Smith, Old Neil and Rozanne Rosago followed Azik Eggers through Tingen."
+  },
+  {
+   "id": "names03",
+   "category": "names",
+   "text": "Mademoiselle Beaufort met Herr Schmidt and Se\u00f1or \u00c1lvarez near Skibbereen."
+  },
+  {
+   "id": "names04",
+   "category": "names",
+   "text": "Emlyn White, the vampire, sneered at Bernadette Gustav and Arianna Sorceress."
+  },
+  {
+   "id": "names05",
+   "category": "names",
+   "text": "Fors Wall, Forsi and Trissy were, confusingly, the same person in three guises."
+  },
+  {
+   "id": "dialogue00",
+   "category": "dialogue",
+   "text": "\"Don't,\" she whispered, \"not unless you mean it \u2014 truly mean it.\""
+  },
+  {
+   "id": "dialogue01",
+   "category": "dialogue",
+   "text": "\"Who's there?\" \u2014 \"Nobody.\" \u2014 \"Nobody doesn't knock three times.\""
+  },
+  {
+   "id": "dialogue02",
+   "category": "dialogue",
+   "text": "He said, \"I told him, 'leave it,' and he laughed.\" She did not laugh."
+  },
+  {
+   "id": "dialogue03",
+   "category": "dialogue",
+   "text": "\"Well... hmm... no \u2014 wait; actually: yes?! Fine!!!\" (Or perhaps not.)"
+  },
+  {
+   "id": "dialogue04",
+   "category": "dialogue",
+   "text": "\"Mr. Klein,\" the inspector began, \"where were you on the night of the fire?\""
+  },
+  {
+   "id": "dialogue05",
+   "category": "dialogue",
+   "text": "\"Run!\" \"Where?\" \"Anywhere!\" And so, wordlessly, they ran."
+  },
+  {
+   "id": "code00",
+   "category": "code",
+   "text": "Run pip install -e . then python3 -m venv .venv && source .venv/bin/activate."
+  },
+  {
+   "id": "code01",
+   "category": "code",
+   "text": "The URL was https://backwater.example.com/archives?id=42&sort=desc, but it 404'd."
+  },
+  {
+   "id": "code02",
+   "category": "code",
+   "text": "Set FOO=bar, export PATH=$PATH:/usr/local/bin, and reboot with sudo shutdown -r now."
+  },
+  {
+   "id": "code03",
+   "category": "code",
+   "text": "In Python, [x**2 for x in range(10) if x % 2 == 0] yields 0, 4, 16, 36 and 64."
+  },
+  {
+   "id": "code04",
+   "category": "code",
+   "text": "Commit a34bc4d touched fastkoko/models/vocoder.py and experiments/54-oracle-mask/."
+  },
+  {
+   "id": "code05",
+   "category": "code",
+   "text": "curl -sS localhost:8080/v1/synthesize -d '{\"text\":\"hello\"}' | jq .audio"
+  },
+  {
+   "id": "rare_phonemes00",
+   "category": "rare_phonemes",
+   "text": "The quizzical axolotl juggled seventeen turquoise zeppelins beside a xylophonist."
+  },
+  {
+   "id": "rare_phonemes01",
+   "category": "rare_phonemes",
+   "text": "Chthonic wraiths gnashed through the phlegmatic myrrh of Ynyslas and Llanfair."
+  },
+  {
+   "id": "rare_phonemes02",
+   "category": "rare_phonemes",
+   "text": "Zsa Zsa's rhythm, judged bizarrely, vexed the sphinx of Gj\u00f8vik and \u00deingvellir."
+  },
+  {
+   "id": "rare_phonemes03",
+   "category": "rare_phonemes",
+   "text": "Aoife bought gnocchi, jalape\u00f1os, croissants and Worcestershire in Ljubljana."
+  },
+  {
+   "id": "rare_phonemes04",
+   "category": "rare_phonemes",
+   "text": "The schwa in 'about' differs from the diphthong in 'oil' and the trill in 'perro'."
+  },
+  {
+   "id": "rare_phonemes05",
+   "category": "rare_phonemes",
+   "text": "Pneumonoultramicroscopicsilicovolcanoconiosis is, thankfully, rarely narrated."
+  },
+  {
+   "id": "narration_control00",
+   "category": "narration_control",
+   "text": "The gray fog rolled in from the harbor and swallowed the gas lamps one by one."
+  },
+  {
+   "id": "narration_control01",
+   "category": "narration_control",
+   "text": "He leaned back, withdrew his right hand, and considered the question carefully."
+  },
+  {
+   "id": "narration_control02",
+   "category": "narration_control",
+   "text": "Outside, the bells of the old cathedral tolled, and the square began to empty."
+  },
+  {
+   "id": "narration_control03",
+   "category": "narration_control",
+   "text": "She had walked this road before, in another season, under a different name."
+  },
+  {
+   "id": "narration_control04",
+   "category": "narration_control",
+   "text": "The room was quiet enough that he could hear the clock in the hall downstairs."
+  },
+  {
+   "id": "narration_control05",
+   "category": "narration_control",
+   "text": "Morning came slowly, and with it the ordinary noise of an ordinary city waking."
+  }
+ ]
+}

@@ -237,8 +237,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    regression test now hold it. **§7 #6 is fully closed.**
 7. **Footprint.** Ternary QAT (BitTTS-style, ~6× bounded) composed with existing specialization.
    Cheap, well-understood, unclaimed for this checkpoint.
-8. **Robustness.** Held-out sweeps over numbers, names, acronyms, dialogue, code, rare phonemes.
-   These failure modes are invisible to the current eval set.
+8. **Robustness — partly built (cycle 70).** `eval/robustness.json` now spans 7 categories on fresh
+   held-out text with a narration control. First result: **dialogue is the worst category by far**
+   (drift 18.23 % vs 2.99 % control), reproducing cycles 57–58's `stress`/`patho` signature out of
+   sample, while **rare phonemes are better than the control** — that sub-worry is closed. MCD spans
+   only 12.47–14.46 dB, so *drift*, not MCD, is the instrument that sees category effects. Open:
+   6 items/category is thin; ASR/WER by category is unmeasured; and the set gates nothing yet.
 
 ## 8. Standing dead ends
 

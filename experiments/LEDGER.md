@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 70 | 2026-08-01 | where does `student-fast` break by text category, on a held-out set that spans the hard cases? | >3 dB MCD spread, numbers/acronyms/code worst | spread **2.00 dB** (neither prediction nor falsifier fired); worst is **dialogue** (MCD 14.46, **drift 18.23 %** vs narration 2.99 % — a **6× spread**); rare phonemes are *better* than the control | **KEEP** | adds `eval/robustness.json` (42 items, 7 categories, fresh text) — the old held-out set is 16 undifferentiated narration items and cannot see the known failure mode. Dialogue reproduces the `stress`/`patho` signature out of sample; drift separates categories far better than MCD |
 | 69 | 2026-08-01 | is >510-phoneme chunk splitting a real gap? | the guard is behaviour-neutral (nothing exceeds the limit), so the battery is unchanged | chunker already caps at **exactly 510** over 400 randomized + 4 adversarial inputs (0 violations) — but 510 phonemes = 512 ids = the encoder's exact width, **zero margin, no assertion**, failure mode is a crash | **KEEP** | not a bug; shipped `MAX_PHON`/`_split_long` guard (identity on all real input) + a committed 400-input regression test. Duration drift identical to 4 dp, confirming chunking is unchanged |
 | 68 | 2026-08-01 | can the student presets support `speed != 1.0`? | length tracks 1/speed within ~1 %; battery vs a same-speed teacher no worse than at 1.0× | length err 1.1–5.4 % — **identical to the teacher's own rounding floor**; MCD vs same-speed teacher **+0.085 dB at 1.25×, +0.384 dB at 0.8×** (falsifier was +1 dB); speed-1.0 battery unchanged (drift identical) | **KEEP** | shipped: `duration / speed` before rounding, matching the teacher, on `synth_chapter`, `stream_chapter` and the V3 path; `NotImplementedError` removed. Closes the last hard capability gap in §7 #6. Slowing (0.8×) is the weaker direction and is documented |
 | 67 | 2026-08-01 | does chunk-level streaming make first-audio latency constant, and what does it cost? | TTFA flat <0.15 s; throughput cost <2× | **TTFA exponent 1.000 → 0.062** (0.149/0.157/0.177 s at 1×/4×/16×, up to **28.5× faster**); throughput **1.11× at 1×, 0.96× at 16×**; battery unchanged (drift identical) | **KEEP** | shipped additively as `StudentKokoro.stream_chapter`; `synth_chapter` untouched. 10-hour book: **67 s → 0.16 s to first audio (≈419×)** at no throughput or memory cost. Control caught that the batched path is deterministic, so the streamed noise realization had to be judged on the battery — it passed |
@@ -80,7 +81,12 @@ floor-to-student gap, fixing **magnitude** alone ≤ 14.3 %; the remaining ~63 %
 
 Sources: `experiments/23-final/metrics_refactor.json` (`student`, shipped code),
 `metrics_v2c.json` (`student-fast`), `experiments/11-ship-q8/metrics.json`.
-Held-out (`metrics_v3c_heldout.json`) is consistent: MCD 10.73, drift 0.018/0.100, spk-cos 0.992.
+Held-out (`metrics_v3c_heldout.json`) is consistent: MCD 10.73, drift 0.018/0.100, spk-cos 0.992 —
+but note (cycle 70) that this set is **16 undifferentiated narration items from the same book** and
+cannot see the `stress`/`patho` failure mode. `eval/robustness.json` (42 items, 7 categories, fresh
+text) is the set that can: `student-fast` vs teacher shows **dialogue drift 18.23 % against a
+narration control of 2.99 %**, with MCD spanning only 12.47–14.46 dB. Drift separates categories;
+MCD barely does. Rare phonemes are *better* than the narration control.
 
 **Two corrections to the phase-2 prose, found by reading the files (2026-08-01):**
 - **F0 RMSE is 16.2 Hz mean for `student`, not the "~9 Hz" quoted in the write-ups.**

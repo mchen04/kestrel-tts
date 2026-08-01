@@ -1,0 +1,11 @@
+category            n     MCD   drift%  mel L1     F0   vuv%
+dialogue            6   14.46    18.23   2.289   36.0   41.2
+acronyms            6   13.83     3.82   1.942   34.2   39.0
+code                6   13.53     7.40   2.029   40.0   40.2
+names               6   13.45     4.03   1.693   33.7   30.9
+numbers             6   12.73     6.38   2.124   37.3   41.7
+narration_control   6   12.53     2.99   1.430   25.9   26.3
+rare_phonemes       6   12.47     4.04   1.630   30.8   30.1
+
+spread best->worst category = 2.00 dB MCD   (prediction: >3 dB)
+narration control = 12.53 dB
