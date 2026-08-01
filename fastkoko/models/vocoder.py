@@ -222,3 +222,30 @@ class FreeHead(MaskHead):
         m = mx.exp(logm)
         p = self.pha_head(h).astype(mx.float32)
         return m * mx.cos(p), m * mx.sin(p)
+
+
+class CondHead(MaskHead):
+    """Template as CONDITIONING, output free (cycle 54's recommendation, built in cycle 97).
+
+    The harmonic template's magnitude is projected to a small feature vector and concatenated to the
+    trunk input, so the network sees where harmonics belong; the output predicts the full complex
+    spectrum directly, so quality is not bounded by the template the way MaskHead's is.
+    """
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128, tdim=64):
+        super().__init__(in_dim=in_dim + tdim, dim=dim, blocks=blocks, sdim=sdim)
+        self.tmpl_proj = nn.Linear(NBINS, tdim)
+        self.mag_head = nn.Linear(dim, NBINS)
+        self.pha_head = nn.Linear(dim, NBINS)
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        F = x.shape[1]
+        f0c = f0[:, :F]
+        tre, tim = self.template(f0c, theta)
+        tmag = mx.sqrt(tre * tre + tim * tim)
+        tfeat = self.tmpl_proj(mx.log(tmag + 1e-4).astype(self.tmpl_proj.weight.dtype))
+        xc = mx.concatenate([x, tfeat.astype(x.dtype)], axis=-1)
+        h, _ = self.trunk(xc, f0, n, s)
+        m = mx.exp(mx.clip(self.mag_head(h).astype(mx.float32), -14.0, 8.0))
+        p = self.pha_head(h).astype(mx.float32)
+        return m * mx.cos(p), m * mx.sin(p)
