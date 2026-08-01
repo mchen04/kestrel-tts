@@ -200,10 +200,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    encoder with a duration-only loss damages the `ten` features. **Cycle 63 ran the joint objective and found the student already
    converged** (36 k steps on 4900 items; 3000 more move `dur` loss <0.01 and the battery not at all).
    It also established that **the entire prosody capture is text-only — no audio — so training data is
-   free** at ~0.4 s/chunk. That leaves one untried lever with no known blocker, only a cost:
-   **scale the corpus** (5 k → 25 k chunks, ~3 h of generation) and retrain under the same joint loss.
-   Cheaper fallback if that fails: widen `dur_head` (today a single `Linear(dim→1)` imitating a full
-   BiLSTM) — capacity rather than data may bind.
+   free** at ~0.4 s/chunk. **Cycle 64 then killed the corpus-scale lever before paying for it**:
+   a learning curve over 25/50/100 % of the existing data moves val `dur` loss by only 3.6 % for 4×
+   the data, with gains halving per doubling. Data is not the constraint. **Every data and objective
+   lever is now eliminated** (58 coverage, 60 style-aug, 62 head-only, 63 more steps, 64 more data).
+   The one untried structural option is **capacity**: the duration path ends in a single
+   `Linear(dim→1)` imitating a teacher that runs BERT → duration encoder → BiLSTM → `duration_proj`.
+   Weigh it against `student` already shipping duration-exactness at 1.106 s — the case rests on
+   `student-fast`'s 0.261 s operating point.
    Also still untested: neighbourhood style jitter rather than uniform-random. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.

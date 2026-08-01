@@ -1,0 +1,6 @@
+FRAC=0.25 train=1225 val=100
+RESULT {"frac": 0.25, "n_train": 1225, "val_dur_mae": 0.1503692977130413, "val_dur_std": 0.0061447917921945375}
+FRAC=0.5 train=2450 val=100
+RESULT {"frac": 0.5, "n_train": 2450, "val_dur_mae": 0.14669308687249819, "val_dur_std": 0.006032034937216925}
+FRAC=1.0 train=4900 val=100
+RESULT {"frac": 1.0, "n_train": 4900, "val_dur_mae": 0.14492071171601614, "val_dur_std": 0.006097643515915626}
