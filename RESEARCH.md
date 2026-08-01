@@ -230,8 +230,11 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    exposure** — do this before any further modelling work. **Cycle 68 closed `speed != 1.0`**: `duration / speed` before rounding,
    matching the teacher, on both student presets and the streaming path — +0.085 dB MCD at 1.25× and
    +0.384 dB at 0.8× against a same-speed teacher, speed-1.0 battery unchanged. Slowing is the weaker
-   direction (expansion asks for steady-state frames longer than training ever showed). Still open:
-   >510-phoneme chunk splitting.
+   direction (expansion asks for steady-state frames longer than training ever showed). **Cycle 69 closed >510-phoneme chunking**: it was an unverified
+   assumption, not a defect — the chunker already caps at exactly 510 phonemes (400 randomized +
+   4 adversarial inputs, 0 violations), which is 512 ids and *exactly* the encoder's width. Zero
+   margin and no assertion, so a `_split_long` guard (identity on all real input) and a committed
+   regression test now hold it. **§7 #6 is fully closed.**
 7. **Footprint.** Ternary QAT (BitTTS-style, ~6× bounded) composed with existing specialization.
    Cheap, well-understood, unclaimed for this checkpoint.
 8. **Robustness.** Held-out sweeps over numbers, names, acronyms, dialogue, code, rare phonemes.

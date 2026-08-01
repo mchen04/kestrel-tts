@@ -26,6 +26,28 @@ from .models import DecStudent, F0NStudent, MaskHead, ProsodyStudent
 F0_SCALE = 100.0
 
 
+
+MAX_PHON = 510          # encoder pads ids to 512 and synth wraps as [0, *ids, 0]
+
+
+def _split_long(chunks, limit=MAX_PHON):
+    """Split any chunk whose phoneme count exceeds the encoder's capacity.
+
+    The g2p chunker already keeps chunks at or under `limit` on every input measured
+    (experiments/69-chunk-limit: 400 randomized inputs, max 510). This is a guard, not a
+    behaviour change: with nothing over the limit it is the identity, and it converts a
+    would-be crash (negative np.pad width) into a graceful split if that ever changes.
+    """
+    out = []
+    for gs, ps in chunks:
+        if len(ps) <= limit:
+            out.append((gs, ps))
+            continue
+        for i in range(0, len(ps), limit):
+            out.append((gs if i == 0 else "", ps[i:i + limit]))
+    return out
+
+
 class StudentKokoro:
     def __init__(self, mckpt="experiments/20-distill/gmckpt",
                  deckpt="experiments/20-distill/deckpt",
@@ -80,7 +102,7 @@ class StudentKokoro:
         speed scales predicted durations before rounding, exactly as the teacher does
         (fastkoko/engine.py:139): duration / speed.
         """
-        chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
+        chunks = _split_long([(gs, ps) for gs, ps, _ in self.g2p.chunk(text)])
         if not chunks:
             return np.zeros(0, np.float32), []
         idlists = [[0, *[i for i in map(self.vocab.get, ps) if i is not None], 0]
@@ -127,7 +149,7 @@ class StudentKokoro:
         Note the noise excitation differs from synth_chapter's realization (the schedule consumes the
         RNG differently), so sample values differ while the battery is unchanged.
         """
-        chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
+        chunks = _split_long([(gs, ps) for gs, ps, _ in self.g2p.chunk(text)])
         for i in range(0, len(chunks), group):
             yield self._render_group(chunks[i:i + group], speed)
 
@@ -263,7 +285,7 @@ class StudentKokoroV3:
     def synth_chapter(self, text, speed: float = 1.0):
         from .batch_teacher import durations_and_features
         model = self.model
-        chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
+        chunks = _split_long([(gs, ps) for gs, ps, _ in self.g2p.chunk(text)])
         if not chunks:
             return np.zeros(0, np.float32), []
         idlists = [[0, *[i for i in map(model.vocab.get, ps) if i is not None], 0]
