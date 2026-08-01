@@ -185,9 +185,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    (−1.7 % overall, unbiased). Every >10 % failure is `stress`/`patho` adversarial text. **Cycle 58 then killed the OOD explanation** it had proposed:
    training-corpus coverage does not predict duration error (r² = 0.017, and the *sign is inverted* —
    the 9 bit-exact items are the worst-covered, the 5 worst failures the best-covered). The corpus
-   already contains the patterns (56 % stacked punctuation, 77 % ellipsis). Open candidates now:
-   (a) repetition *content* rather than coverage, (b) the `len(ps)-1` style-pack lookup landing on a
-   style fitted to different material at unusual chunk lengths, (c) weak regression at the edges. Then the modelling question:
+   already contains the patterns (56 % stacked punctuation, 77 % ellipsis). **Cycle 59 found the mechanism:** the two engines' style packs are
+   bit-identical (so the lookup is not the bug), but the teacher's duration response is **3× more
+   style-sensitive** than the student's (52.7 % vs 17.5 % spread on `patho03`) and dips sharply at the
+   natural index, where the student returns its smoothed average. The student never learned a
+   style-conditioned response because `capture_x.py` pairs every chunk with exactly one style
+   (`ref_s = pack[len(ps)-1]`). **Next: regenerate duration training data with style augmentation** —
+   `durations_and_features` needs no audio, so an unlimited (chunk, style, duration) corpus is cheap,
+   including the short-chunk region the current data barely covers. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.
 4. **Dispatch floor (~20–30 µs × ~10k kernels).** Fused Metal kernels, graph capture, CoreML/ANE
