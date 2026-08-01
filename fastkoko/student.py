@@ -361,7 +361,9 @@ class StudentAdapter:
     def __init__(self, fast=False, natural=False):
         if natural:
             from .models.vocoder import ResMaskHead
-            ck = "experiments/55-residual-complex/res20k"
+            # cycle 82: step-2000 snapshot, selected by battery (UTMOS 4.145, F0 33.34)
+            # rather than by where training happened to stop (step 20000: 4.132, F0 43.88).
+            ck = "weights/kestrel_res_step2000"
             self.engine = (StudentKokoro(mckpt=ck, head_cls=ResMaskHead) if fast
                            else StudentKokoroV3(mckpt=ck, head_cls=ResMaskHead))
         else:

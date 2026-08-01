@@ -1,0 +1,11 @@
+checkpoint                UTMOS    F0 Hz   dUTMOS     dF0
+student-fast             3.9763    31.82  +0.0000   +0.00
+step 2000                4.1450    33.34  +0.1687   +1.52
+step 4000                4.1780    37.60  +0.2017   +5.78
+step 8000                4.1662    41.99  +0.1899  +10.17
+step 12000               4.1310    43.07  +0.1547  +11.25
+step 20000 (shipped)     4.1316    43.88  +0.1553  +12.06
+
+Spearman rho(UTMOS, F0 error) across checkpoints = -0.600  (falsifier: |rho|>0.9 proportional)
+best UTMOS: 4.1780 at F0 37.60  vs shipped 4.1316 at 43.88
+-> +0.0464 MOS and -6.28 Hz vs the shipped checkpoint
