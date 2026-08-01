@@ -166,13 +166,15 @@ def phoneme_path(model, idlists):
     return ids, lens, pad, d_en
 
 
-def durations_and_features(model, idlists, styles):
-    """styles: (B,256) mx [full ref_s]. Returns pred_dur (B,T) np int, t_en, d."""
+def durations_and_features(model, idlists, styles, speed: float = 1.0):
+    """styles: (B,256) mx [full ref_s]. Returns pred_dur (B,T) np int, t_en, d.
+
+    speed divides the raw duration before rounding, matching FastKokoro.forward_lazy."""
     ids, lens, pad, d_en = phoneme_path(model, idlists)
     s_pros = styles[:, 128:]
     d = duration_encoder(model.predictor.text_encoder, d_en, s_pros, lens, pad)
     x = _bilstm(d, lens, model.predictor.lstm, dtype=SCAN_DTYPE)
-    duration = mx.sigmoid(model.predictor.duration_proj(x)).sum(axis=-1)  # (B,T)
+    duration = mx.sigmoid(model.predictor.duration_proj(x)).sum(axis=-1) / speed  # (B,T)
     pred = mx.clip(mx.round(duration), 1, 100).astype(mx.int32)
     t_en = text_encoder(model.text_encoder, ids, lens, pad)
     mx.eval(pred, t_en, d)

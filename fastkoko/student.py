@@ -74,8 +74,12 @@ class StudentKokoro:
         self.pack = self.pack.reshape(510, 1, 256)
 
     # ---------- batched chapter synthesis ----------
-    def synth_chapter(self, text):
-        """text -> (audio np.float32, chunks meta). Whole chapter in 3 batched stages."""
+    def synth_chapter(self, text, speed: float = 1.0):
+        """text -> (audio np.float32, chunks meta). Whole chapter in 3 batched stages.
+
+        speed scales predicted durations before rounding, exactly as the teacher does
+        (fastkoko/engine.py:139): duration / speed.
+        """
         chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
         if not chunks:
             return np.zeros(0, np.float32), []
@@ -98,7 +102,7 @@ class StudentKokoro:
             self._enc_c = mx.compile(lambda i, st: self.pros.encode(i, st))
         x = self._enc_c(mx.array(IDS), S)[:, :L]
         ten = self.pros.ten_head(x)
-        dur = nn.softplus(self.pros.dur_head(x)[..., 0])
+        dur = nn.softplus(self.pros.dur_head(x)[..., 0]) / speed
         mx.eval(dur)
         d = np.asarray(dur) * MASK
         pd = (np.clip(np.round(d), 1, 100) * MASK).astype(np.int64)
@@ -113,7 +117,7 @@ class StudentKokoro:
             self._frame_stage(x, pd, Ts40, S, sty, bk, audio_parts)
         return np.concatenate([audio_parts[b] for b in range(B)]), chunks
 
-    def stream_chapter(self, text, group=4):
+    def stream_chapter(self, text, group=4, speed: float = 1.0):
         """Yield audio per group of `group` chunks, in input order, as each completes.
 
         Same stages and weights as synth_chapter — only the scheduling differs. Makes first-audio
@@ -125,9 +129,9 @@ class StudentKokoro:
         """
         chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
         for i in range(0, len(chunks), group):
-            yield self._render_group(chunks[i:i + group])
+            yield self._render_group(chunks[i:i + group], speed)
 
-    def _render_group(self, chunks):
+    def _render_group(self, chunks, speed: float = 1.0):
         idlists = [[0, *[i for i in map(self.vocab.get, ps) if i is not None], 0] for _, ps in chunks]
         B = len(idlists); L = max(len(x) for x in idlists)
         IDS = np.zeros((B, L), np.int32); MASK = np.zeros((B, L), np.float32)
@@ -139,7 +143,7 @@ class StudentKokoro:
         if not hasattr(self, "_enc_c"):
             self._enc_c = mx.compile(lambda i, st: self.pros.encode(i, st))
         x = self._enc_c(mx.array(IDSp), S)[:, :L]
-        dur = nn.softplus(self.pros.dur_head(x)[..., 0]); mx.eval(dur)
+        dur = nn.softplus(self.pros.dur_head(x)[..., 0]) / speed; mx.eval(dur)
         d = np.asarray(dur) * MASK
         pd = (np.clip(np.round(d), 1, 100) * MASK).astype(np.int64)
         Ts40 = pd.sum(axis=1)
@@ -256,7 +260,7 @@ class StudentKokoroV3:
         from misaki import espeak as _esp
         self.g2p = FastG2P(fallback=_esp.EspeakFallback(british=False))
 
-    def synth_chapter(self, text):
+    def synth_chapter(self, text, speed: float = 1.0):
         from .batch_teacher import durations_and_features
         model = self.model
         chunks = [(gs, ps) for gs, ps, _ in self.g2p.chunk(text)]
@@ -265,7 +269,7 @@ class StudentKokoroV3:
         idlists = [[0, *[i for i in map(model.vocab.get, ps) if i is not None], 0]
                    for _, ps in chunks]
         styles = mx.concatenate([self.pack[len(ps) - 1] for _, ps in chunks], axis=0)
-        pd_list, t_en, d, lens = durations_and_features(model, idlists, styles)
+        pd_list, t_en, d, lens = durations_and_features(model, idlists, styles, speed)
         B = len(chunks)
         sty = styles[:, :128]
 
@@ -319,21 +323,19 @@ class StudentKokoroV3:
 
 class StudentAdapter:
     """Provider-compatible adapter (mirrors FastKokoro.synth API) over the
-    batched student engines. speed != 1.0 falls back to per-chunk scaling of
-    durations is NOT supported yet -> raises."""
+    batched student engines. speed scales predicted durations before rounding,
+    matching the teacher (fastkoko/engine.py:139)."""
 
     def __init__(self, fast=False):
         self.engine = StudentKokoro() if fast else StudentKokoroV3()
 
     def synth(self, text, voice="af_heart", speed=1.0):
         from .engine import SynthResult
-        if abs(speed - 1.0) > 1e-6:
-            raise NotImplementedError("student presets support speed=1.0 only")
-        audio, chunks = self.engine.synth_chapter(text)
+        audio, chunks = self.engine.synth_chapter(text, speed)
         # slice audio back per chunk using stored lengths
         # synth_chapter returns concatenated; recompute boundaries via g2p+durations is
         # avoided by re-running per paragraph; simpler: yield one result per call
         yield SynthResult(text, "", [], audio, np.zeros(0, np.int64))
 
     def synth_all(self, text, voice="af_heart", speed=1.0):
-        return self.engine.synth_chapter(text)[0]
+        return self.engine.synth_chapter(text, speed)[0]
