@@ -1,4 +1,14 @@
-# GOAL
+> **Archived — historical record.** This documents a completed phase and is not a live goal or
+> spec. It is preserved unedited for the decision trail. The current goal is
+> [`RESEARCH.md`](../../RESEARCH.md); current state is [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md)
+> and [`docs/MODEL_CARD.md`](../MODEL_CARD.md).
+
+---
+
+# GOAL (phase 1–2 — closed)
+
+Pursued to its honest end: 57× reached, 1000× not reachable with distillation-grade methods on
+this hardware, zero-loss gates failed on texture. See [`PROCESS.md`](PROCESS.md) §9.
 
 Make audio generation **1000× faster — without losing any quality.**
 

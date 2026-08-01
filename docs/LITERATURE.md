@@ -1,4 +1,14 @@
-# Literature sweep — July 2026
+# Literature sweeps
+
+**Append-only log — one section per sweep, newest last.** Every research cycle
+([`RESEARCH.md`](../RESEARCH.md) §5) opens with a sweep and appends its findings here.
+Earlier sections are never rewritten: what the field looked like at the time is the point,
+and a conclusion that later turns out wrong is itself a finding. Each section states its date,
+what was searched, and what it changed about the plan.
+
+---
+
+## Sweep — July 2026
 
 Purpose: before writing code, find out (a) whether the thing we're about to build already exists,
 (b) whether a newer small model beats Kokoro-82M outright, (c) which techniques are actually current.

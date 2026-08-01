@@ -15,13 +15,20 @@ voice `af_heart`. Student stack ≈ 10 M active parameters, frame-rate only (hop
 (the deployment workload), captured on-device from the frozen teacher. No external audio.
 
 ## Evaluation (frozen battery vs teacher references, 55 eval + 16 held-out items)
-| metric | student | student-fast | pass bar |
+Read from the frozen `metrics.json` files (mean/worst), re-verified 2026-08-01 — see
+[`experiments/LEDGER.md`](../experiments/LEDGER.md) for sources and the live values.
+
+| metric (mean/worst) | student | student-fast | control (teacher decoder) |
 |---|---|---|---|
 | WER (whisper-large-v3-turbo) | 5.42 % | 5.42 % | ref 5.65 % ✓ |
-| duration drift worst | 0.329 % ✓ | ~2–5 % ✗ | ≤ ~0.33 % |
-| F0 RMSE | ~9 Hz | ~10 Hz | floor 3.7 Hz |
-| speaker-cos mean/worst | 0.98 / 0.93 ✗ | 0.98 / 0.92 ✗ | worst ≥ 0.998 |
-| MCD (DTW) | 11.8 ✗ | ~13 ✗ | ~3.9 |
+| duration drift % | 0.022 / **0.329** ✓ | 4.97 / **50.30** ✗ | 0.011 / 0.227 |
+| F0 RMSE Hz | 16.19 / 28.54 | 31.82 / 52.81 | 5.24 / 17.87 |
+| speaker-cos | 0.983 / 0.933 ✗ | 0.980 / 0.921 ✗ | 1.000 / 0.998 |
+| MCD dB (DTW) | **11.83** ✗ | 13.78 ✗ | **3.98** = pass bar |
+
+Corrected 2026-08-01: earlier revisions of this card quoted F0 RMSE as "~9 Hz" and `student-fast`
+duration drift as "~2–5 %". The measured values are 16.2 Hz and a **50.3 % worst-case** (the 2–5 %
+was the mean). The drift tail is a real defect under investigation, not a rounding difference.
 Artifact scan: no clipping/dropouts/spikes; level −26 dB. Held-out consistent with eval.
 Independent audit (no cached audio, honest benchmarks, gates untouched): `experiments/23-final/AUDIT.md`.
 

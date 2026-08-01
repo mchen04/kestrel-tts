@@ -1,3 +1,10 @@
+> **Archived — historical record.** This documents a completed phase and is not a live goal or
+> spec. It is preserved unedited for the decision trail. The current goal is
+> [`RESEARCH.md`](../../RESEARCH.md); current state is [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md)
+> and [`docs/MODEL_CARD.md`](../MODEL_CARD.md).
+
+---
+
 # Kokoro-82M on Apple MLX — optimization report (July 2026)
 
 **Goal:** 100× faster and 100× smaller than the running Kokoro-82M setup, zero quality loss, on M2/16 GB,

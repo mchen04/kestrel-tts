@@ -34,3 +34,6 @@ artifacts/*audiobook*
 # copyrighted source texts / transcripts must never be published
 eval/*.epub
 artifacts/*transcript*
+
+# local environment
+.venv/

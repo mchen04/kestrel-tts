@@ -74,7 +74,7 @@ audio @ 24 kHz  (per-chunk slices concatenated)
   frequencies with phase from a float64 F0 cumsum, so pitch accuracy does not
   depend on network capacity, and the head only models envelope + texture. This
   is what let a ~2 M-parameter head beat a much larger free-form GAN head
-  (MCD 9.1 vs 11.1 — see docs/PROCESS.md §3).
+  (MCD 9.1 vs 11.1 — see docs/history/PROCESS.md §3).
 - **Durations are the exactness constraint.** Distilled duration predictors
   plateaued at 2–17 % drift, which is audible as pacing change and fails the
   frozen gate; so the `student` preset keeps the teacher's own timing path and
@@ -89,8 +89,8 @@ audio @ 24 kHz  (per-chunk slices concatenated)
 |---|---|---|---|
 | `student-fast` | ProsodyStudent | DecStudent + MaskHead | 0.239 s |
 | `student` | exact teacher path + F0NStudent | DecStudent + MaskHead | 1.117 s |
-| `ship-q8` (default) | teacher | teacher (q8 packed) | ~13 s |
-| `ship-q4`, `exact` | teacher | teacher | ~13 s |
+| `ship-q8` (default) | teacher | teacher (q8 packed) | 15.3 s |
+| `ship-q4`, `exact` | teacher | teacher | ~15 s |
 
 ## Known sharp edges
 

@@ -1,3 +1,10 @@
+> **Archived — historical record.** This documents a completed phase and is not a live goal or
+> spec. It is preserved unedited for the decision trail. The current goal is
+> [`RESEARCH.md`](../../RESEARCH.md); current state is [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md)
+> and [`docs/MODEL_CARD.md`](../MODEL_CARD.md).
+
+---
+
 # Kokoro 1000× attempt — distilled frame-rate student (July 2026, phase 2)
 
 **Goal:** 1000× faster chapter rendering (163 s reference chapter in ~14 ms on the same M2/16 GB),

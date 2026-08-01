@@ -1,3 +1,10 @@
+> **Archived — historical record.** This documents a completed phase and is not a live goal or
+> spec. It is preserved unedited for the decision trail. The current goal is
+> [`RESEARCH.md`](../../RESEARCH.md); current state is [`docs/ARCHITECTURE.md`](../ARCHITECTURE.md)
+> and [`docs/MODEL_CARD.md`](../MODEL_CARD.md).
+
+---
+
 # Process documentation — the 1000× Kokoro attempt (phase 2)
 
 How this project was actually run, decision by decision, including the dead ends.

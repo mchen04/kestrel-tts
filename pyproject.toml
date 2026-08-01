@@ -2,8 +2,8 @@
 name = "fastkoko"
 version = "0.1.0"
 description = "Optimized MLX Kokoro-82M inference (fixed, fused, quantized) for Apple Silicon"
-requires-python = ">=3.10"
-dependencies = ["mlx>=0.30", "mlx-audio>=0.4", "numpy"]
+requires-python = ">=3.10,<3.13"   # misaki -> spacy/thinc have no wheels for 3.13+
+dependencies = ["mlx>=0.30", "mlx-audio>=0.4", "numpy", "misaki[en]>=0.7"]
 
 [build-system]
 requires = ["setuptools>=68"]
