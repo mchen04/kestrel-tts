@@ -1,0 +1,38 @@
+=== is the error per-token (absolute) or proportional? ===
+corr(|err frames|, teacher frames) = 0.5890   r2=0.347
+corr(|err frames|, char count)     = 0.5973   r2=0.357
+
+error as %% of item duration vs item duration:
+corr(err%, teacher frames) = -0.1110    <- negative means short items are worse
+
+id         teach_fr  err_fr    err%  chars/frame
+patho03         167      84    50.3        0.407
+patho02         187      76    40.6        0.374
+stress08        185      28    15.1        0.362
+patho00        1292    -161    12.5        0.438
+stress03        154      19    12.3        0.422
+para06          302      27     8.9        0.417
+stress04        329      29     8.8        0.231
+para04          440      38     8.6        0.386
+   ...
+short12          77       0     0.0        0.247
+short15          83       0     0.0        0.325
+short16          75       0     0.0        0.267
+para11          506       0     0.0        0.377
+
+corr(drift%, chars-per-frame 'speech density') = 0.2187   r2=0.048
+corr(drift%, teacher frames)                   = -0.1105
+
+=== bimodality ===
+items bit-exact with the teacher (err = 0 frames): 9/55
+items with any error: 46
+
+category    exact  drifting
+long            0         7
+para            1        12
+patho           0         5
+short           8        12
+stress          0        10
+
+items with >10% error: ['stress03', 'stress08', 'patho00', 'patho02', 'patho03']
+their categories: ['stress', 'stress', 'patho', 'patho', 'patho']

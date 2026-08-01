@@ -1,0 +1,442 @@
+[
+ {
+  "id": "short00",
+  "drift": 1.8519,
+  "nch": 1,
+  "nchar": 6,
+  "dsamp": 600,
+  "ref": 32400
+ },
+ {
+  "id": "short01",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 5,
+  "dsamp": 0,
+  "ref": 31200
+ },
+ {
+  "id": "short02",
+  "drift": 4.1667,
+  "nch": 1,
+  "nchar": 17,
+  "dsamp": 1800,
+  "ref": 43200
+ },
+ {
+  "id": "short03",
+  "drift": 1.3889,
+  "nch": 1,
+  "nchar": 22,
+  "dsamp": 600,
+  "ref": 43200
+ },
+ {
+  "id": "short04",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 16,
+  "dsamp": 0,
+  "ref": 42600
+ },
+ {
+  "id": "short05",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 14,
+  "dsamp": 0,
+  "ref": 39000
+ },
+ {
+  "id": "short06",
+  "drift": 1.3158,
+  "nch": 1,
+  "nchar": 24,
+  "dsamp": 600,
+  "ref": 45600
+ },
+ {
+  "id": "short07",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 20,
+  "dsamp": 0,
+  "ref": 44400
+ },
+ {
+  "id": "short08",
+  "drift": 6.1538,
+  "nch": 1,
+  "nchar": 15,
+  "dsamp": 2400,
+  "ref": 39000
+ },
+ {
+  "id": "short09",
+  "drift": 1.1905,
+  "nch": 1,
+  "nchar": 26,
+  "dsamp": 600,
+  "ref": 50400
+ },
+ {
+  "id": "short10",
+  "drift": 6.25,
+  "nch": 1,
+  "nchar": 27,
+  "dsamp": 3000,
+  "ref": 48000
+ },
+ {
+  "id": "short11",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 26,
+  "dsamp": 0,
+  "ref": 49800
+ },
+ {
+  "id": "short12",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 19,
+  "dsamp": 0,
+  "ref": 46200
+ },
+ {
+  "id": "short13",
+  "drift": 2.6667,
+  "nch": 1,
+  "nchar": 21,
+  "dsamp": 1200,
+  "ref": 45000
+ },
+ {
+  "id": "short14",
+  "drift": 3.4884,
+  "nch": 1,
+  "nchar": 27,
+  "dsamp": 1800,
+  "ref": 51600
+ },
+ {
+  "id": "short15",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 27,
+  "dsamp": 0,
+  "ref": 49800
+ },
+ {
+  "id": "short16",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 20,
+  "dsamp": 0,
+  "ref": 45000
+ },
+ {
+  "id": "short17",
+  "drift": 4.3956,
+  "nch": 1,
+  "nchar": 29,
+  "dsamp": 2400,
+  "ref": 54600
+ },
+ {
+  "id": "short18",
+  "drift": 5.0,
+  "nch": 1,
+  "nchar": 21,
+  "dsamp": 2400,
+  "ref": 48000
+ },
+ {
+  "id": "short19",
+  "drift": 3.9604,
+  "nch": 1,
+  "nchar": 36,
+  "dsamp": 2400,
+  "ref": 60600
+ },
+ {
+  "id": "para00",
+  "drift": 0.6441,
+  "nch": 1,
+  "nchar": 248,
+  "dsamp": 2400,
+  "ref": 372600
+ },
+ {
+  "id": "para01",
+  "drift": 3.7267,
+  "nch": 1,
+  "nchar": 137,
+  "dsamp": 7200,
+  "ref": 193200
+ },
+ {
+  "id": "para02",
+  "drift": 7.5873,
+  "nch": 1,
+  "nchar": 256,
+  "dsamp": 30000,
+  "ref": 395400
+ },
+ {
+  "id": "para03",
+  "drift": 5.5092,
+  "nch": 1,
+  "nchar": 260,
+  "dsamp": 19800,
+  "ref": 359400
+ },
+ {
+  "id": "para04",
+  "drift": 8.39,
+  "nch": 1,
+  "nchar": 170,
+  "dsamp": 22200,
+  "ref": 264600
+ },
+ {
+  "id": "para05",
+  "drift": 1.6164,
+  "nch": 1,
+  "nchar": 386,
+  "dsamp": 9000,
+  "ref": 556800
+ },
+ {
+  "id": "para06",
+  "drift": 8.9404,
+  "nch": 1,
+  "nchar": 126,
+  "dsamp": 16200,
+  "ref": 181200
+ },
+ {
+  "id": "para07",
+  "drift": 8.1531,
+  "nch": 1,
+  "nchar": 253,
+  "dsamp": 29400,
+  "ref": 360600
+ },
+ {
+  "id": "para08",
+  "drift": 0.4728,
+  "nch": 1,
+  "nchar": 171,
+  "dsamp": 1200,
+  "ref": 253800
+ },
+ {
+  "id": "para09",
+  "drift": 1.5873,
+  "nch": 1,
+  "nchar": 142,
+  "dsamp": 3600,
+  "ref": 226800
+ },
+ {
+  "id": "para10",
+  "drift": 0.1321,
+  "nch": 1,
+  "nchar": 308,
+  "dsamp": 600,
+  "ref": 454200
+ },
+ {
+  "id": "para11",
+  "drift": 0.0,
+  "nch": 1,
+  "nchar": 191,
+  "dsamp": 0,
+  "ref": 303600
+ },
+ {
+  "id": "para12",
+  "drift": 3.1509,
+  "nch": 1,
+  "nchar": 220,
+  "dsamp": 11400,
+  "ref": 361800
+ },
+ {
+  "id": "stress00",
+  "drift": 3.1447,
+  "nch": 1,
+  "nchar": 76,
+  "dsamp": 6000,
+  "ref": 190800
+ },
+ {
+  "id": "stress01",
+  "drift": 0.7042,
+  "nch": 1,
+  "nchar": 63,
+  "dsamp": 1800,
+  "ref": 255600
+ },
+ {
+  "id": "stress02",
+  "drift": 7.0707,
+  "nch": 1,
+  "nchar": 78,
+  "dsamp": 12600,
+  "ref": 178200
+ },
+ {
+  "id": "stress03",
+  "drift": 12.3377,
+  "nch": 1,
+  "nchar": 65,
+  "dsamp": 11400,
+  "ref": 92400
+ },
+ {
+  "id": "stress04",
+  "drift": 8.8146,
+  "nch": 1,
+  "nchar": 76,
+  "dsamp": 17400,
+  "ref": 197400
+ },
+ {
+  "id": "stress05",
+  "drift": 4.878,
+  "nch": 1,
+  "nchar": 74,
+  "dsamp": 6000,
+  "ref": 123000
+ },
+ {
+  "id": "stress06",
+  "drift": 2.0649,
+  "nch": 1,
+  "nchar": 78,
+  "dsamp": 4200,
+  "ref": 203400
+ },
+ {
+  "id": "stress07",
+  "drift": 6.5789,
+  "nch": 1,
+  "nchar": 70,
+  "dsamp": 12000,
+  "ref": 182400
+ },
+ {
+  "id": "stress08",
+  "drift": 15.1351,
+  "nch": 1,
+  "nchar": 67,
+  "dsamp": 16800,
+  "ref": 111000
+ },
+ {
+  "id": "stress09",
+  "drift": 1.6588,
+  "nch": 1,
+  "nchar": 73,
+  "dsamp": 4200,
+  "ref": 253200
+ },
+ {
+  "id": "patho00",
+  "drift": 12.4613,
+  "nch": 2,
+  "nchar": 566,
+  "dsamp": 96600,
+  "ref": 775200
+ },
+ {
+  "id": "patho01",
+  "drift": 0.7194,
+  "nch": 1,
+  "nchar": 56,
+  "dsamp": 600,
+  "ref": 83400
+ },
+ {
+  "id": "patho02",
+  "drift": 40.6417,
+  "nch": 1,
+  "nchar": 70,
+  "dsamp": 45600,
+  "ref": 112200
+ },
+ {
+  "id": "patho03",
+  "drift": 50.2994,
+  "nch": 1,
+  "nchar": 68,
+  "dsamp": 50400,
+  "ref": 100200
+ },
+ {
+  "id": "patho04",
+  "drift": 0.5848,
+  "nch": 1,
+  "nchar": 49,
+  "dsamp": 600,
+  "ref": 102600
+ },
+ {
+  "id": "long00",
+  "drift": 5.4966,
+  "nch": 4,
+  "nchar": 1580,
+  "dsamp": 121200,
+  "ref": 2205000
+ },
+ {
+  "id": "long01",
+  "drift": 1.5585,
+  "nch": 4,
+  "nchar": 1713,
+  "dsamp": 36600,
+  "ref": 2348400
+ },
+ {
+  "id": "long02",
+  "drift": 1.247,
+  "nch": 4,
+  "nchar": 1496,
+  "dsamp": 27600,
+  "ref": 2213400
+ },
+ {
+  "id": "long03",
+  "drift": 2.0905,
+  "nch": 3,
+  "nchar": 1128,
+  "dsamp": 33000,
+  "ref": 1578600
+ },
+ {
+  "id": "long04",
+  "drift": 2.2023,
+  "nch": 3,
+  "nchar": 1300,
+  "dsamp": 38400,
+  "ref": 1743600
+ },
+ {
+  "id": "long05",
+  "drift": 1.1164,
+  "nch": 3,
+  "nchar": 1078,
+  "dsamp": 16800,
+  "ref": 1504800
+ },
+ {
+  "id": "long06",
+  "drift": 0.8747,
+  "nch": 3,
+  "nchar": 1210,
+  "dsamp": 15000,
+  "ref": 1714800
+ }
+]

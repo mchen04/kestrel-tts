@@ -180,8 +180,11 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
 3. **`student-fast` duration drift — worse than documented.** Measured 4.97 % mean but **50.3 %
    worst-case** (`experiments/23-final/metrics_v2c.json`); the phase-2 prose said "2–5 %", which
    was the mean only. A 50 % item is not a texture issue, it is broken timing on some input —
-   **first find out which items fail and why** (a long tail? a specific phoneme pattern? a
-   chunk-boundary bug?) before attempting a better duration head. Then the modelling question:
+   **cycle 57 did the diagnosis**: not a long tail (bimodal — 9/55 items bit-exact), not a
+   chunk-boundary bug (worst items are single-chunk; Δr² = −0.006 vs length), not general accuracy
+   (−1.7 % overall, unbiased). Every >10 % failure is `stress`/`patho` adversarial text. The open
+   question is now specifically **out-of-distribution robustness of the duration student** — start by
+   measuring how often repetition/dense-punctuation patterns appear in the capture corpus. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.
 4. **Dispatch floor (~20–30 µs × ~10k kernels).** Fused Metal kernels, graph capture, CoreML/ANE

@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 57 | 2026-08-01 | is `student-fast`'s 50.3 % drift tail a chunk-boundary bug? | \|Δsamples\| correlates with chunk count at r>0.8, beating char count by Δr²>0.1 | chunk count r²=0.354 vs char count r²=0.360 (**Δr² = −0.006**); the two worst items are **single-chunk** | **KILL** | boundary hypothesis dead. Real shape: **bimodal, not a tail** — 9/55 items bit-exact, and *every* item >10 % error is `stress`/`patho` (adversarial punctuation/repetition). Duration error is −1.7 % overall and unbiased; it is an out-of-distribution problem, not accuracy or plumbing |
 | 56 | 2026-08-01 | does an adversarial gradient make the residual capacity get used? | residual energy 0.00 % → >0.5 % within the box | flat across 2500 generator steps: 0.0019 → 0.0017 %; SBS 0.96301 (shipped parity, +0.00050 vs cycle 55's pointwise residual, t=1.85) | **PARK** | falsified *in the box*, but 2500 generator steps is ~5 % of the 52 k that produced the current head — a dose question, not a measurement question. Revival: resume to ≥20 k generator steps (disc checkpoint now saved); if still flat, blocker moves upstream to the 80 fps conditioning |
 | 55 | 2026-08-01 | can a learned complex residual cross MaskHead's 0.96853 ceiling? | SBS ≥ 0.970, above the old ceiling | **SBS 0.96251** — below shipped (t=−1.67) and below its matched-step control (t=−1.98); residual carries **0.00 %** of output energy | **KILL** | capacity was reachable and *unused*: under pointwise L1/L2 losses the optimal deterministic prediction of stochastic inter-harmonic detail is **zero**. The blocker is the objective, not the architecture — next cycle must be distributional/adversarial |
 | 54 | 2026-08-01 | what is MaskHead's representational ceiling, given oracle mask/phase/f0? | oracle fit lands near the floor (SBS >0.99) — parameterization is fine, training is the blocker | **ceiling SBS 0.96853** vs floor 0.99915 and shipped 0.96300: only **15.3 %** of the gap is reachable by any training, **84.7 % is architectural**; student already at **99.4 % of its own ceiling** | **KILL** (the architecture) | 66.6 % of bins are unreachable by the harmonic template, hold 8.2 % of teacher energy, and take **100 %** of the oracle residual — the haze is inter-harmonic *phase*. Improve-MaskHead is closed; next head must emit deterministic inter-harmonic energy |
@@ -73,7 +74,12 @@ Held-out (`metrics_v3c_heldout.json`) is consistent: MCD 10.73, drift 0.018/0.10
 - **F0 RMSE is 16.2 Hz mean for `student`, not the "~9 Hz" quoted in the write-ups.**
 - **`student-fast` duration drift worst-case is 50.3 %, not "2–5 %."** The 2–5 % figure is close to
   the *mean* (4.97 %); the tail is an order of magnitude worse and is a real defect, not a rounding
-  difference. Treat `student-fast` timing as unreliable on some items until a cycle investigates.
+  difference. **Cycle 57 characterized it:** the drift is *bimodal, not a tail* — 9/55 items are
+  bit-exact with the teacher, and every item above 10 % error is `stress` or `patho` (dense
+  punctuation, repeated identical sentences). Overall duration error is −1.7 % and unbiased, and the
+  worst items are single-chunk, so it is neither a chunker bug nor a general accuracy problem.
+  Read the row as "50.3 % on adversarial text, 0–8 % on narration"; the defect is out-of-distribution
+  robustness in the duration student's training data.
 
 **Speed / footprint — re-measured 2026-08-01** (cycle 50, `experiments/50-frontier-verify/`).
 M2/16 GB, quiet machine, warm, median of 5, one process per config, chapter = first 12 `para`/`long`
