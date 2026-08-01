@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 87 | 2026-08-01 | does DNSMOS confirm the UTMOS-driven shipped win? | confirms the ordering with a smaller margin | **inverts it**: aux **−0.0131** (t=−0.77, n.s.) and residual **−0.0374** (t=−2.30) vs baseline, where UTMOS says +0.240 / +0.176 | **PARK** | the two reference-free instruments disagree; the shipped win rests on **one** predictor. DNSMOS is the wrong-task instrument (cycle 73: it ranks real speech below the teacher) so this is not decisive — but I cannot distinguish "right instrument" from "twelve cycles of overfitting UTMOS" from inside this battery. Nothing unshipped (opt-in; MCD/F0/vuv/WER all fine); disagreement documented. **Revival: a third naturalness predictor or a blind A/B** |
 | 86 | 2026-08-01 | is the gain about *complex residuals*, or would any auxiliary pathway do? | aux pathway gains <+0.08; insertion point matters | **aux log-magnitude pathway gains +0.1991 — MORE than the complex residual's +0.1711** — with **F0 31.57 (−0.25 vs baseline)** and **vuv 29.93 (vs 39.78)** | **KEEP** | falsifier fired at 1.6× threshold. Mechanism is **"briefly retraining a head with spare capacity"**, not complex residuals — ten cycles told the wrong story. **Re-shipped both `*-natural` presets on `AuxMaskHead` seed 2**: UTMOS **4.2162** (best measured), MCD 13.443 (better than baseline), **pitch and voicing defects both gone**. First win in the run that trades nothing away |
 | 85 | 2026-08-01 | is `ResMaskHead` dead weight — does a plain retrained head gain the same? | plain control gains <+0.05, residual layers necessary | plain MaskHead 2000 steps (n=3): **+0.0185**; ResMaskHead: **+0.1711**. Residual layers account for **89 %** of the gain | **KILL** (of the simplification) | completes the bracket: residual-only +0.024 (c81), trunk-only +0.019 (here), **both +0.171** — the effect is **entirely interactional, ~4× the sum of parts**. The residual is a training-time degree of freedom that changes the trunk's solution, not a runtime component. Cycle 53's null was at 6 k steps / slow preset / pre-UTMOS, so it never was the matching control |
 | 84 | 2026-08-01 | does the residual gain reproduce across seeds? | all seeds within ±0.05 MOS of +0.169 | **+0.1761 / +0.1713 / +0.1660** — mean **+0.1711, range 0.0101**, an order of magnitude inside the falsifier band. F0 cost +2.23 Hz mean but range 1.09 (72 % spread) | **KEEP** | validates every shipping decision since cycle 76 as a real effect, not a lucky draw. Incidental: re-running seed 0 differs by **0.0074 MOS**, so there is run-to-run nondeterminism setting a floor on checkpoint discrimination. Process note: this check belonged *before* cycle 76 and was only affordable because cycle 83 found the early saturation |
@@ -70,6 +71,14 @@ pass bar for a vocoder head.
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
 | DNSMOS ovrl_mos ↑ (reference-free, cycle 72) | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
 | **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | 3.9763 |
+
+⚠️ **Cycle 87: the two reference-free instruments disagree about the `*-natural` presets.** UTMOS
+scores the shipped aux head +0.240 over `student-fast`; **DNSMOS scores it −0.013 (t=−0.77, not
+significant)**. DNSMOS is the wrong-task instrument (enhancement-trained; cycle 73 measured it
+ranking real speech below the teacher), so this is not decisive — but the `*-natural` headline claim
+rests on **one predictor** and is not corroborated. Its other metrics (MCD 13.443 vs 13.781, F0 32.49
+vs 31.82, vuv 30.17 vs 29.38, WER 5.38 vs 5.27) are unambiguous. Resolve with a third
+naturalness-trained predictor or a blind A/B.
 
 **UTMOS22-strong is the right-task instrument** (VoiceMOS naturalness, self-noise 0.0018). It sizes
 the teacher−`student` gap at **10.4 % (0.464 MOS, t=13.1)**, agrees `ship-q8` ≡ teacher (t=0.61), and

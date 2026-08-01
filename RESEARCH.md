@@ -290,7 +290,7 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   then showed it is not about complex residuals at all**: an auxiliary *log-magnitude* pathway of the
   same capacity gains **+0.199** with **no pitch or voicing cost**, and now ships. The mechanism is
   "briefly retrain a head that has spare trainable capacity"; the insertion point is free, and the
-  log-magnitude placement is better because it never perturbs harmonic phase. Steer all further texture work by UTMOS. Still dead: the RI-loss arms
+  log-magnitude placement is better because it never perturbs harmonic phase. Steer all further texture work by UTMOS — **but cycle 87 found DNSMOS does not corroborate the UTMOS-driven win (−0.013, n.s., where UTMOS says +0.24), so a third naturalness-trained predictor or a blind A/B is needed before treating UTMOS gains as settled.** Still dead: the RI-loss arms
   (cycle 53, −0.005/−0.019, n.s.) and the adversarial residual as shipped (cycle 56, −0.121).
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).
