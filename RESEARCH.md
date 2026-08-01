@@ -284,7 +284,11 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   pitch regression (two estimators) both come from the 20 k-step whole-head retrain, **not** from the
   residual output — with the trunk frozen the residual gives +0.024 MOS and no pitch damage, and
   without residual layers the same retrain gives nothing (cycle 53). They are inseparable at this
-  architecture; shipped opt-in as `student-natural` / `student-fast-natural`. Steer all further texture work by UTMOS. Still dead: the RI-loss arms
+  architecture; shipped opt-in as `student-natural` / `student-fast-natural` (step-2000 snapshot,
+  cycle 82; reproduced across 3 seeds, cycle 84). **Cycles 81/85 bracket the mechanism**: residual
+  layers alone +0.024, trainable trunk alone +0.019, **both +0.171** — entirely interactional, ~4× the
+  sum of parts, with the residual acting as a training-time degree of freedom rather than a runtime
+  component (0.00 % of output energy). Steer all further texture work by UTMOS. Still dead: the RI-loss arms
   (cycle 53, −0.005/−0.019, n.s.) and the adversarial residual as shipped (cycle 56, −0.121).
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).

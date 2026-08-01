@@ -1,0 +1,7 @@
+arm                               UTMOS mean     gain   range      F0
+student-fast (baseline)               3.9763  +0.0000       -   31.82
+plain head, 2000 steps (n=3)          3.9948  +0.0185  0.0171   32.42
+RESIDUAL head, 2000 steps (n=3)       4.1474  +0.1711  0.0101   34.06
+
+residual layers account for 89% of the total gain
+plain-control gain +0.0185 vs falsifier threshold +0.12 -> not fired
