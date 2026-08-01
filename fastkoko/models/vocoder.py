@@ -200,3 +200,25 @@ class AuxMaskHead(MaskHead):
         else:
             nr, ni = noise
         return sre + env * nr, sim + env * ni
+
+
+class FreeHead(MaskHead):
+    """Template-free head: predicts log-magnitude and phase per bin directly.
+
+    Same trunk and conditioning as MaskHead (x, vuv, log-f0, n) but no harmonic template and no
+    noise envelope — the network owns the whole complex spectrum. F0 stays a conditioning input.
+    Cycle 94 measured the template at 35.9% of head time; cycles 54/91 measured it capping quality
+    at 60-80% of the gap. This removes both at once. See experiments/95-vocos-head/.
+    """
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128):
+        super().__init__(in_dim=in_dim, dim=dim, blocks=blocks, sdim=sdim)
+        self.mag_head = nn.Linear(dim, NBINS)
+        self.pha_head = nn.Linear(dim, NBINS)
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, _ = self.trunk(x, f0, n, s)
+        logm = mx.clip(self.mag_head(h).astype(mx.float32), -14.0, 8.0)
+        m = mx.exp(logm)
+        p = self.pha_head(h).astype(mx.float32)
+        return m * mx.cos(p), m * mx.sin(p)
