@@ -47,6 +47,10 @@ it. What is never a trade: moving a number by weakening the thing that measures 
    to make a result pass. *Adding a better metric is progress; deleting a failing one is fraud.*
 4. **Honest reporting.** Every claim carries its measurement. Negative results are recorded with
    the same care as positive ones — they are the actual asset.
+   **4b. Two instruments for a ship-grade claim (added cycle 88).** Anything strong enough to ship
+   must be confirmed by *two independent* instruments of the right kind, checked *before* shipping.
+   Cycles 75–86 steered by UTMOS alone and shipped twice; NISQA and DNSMOS then both scored those
+   presets *below* baseline and they were withdrawn. The second instrument costs an afternoon.
 5. **Gate-failing work never ships as default.** Opt-in, labelled, failure stated in `README.md`.
 
 ## 3. Scope — what you may change

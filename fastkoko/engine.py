@@ -49,30 +49,17 @@ PRESETS = {
 
 
 def from_preset(name: str, **overrides):
+    """Named presets. NOTE: `student-natural` / `student-fast-natural` were shipped in cycles 76–86
+    on a +0.24 UTMOS gain and **withdrawn in cycle 88**: NISQA (−0.563, t=−7.2) and DNSMOS (−0.013)
+    both score them *below* `student-fast`, so 2 of 3 reference-free instruments reject the claim.
+    The `AuxMaskHead`/`ResMaskHead` classes and weights remain for research use; see
+    experiments/88-third-instrument/RESULT.md."""
     if name in ("student", "student-exact-prosody"):
         from .student import StudentAdapter
         return StudentAdapter(fast=False)
     if name in ("student-fast",):
         from .student import StudentAdapter
         return StudentAdapter(fast=True)
-    if name in ("student-fast-natural",):
-        # NOTE (cycle 87): the UTMOS gain is NOT corroborated by DNSMOS (-0.013, n.s.).
-        # The headline claim rests on one predictor. Other metrics are unambiguous.
-        # opt-in, NOT the default: +0.155 UTMOS over `student-fast` (cycle 78) and tied with
-        # `student-natural` at 4x the speed. COST: pitch accuracy is measurably worse -- F0 RMSE
-        # 31.8 -> 43.9 (pyworld) and 44.3 -> 75.2 (independent autocorrelation, cycle 79), i.e. a
-        # confirmed defect and NOT a teacher-similarity artifact. vuv 29.4 -> 39.7.
-        # Prefer `student-fast` if pitch stability matters.
-        # See experiments/78-fast-residual/ and experiments/79-f0-artifact/RESULT.md.
-        from .student import StudentAdapter
-        return StudentAdapter(fast=True, natural=True)
-    if name in ("student-natural",):
-        # NOTE (cycle 87): the UTMOS gain is NOT corroborated by DNSMOS (-0.013, n.s.).
-        # opt-in, NOT the default: +0.114 UTMOS over `student` (cycle 75) at a 2.6x vuv-error
-        # regression vs the teacher (cycle 76). F0 is only mildly affected on this preset
-        # (16.2 -> 18.0) unlike the fast one (cycle 79). See experiments/76-residual-gates/RESULT.md.
-        from .student import StudentAdapter
-        return StudentAdapter(fast=False, natural=True)
     cfg = dict(PRESETS[name])
     cfg.update(overrides)
     return FastKokoro(**cfg)
