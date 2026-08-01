@@ -1,0 +1,14 @@
+system                      ovrl_mos  p808_mos  sig_mos
+floor (ref_fp32)              3.4326    4.1324   3.6462
+floor pair (ref_fp32_b)       3.4350    4.1351   3.6489
+ship-q8                       3.4320    4.1278   3.6460
+student                       3.1665    3.8918   3.4391
+student-fast                  3.1439    3.8847   3.4146
+
+metric self-noise (two teacher renders of the same text) = 0.0024 MOS
+floor (ref_fp32) - ship-q8: +0.0005 MOS  t=  0.17
+floor (ref_fp32) - student: +0.2660 MOS  t= 12.93
+student - student-fast: +0.0226 MOS  t=  0.96
+
+teacher absolute ovrl_mos = 3.433 / 5   p808 = 4.132 / 5
+student is 7.7% below the teacher on ovrl_mos

@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 72 | 2026-08-01 | does a **reference-free** score agree with the reference-aware battery, and where does it place the teacher? | ordering floor ≈ teacher > `ship-q8` > `student` > `student-fast`, teacher near the top of the scale | ordering **confirmed** (`ship-q8` − teacher t=0.17; `student` − teacher t=12.9), but the student is only **7.7 % below the teacher** (3.167 vs 3.433 ovrl_mos) where MCD says 3×; `student` vs `student-fast` **indistinguishable** (t=0.96); **teacher itself is 3.43/5** | **KEEP** | closes cycle 51's loophole — a metric that never sees the teacher agrees with those that use it as reference. But the perceptual gap is far smaller than MCD implies, and the ceiling being distilled toward is mid-scale, so **backlog #5 (beat the teacher) rises above closing the gap to it** |
 | 71 | 2026-08-01 | does `student-fast` lose intelligibility on the hard categories? | student−teacher WER delta <2 pp and uniform, **including dialogue**, because drift is a timing error and ASR is pacing-insensitive | worst delta **+1.67 pp** (dialogue); overall **17.52 % vs teacher 19.12 %, −1.59 pp**; absolute WER on `code`/`rare_phonemes` is an ASR limit, identical for both engines | **KEEP** | intelligibility measured per category for the first time and it is healthy. **Cycle 70's worst timing category costs +1.67 pp of content** — the texture and duration gaps chased for 20 cycles do not damage what a listener receives; they are naturalness arguments, not correctness ones |
 | 70 | 2026-08-01 | where does `student-fast` break by text category, on a held-out set that spans the hard cases? | >3 dB MCD spread, numbers/acronyms/code worst | spread **2.00 dB** (neither prediction nor falsifier fired); worst is **dialogue** (MCD 14.46, **drift 18.23 %** vs narration 2.99 % — a **6× spread**); rare phonemes are *better* than the control | **KEEP** | adds `eval/robustness.json` (42 items, 7 categories, fresh text) — the old held-out set is 16 undifferentiated narration items and cannot see the known failure mode. Dialogue reproduces the `stress`/`patho` signature out of sample; drift separates categories far better than MCD |
 | 69 | 2026-08-01 | is >510-phoneme chunk splitting a real gap? | the guard is behaviour-neutral (nothing exceeds the limit), so the battery is unchanged | chunker already caps at **exactly 510** over 400 randomized + 4 adversarial inputs (0 violations) — but 510 phonemes = 512 ids = the encoder's exact width, **zero margin, no assertion**, failure mode is a crash | **KEEP** | not a bug; shipped `MAX_PHON`/`_split_long` guard (identity on all real input) + a committed 400-input regression test. Duration drift identical to 4 dp, confirming chunking is unchanged |
@@ -53,6 +54,14 @@ pass bar for a vocoder head.
 | F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 31.82 / 52.81 |
 | spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.980 / 0.921 |
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
+| DNSMOS ovrl_mos ↑ (reference-free, cycle 72) | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
+
+**DNSMOS is reference-free** (added cycle 72, `experiments/72-reffree/`) — it is the only instrument
+here that can rank the teacher itself, and it does: **the teacher scores 3.43/5**. Self-noise 0.0024.
+It confirms the reference-aware ordering (`ship-q8` ≡ teacher, t=0.17; `student` below, t=12.9) but
+sizes the gap at **7.7 %**, against MCD's 3×. `student` and `student-fast` are indistinguishable on it
+(t=0.96). Instrument caveat: DNSMOS is trained for enhancement, not TTS naturalness — trust the
+ordering, not the absolute values.
 
 **MaskHead's measured ceiling (cycle 54): SBS 0.96853.** With oracle mask, oracle phase, oracle f0
 and a perfect-magnitude noise path, the current parameterization cannot exceed this. The shipped
