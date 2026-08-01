@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 61 | 2026-08-01 | what does duration-exactness cost `student-fast`? | wall 0.261 → <0.50 s; drift 4.97/50.30 → `student`'s 0.022/0.329 | wall **0.979 s** (+0.72 s, past the 0.7 s falsifier); drift **0.011/0.23**, *better* than `student`; mel L1 **1.618 → 0.591** | **KILL** (dominated) | 11 % faster than `student` but worse MCD/F0 and 2× its RAM — no operating point worth a preset. **Key finding: most of `student-fast`'s quality gap is a timing artifact, not a vocoder one** (mel L1 −63 %, F0 −42 %, vuv −61 % from the duration change alone) |
 | 60 | 2026-08-01 | does style-augmented duration data close the drift tail? | worst-case drift 50.3 % → <15 %, mean <3 %, student style-spread rises toward the teacher's 52.7 % | **mean 8.74 % (worse than shipped 4.97 %), worst 45.51 %**; loses to its matched natural-only control on all 6 battery metrics; style spread *fell* vs control (20.6 % vs 28.8 %) | **KILL** | random styles carry no information about the chunk they are paired with, so the head learned to ignore style — the opposite of the goal. Cycle 59's measurement stands; the remedy was wrong. A neighbourhood-jitter scheme is untested and is a different experiment |
 | 59 | 2026-08-01 | does the `len(ps)-1` style-pack lookup cause the drift tail? | fast head strongly style-sensitive (>20 % spread), lookup amplifies error at odd lengths | packs **bit-identical** between engines, so the lookup cannot diverge them. Sweep found the reverse: **teacher spread 52.7 % vs student 17.5 %** on `patho03` | **KILL** (of the lookup) | but found the mechanism: the student learned a **style-insensitive** duration response and misses the teacher's sharp dip at the natural index. Capture pairs every chunk with exactly one style (`ref_s = pack[len(ps)-1]`), so the style axis was never trained. Explains the bimodality and reconciles cycle 58 |
 | 58 | 2026-08-01 | is the `student-fast` drift tail an out-of-distribution problem? | failing chunks sit in a <1 % sparse corner; bit-exact items in the dense core | corr(coverage, error) = **−0.130, r²=0.017**; zero-error items mean coverage **0.86 %**, >10 %-error items **9.17 %** — sign inverted | **KILL** | coverage does not predict error. **Retracts cycle 57's OOD reframe** (written from failing items only, without the passing control). Corpus already has the patterns: 56 % stacked punctuation, 77 % ellipsis. Next candidates: repetition content, or the `len(ps)-1` style-pack lookup |
@@ -81,8 +82,12 @@ Held-out (`metrics_v3c_heldout.json`) is consistent: MCD 10.73, drift 0.018/0.10
   bit-exact with the teacher, and every item above 10 % error is `stress` or `patho` (dense
   punctuation, repeated identical sentences). Overall duration error is −1.7 % and unbiased, and the
   worst items are single-chunk, so it is neither a chunker bug nor a general accuracy problem.
-  Read the row as "50.3 % on adversarial text, 0–8 % on narration"; the defect is out-of-distribution
-  robustness in the duration student's training data.
+  Read the row as "50.3 % on adversarial text, 0–8 % on narration". **Cycle 61 then showed the drift
+  is also inflating the quality rows**: swapping in exact teacher durations, with the identical decode
+  student and MaskHead, moves mel L1 1.618 → 0.591, F0 RMSE 31.8 → 18.4, vuv 29.4 → 11.4 and MCD
+  13.78 → 12.57. `student-fast`'s vocoder path is much closer to `student`'s than these rows suggest;
+  the gap is largely *when* it speaks, not how it sounds. (That configuration is not shipped — it
+  costs +0.72 s, landing within 11 % of the `student` preset at 2× the memory.)
 
 **Speed / footprint — re-measured 2026-08-01** (cycle 50, `experiments/50-frontier-verify/`).
 M2/16 GB, quiet machine, warm, median of 5, one process per config, chapter = first 12 `para`/`long`
