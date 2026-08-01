@@ -1,0 +1,15 @@
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 5465.65it/s]
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 4957.07it/s]
+RESULT {"config": "student-fast", "load_s": 2.52, "params_m": 0.0, "short": {"audio_s": 1.82, "wall_s": 0.0105}, "chapter": {"audio_s": 168.3, "wall_s": 0.261, "rtf_x": 645.1, "walls": [0.331, 0.251, 0.261, 0.261, 0.241]}, "peak_rss_mb": 539.8}
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 3506.37it/s]
+Creating new KokoroPipeline for language: a
+RESULT {"config": "student", "load_s": 4.27, "params_m": 0.0, "short": {"audio_s": 1.8, "wall_s": 0.0253}, "chapter": {"audio_s": 163.4, "wall_s": 1.106, "rtf_x": 147.8, "walls": [1.403, 1.112, 1.106, 1.097, 1.085]}, "peak_rss_mb": 1092.7}
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 4064.67it/s]
+Creating new KokoroPipeline for language: a
+RESULT {"config": "ship-q8", "load_s": 2.86, "params_m": 39.77, "short": {"audio_s": 1.8, "wall_s": 0.1494}, "chapter": {"audio_s": 163.4, "wall_s": 15.043, "rtf_x": 10.9, "walls": [14.609, 15.057, 14.647, 15.043, 15.133]}, "peak_rss_mb": 825.3}
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 3138.15it/s]
+Creating new KokoroPipeline for language: a
+RESULT {"config": "ship-q4", "load_s": 3.74, "params_m": 33.06, "short": {"audio_s": 1.8, "wall_s": 0.1587}, "chapter": {"audio_s": 163.4, "wall_s": 14.596, "rtf_x": 11.2, "walls": [14.228, 14.038, 14.596, 14.642, 14.624]}, "peak_rss_mb": 824.9}
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 3832.66it/s]
+Creating new KokoroPipeline for language: a
+RESULT {"config": "exact", "load_s": 3.69, "params_m": 81.73, "short": {"audio_s": 1.8, "wall_s": 0.1392}, "chapter": {"audio_s": 163.4, "wall_s": 14.266, "rtf_x": 11.5, "walls": [13.863, 14.142, 14.347, 14.266, 14.385]}, "peak_rss_mb": 824.9}

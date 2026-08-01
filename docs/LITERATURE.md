@@ -86,3 +86,52 @@ TTS**. I could not find either applied to speech synthesis. That is either a gap
 - https://arxiv.org/pdf/2601.18438 (UrgentMOS)
 - https://deepwiki.com/Blaizzy/mlx-audio/3.2-kokoro-model
 - https://www.marktechpost.com/2026/05/30/best-text-to-speech-tts-models-in-2026-a-benchmark-based-comparison/
+
+## Sweep — August 2026 (cycle 50)
+
+Searched for work published since the July-2026 sweep. Nothing found that overturns a standing dead
+end; two threads are directly load-bearing for the texture-gap blocker (backlog #1) and one for
+evaluation (backlog #2).
+
+**Distillation of flow/diffusion heads is converging on few-step "mean flow" objectives.**
+- **FlashTTS** (arXiv 2606.09141) — streaming TTS with MTP acceleration and *X-pred mean-flow
+  distillation*; states outright that standard flow matching needs >10 sampling steps, which is the
+  latency wall. Relevant: our head is 1-step by construction, so a mean-flow-distilled flow head is
+  the cheapest way to test "does a flow objective fix the haze" without paying 10× inference.
+- **dots.tts** (arXiv 2606.07080) — ships MeanFlow-distilled checkpoints under Apache 2.0. A source
+  of a *pretrained* few-step head to probe against, rather than training one from scratch on M2.
+- **Voxtral TTS** (arXiv 2603.25551) — hybrid AR + flow matching over a split semantic/acoustic
+  tokenizer. Architecturally far from us; noted, not actionable on this budget.
+
+**Phase and inter-harmonic structure — the closest match to our diagnosed failure.**
+- **Rethinking joint estimation of magnitude and phase for TF-domain vocoders** (arXiv 2509.18806)
+  and **distilled APNet-style low-latency vocoder with explicit amplitude+phase prediction**
+  (arXiv 2509.13667). These attack exactly the assumption named in RESEARCH.md §9: that phase should
+  be *constructed* rather than predicted. Both are small, frame-rate, non-adversarial — i.e. they
+  fit the M2 budget in a way a free-form GAN did not.
+- **Back to Ear** (arXiv 2509.14912) reports that removing phase-related losses produces audible
+  "current-like" noise. That is a plausible description of our inter-harmonic haze, and it implies a
+  *loss* fix may be available without an architecture change — the cheapest possible next experiment.
+- **Range-null space decomposition vocoder** (arXiv 2603.08574): factorizes the reconstruction into a
+  consistent part and a learned null-space part. Interesting framing for "model the inter-harmonic
+  residual explicitly", which is already backlog #1's last angle.
+
+**Evaluation.** No change in the recommended stack since July: SpeechBERTScore (reference-aware, SSL
+features) still reports the best human correlation among reference-aware metrics, above UTMOS and
+SpeechLMScore; UTMOSv2/NISQA/DNSMOS remain the reference-free standard; TTSDS2 remains the
+multi-factor benchmark. Confirms backlog #2 is still correctly specified — build it, don't re-survey.
+
+**Standing dead-end re-check (required each sweep): model switching.** Nothing surfaced this month
+that is both better than Kokoro-82M and much cheaper, and the voice-identity objection is unchanged.
+Dead end holds.
+
+### Sources
+- https://arxiv.org/html/2606.09141v2 (FlashTTS)
+- https://arxiv.org/pdf/2606.07080 (dots.tts)
+- https://www.emergentmind.com/papers/2603.25551 (Voxtral TTS)
+- https://arxiv.org/html/2509.18806 (magnitude/phase joint estimation)
+- https://arxiv.org/html/2509.13667v1 (distilled low-latency amplitude+phase vocoder)
+- https://arxiv.org/html/2509.14912 (Back to Ear)
+- https://arxiv.org/pdf/2603.08574 (range-null space vocoder)
+- https://arxiv.org/pdf/2401.16812 (SpeechBERTScore)
+- https://www.isca-archive.org/ssw_2025/minixhofer25_ssw.pdf (TTSDS2)

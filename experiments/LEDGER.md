@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 50 | 2026-08-01 | are the unverified speed/footprint frontier rows real? | all three chapter walls within ±25 %; ~10 M params; `ship-q8` ≈15 s not 13 s | `student-fast` 0.261 s (+9 %), `student` 1.106 s (−1 %), `ship-q8` 15.04 s, params 9.93 M ✓ | **KEEP** | frontier table replaced with measured values; found `student` = 90 M/1.09 GB (largest preset), and quantization gives **no** wall-clock win (fp32 14.27 s ≤ q4 ≤ q8 15.04 s) |
 | — | 2026-08-01 | ledger seeded from frozen `metrics.json` files; docs audited | — | see frontier table | — | found two prose errors (F0 RMSE, `student-fast` drift tail); speed rows unverified — no `mlx` installed |
 
 ## Current frontier
@@ -41,20 +42,31 @@ Held-out (`metrics_v3c_heldout.json`) is consistent: MCD 10.73, drift 0.018/0.10
   the *mean* (4.97 %); the tail is an order of magnitude worse and is a real defect, not a rounding
   difference. Treat `student-fast` timing as unreliable on some items until a cycle investigates.
 
-| speed / size axis | value | source | status |
-|---|---|---|---|
-| chapter wall, `student-fast` | 0.239 s (×706 RTF, 57× stock) | phase-2 prose | ⚠️ unverified here |
-| chapter wall, `student` | 1.117 s (×146) | phase-2 prose | ⚠️ unverified here |
-| chapter wall, `ship-q8` | 15.26 s (×10.7) | `bench/bench_final_results.jsonl` | ✓ from results file — prose says "~13 s" |
-| peak RSS, `ship-q8` | 835.9 MB | same | ✓ |
-| active params | ~10 M vs teacher 82 M | phase-2 prose | ⚠️ unverified here |
-| WER (whisper-l-v3-turbo) | 5.42 % students / 5.65 % teacher | `experiments/23-final/asr_v3c.json` | not re-parsed |
+**Speed / footprint — re-measured 2026-08-01** (cycle 50, `experiments/50-frontier-verify/`).
+M2/16 GB, quiet machine, warm, median of 5, one process per config, chapter = first 12 `para`/`long`
+items of `eval/manifest.json` (163.4 s audio; 168.3 s for `student-fast`).
 
-⚠️ **The speed rows were not re-measured**: `mlx` is not installed in any interpreter on this
-machine, so no benchmark could be run. **First cycle should install the environment, re-run
-`bench/bench_final.py` and `bench/bench_rtf.py` under stated conditions, and replace this block.**
-Until then, treat wall-clock comparisons as provisional — the `ship-q8` prose/results gap (13 vs
-15.26 s) shows the conditions matter.
+| config | chapter wall | RTF × | short wall | peak RSS | active params |
+|---|---|---|---|---|---|
+| `student-fast` | **0.261 s** | 645 | 10.5 ms | 539.8 MB | **9.93 M** |
+| `student` | **1.106 s** | 148 | 25.3 ms | **1092.7 MB** | **90.3 M** |
+| `ship-q8` | **15.04 s** | 10.9 | 149 ms | 825.3 MB | 39.8 M (packed) |
+| `ship-q4` | 14.60 s | 11.2 | 159 ms | 824.9 MB | 33.1 M (packed) |
+| `exact` (fp32) | 14.27 s | 11.5 | 139 ms | 824.9 MB | 81.7 M |
+
+| other axis | value | source | status |
+|---|---|---|---|
+| WER (whisper-l-v3-turbo) | 5.42 % students / 5.65 % teacher | `experiments/23-final/asr_v3c.json` | not re-parsed |
+| 57× vs stock upstream | — | phase-2 prose | ⚠️ still unverified — `stock` not benchmarked in cycle 50 |
+
+**Three corrections from the re-measurement (2026-08-01, cycle 50):**
+- **`student-fast` is 0.261 s / ×645, not 0.239 s / ×706** — 9 % slower than the phase-2 prose.
+- **`student` has the largest footprint of any preset** (90.3 M params, 1.09 GB peak RSS — bigger
+  than the fp32 teacher path). It keeps the full teacher prosody path to buy its duration exactness;
+  only its vocoder head is distilled. "The student is 10 M params" is true of `student-fast` alone.
+- **Quantization buys zero wall-clock here**: `exact` 14.27 s ≤ `ship-q4` 14.60 s ≤ `ship-q8`
+  15.04 s, with identical 825 MB peak RSS. `ship-q8`'s ×10.7 is the fp32 baseline speed, not a
+  speed win — re-confirms the phase-1 "compression alone for speed" dead end on current code.
 
 ## Cycle templates
 
