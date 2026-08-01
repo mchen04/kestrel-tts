@@ -1,0 +1,13 @@
+n=55  floor=0.99915  student=0.96300  total gap=0.03614
+
+hybrid       SBS F1  gap closed  paired t vs student
+ident       1.00000      102.3%                29.83
+refmag      0.97119       22.6%                 8.19
+stumag      0.96816       14.3%                 4.83
+
+refmag vs stumag: dSBS +0.00302  t=3.25
+
+MCD (magnitude-derived) vs SBS (waveform) on the same hybrids:
+  refmag   MCD   6.239   SBS 0.97119
+  stumag   MCD  11.461   SBS 0.96816
+  student  MCD  11.828   SBS 0.96300

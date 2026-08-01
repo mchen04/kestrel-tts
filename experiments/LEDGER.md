@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 52 | 2026-08-01 | does the texture gap live in the student's magnitude or its constructed phase? | oracle phase recovers most of it (MCD 11.83 → <7) | oracle phase closes **22.6 %** of the SBS gap, oracle magnitude **14.3 %** — neither alone; harness control MCD 0.093 | **KILL** | prediction falsified *and* so was its falsifier: ~63 % of the gap is the **joint** magnitude×phase term. First hard upper bound on a head direction. Also: MCD is structurally phase-blind (says 6.24 vs 11.46 dB where SBS says 0.9712 vs 0.9682) |
 | 51 | 2026-08-01 | does SpeechBERTScore resolve heads that MCD calls identical? | agrees on big gaps; separates the 0.08 dB ladder by >3x its own noise | agrees (system r=-0.965); ladder spread 0.00022 F1 **below** its own 0.00085 self-noise, 0/15 pairs \|t\|>2 | **KILL** | hypothesis "MCD is blunt" falsified by an independent SSL metric — the DDSP ladder really is flat; metric kept as an addition to the battery |
 | 50 | 2026-08-01 | are the unverified speed/footprint frontier rows real? | all three chapter walls within ±25 %; ~10 M params; `ship-q8` ≈15 s not 13 s | `student-fast` 0.261 s (+9 %), `student` 1.106 s (−1 %), `ship-q8` 15.04 s, params 9.93 M ✓ | **KEEP** | frontier table replaced with measured values; found `student` = 90 M/1.09 GB (largest preset), and quantization gives **no** wall-clock win (fp32 14.27 s ≤ q4 ≤ q8 15.04 s) |
 | — | 2026-08-01 | ledger seeded from frozen `metrics.json` files; docs audited | — | see frontier table | — | found two prose errors (F0 RMSE, `student-fast` drift tail); speed rows unverified — no `mlx` installed |
@@ -39,6 +40,12 @@ SpeechBERTScore (WavLM-large L14, added cycle 51, `experiments/51-speechbertscor
 below ~0.00085 are not real. System-level agreement with MCD is r = −0.965; per-item agreement
 within `student` is only r = −0.46. `ship-q8` was re-rendered for this row; no control render of the
 true teacher decoder exists on disk, hence the `—`.
+
+**Never steer phase work by MCD (cycle 52).** MCD is the mel-cepstrum of the *magnitude* spectrum and
+is structurally near-blind to phase: on the same two oracle hybrids it reports a 5.2 dB spread
+(6.24 vs 11.46) where waveform-domain SBS reports 0.0030 (0.9712 vs 0.9682). Use SBS for anything
+phase-related. Measured ceilings from that cycle: fixing **phase** alone closes ≤ 22.6 % of the SBS
+floor-to-student gap, fixing **magnitude** alone ≤ 14.3 %; the remaining ~63 % is the joint term.
 
 Sources: `experiments/23-final/metrics_refactor.json` (`student`, shipped code),
 `metrics_v2c.json` (`student-fast`), `experiments/11-ship-q8/metrics.json`.
