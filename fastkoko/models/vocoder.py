@@ -89,3 +89,46 @@ class MaskHead(nn.Module):
     def synth(self, x, f0, n, s, theta, noise=None):
         re, im = self(x, f0, n, s, theta, noise)
         return istft(re, im, self._win)
+
+
+class ResMaskHead(MaskHead):
+    """MaskHead plus a learned complex residual over all bins.
+
+    S = M e^{i phi} T(f0, theta) + env * N + (R_re + i R_im)
+
+    The residual is zero-initialised, so an untrained ResMaskHead is bit-identical to MaskHead.
+    Trained (experiments/55-residual-complex), it scores +0.1141 UTMOS over the shipped student
+    (t=4.47, cycle 75) — about 25% of the teacher-student gap — at the cost of a 2.6x voiced/unvoiced
+    error regression against the teacher (cycle 76). Opt-in only; not the default preset.
+    """
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128, res_scale=0.01):
+        super().__init__(in_dim=in_dim, dim=dim, blocks=blocks, sdim=sdim)
+        self.res_re = nn.Linear(dim, NBINS)
+        self.res_im = nn.Linear(dim, NBINS)
+        self.res_scale = res_scale
+        self.zero_residual()
+
+    def zero_residual(self):
+        for lin in (self.res_re, self.res_im):
+            lin.weight = mx.zeros_like(lin.weight)
+            if hasattr(lin, "bias"):
+                lin.bias = mx.zeros_like(lin.bias)
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        B, F, _ = h.shape
+        M = mx.exp(mx.clip(self.mask_head(h).astype(mx.float32), -12.0, 8.0))
+        ph = self.phs_head(h).astype(mx.float32)
+        env = mx.exp(mx.clip(self.nz_head(h).astype(mx.float32), -14.0, 6.0))
+        tre, tim = self.template(f0c, theta)
+        c, sn = mx.cos(ph), mx.sin(ph)
+        sre = M * (tre * c - tim * sn)
+        sim = M * (tre * sn + tim * c)
+        if noise is None:
+            nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
+        else:
+            nr, ni = noise
+        rre = self.res_scale * self.res_re(h).astype(mx.float32)
+        rim = self.res_scale * self.res_im(h).astype(mx.float32)
+        return sre + env * nr + rre, sim + env * ni + rim

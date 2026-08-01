@@ -52,6 +52,7 @@ class StudentKokoro:
     def __init__(self, mckpt="experiments/20-distill/gmckpt",
                  deckpt="experiments/20-distill/deckpt",
                  pckpt="experiments/20-distill/pckpt",
+                 head_cls=None,
                  dim=192, blocks=6, dtype="float16", voice="af_heart"):
         root = Path(__file__).resolve().parents[1]
         def _w(name, *fallbacks):
@@ -60,8 +61,12 @@ class StudentKokoro:
                 if c.exists():
                     return str(c)
             raise FileNotFoundError(name)
-        self.head = MaskHead(dim=dim, blocks=blocks)
-        self.head.load_weights(_w("kestrel_maskhead.safetensors",
+        self.head = (head_cls or MaskHead)(dim=dim, blocks=blocks)
+        if head_cls is not None:
+            # custom head: load its own checkpoint directly, tolerating the extra module
+            self.head.load_weights(str(root / f"{mckpt}/gen.safetensors"), strict=False)
+        else:
+          self.head.load_weights(_w("kestrel_maskhead.safetensors",
                                   f"{mckpt}/gen.safetensors",
                                   "experiments/20-distill/mckpt/gen.safetensors"))
         self.decs = DecStudent()
@@ -252,6 +257,7 @@ class StudentKokoroV3:
     def __init__(self, mckpt="experiments/20-distill/gmckpt",
                  deckpt="experiments/20-distill/deckpt",
                  fckpt="experiments/20-distill/fckpt",
+                 head_cls=None,
                  dim=192, blocks=6, voice="af_heart", fast_scans=True):
         if fast_scans:
             # fp16 recurrence: 0.022% duration frame flips, worst item drift
@@ -269,8 +275,12 @@ class StudentKokoroV3:
                 if c.exists():
                     return str(c)
             raise FileNotFoundError(name)
-        self.head = MaskHead(dim=dim, blocks=blocks)
-        self.head.load_weights(_w("kestrel_maskhead.safetensors",
+        self.head = (head_cls or MaskHead)(dim=dim, blocks=blocks)
+        if head_cls is not None:
+            # custom head: load its own checkpoint directly, tolerating the extra module
+            self.head.load_weights(str(root / f"{mckpt}/gen.safetensors"), strict=False)
+        else:
+          self.head.load_weights(_w("kestrel_maskhead.safetensors",
                                   f"{mckpt}/gen.safetensors",
                                   "experiments/20-distill/mckpt/gen.safetensors"))
         self.decs = DecStudent()
@@ -348,8 +358,13 @@ class StudentAdapter:
     batched student engines. speed scales predicted durations before rounding,
     matching the teacher (fastkoko/engine.py:139)."""
 
-    def __init__(self, fast=False):
-        self.engine = StudentKokoro() if fast else StudentKokoroV3()
+    def __init__(self, fast=False, natural=False):
+        if natural:
+            from .models.vocoder import ResMaskHead
+            self.engine = StudentKokoroV3(mckpt="experiments/55-residual-complex/res20k",
+                                          head_cls=ResMaskHead)
+        else:
+            self.engine = StudentKokoro() if fast else StudentKokoroV3()
 
     def synth(self, text, voice="af_heart", speed=1.0):
         from .engine import SynthResult

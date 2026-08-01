@@ -55,6 +55,11 @@ def from_preset(name: str, **overrides):
     if name in ("student-fast",):
         from .student import StudentAdapter
         return StudentAdapter(fast=True)
+    if name in ("student-natural",):
+        # opt-in, NOT the default: +0.114 UTMOS over `student` (cycle 75) at a 2.6x vuv-error
+        # regression vs the teacher (cycle 76). See experiments/76-residual-gates/RESULT.md.
+        from .student import StudentAdapter
+        return StudentAdapter(fast=False, natural=True)
     cfg = dict(PRESETS[name])
     cfg.update(overrides)
     return FastKokoro(**cfg)
