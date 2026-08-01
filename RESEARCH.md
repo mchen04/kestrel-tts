@@ -165,10 +165,12 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    schedules that fit an M2 budget; codec-domain heads (DAC/Vocos-family); SSL-feature perceptual
    losses instead of cepstral distance; modelling the inter-harmonic residual explicitly rather
    than as a full-band noise envelope.
-2. **Evaluation itself.** MCD may not resolve the failure we actually have — the whole DDSP-variant
-   ladder landed within 0.5 dB, which is as consistent with a blunt metric as with a hard problem.
-   Add SpeechBERTScore, UTMOSv2/NISQA/DNSMOS, TTSDS2-style multi-factor scoring *alongside* the
-   frozen gates. If they disagree with MCD about which head is better, chase that.
+2. **Evaluation — narrowed by cycle 51.** SpeechBERTScore is built and agrees with MCD (system
+   r = −0.965); the "MCD is blunt" hypothesis is dead, so this drops below #1. **One loophole
+   survives:** both metrics are *reference-aware* and share the frozen teacher as their reference,
+   so neither can see a failure the teacher also has. The remaining work here is the
+   reference-**free** side — UTMOSv2/NISQA/DNSMOS and a human CMOS panel. If those disagree with
+   both, that is the finding. Also open: SBS and MCD agree on systems but only r = −0.46 per item.
 3. **`student-fast` duration drift — worse than documented.** Measured 4.97 % mean but **50.3 %
    worst-case** (`experiments/23-final/metrics_v2c.json`); the phase-2 prose said "2–5 %", which
    was the mean only. A 50 % item is not a texture issue, it is broken timing on some input —
@@ -194,8 +196,11 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
 
 - Compression alone for speed (phase 1: 2.7× smaller, throughput parity).
 - Free-form GAN vocoder head from scratch on M2 — too slow to converge.
-- DDSP head capacity ×2.3, cepstral loss, correlated noise, edge-masked crops — none moved MCD
-  >0.5 dB (but see backlog #2: this may be a metric result, not a modelling one).
+- DDSP head capacity ×2.3, cepstral loss, correlated noise, edge-masked crops, and the whole
+  v3b→v3f ladder — none moved MCD >0.5 dB. **Cycle 51 closed the "blunt metric" escape hatch:**
+  SpeechBERTScore, an unrelated SSL-feature metric, spreads the same ladder by less than its own
+  self-noise (0/15 pairs significant) while cleanly separating every larger gap. The ladder is
+  genuinely flat. The next head attempt must be a categorical change, not another rung.
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).
 - Two hand-written Metal scan kernels — bit-correct, bandwidth-bound, lost to the compiled path.

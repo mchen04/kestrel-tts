@@ -1,0 +1,58 @@
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 3135.34it/s]
+Creating new KokoroPipeline for language: a
+short00         1.35s audio    0.45s wall
+short01         1.30s audio    0.32s wall
+short02         1.80s audio    0.59s wall
+short03         1.80s audio    0.44s wall
+short04         1.77s audio    0.35s wall
+short05         1.62s audio    0.27s wall
+short06         1.90s audio    0.40s wall
+short07         1.85s audio    0.56s wall
+short08         1.62s audio    0.30s wall
+short09         2.10s audio    0.50s wall
+short10         2.00s audio    0.24s wall
+short11         2.08s audio    0.30s wall
+short12         1.93s audio    0.48s wall
+short13         1.88s audio    0.48s wall
+short14         2.15s audio    1.42s wall
+short15         2.08s audio    1.71s wall
+short16         1.88s audio    0.40s wall
+short17         2.27s audio    0.34s wall
+short18         2.00s audio    0.31s wall
+short19         2.52s audio    0.65s wall
+para00         15.53s audio    2.47s wall
+para01          8.05s audio    2.18s wall
+para02         16.48s audio    5.76s wall
+para03         14.97s audio    2.04s wall
+para04         11.03s audio    1.09s wall
+para05         23.23s audio    2.78s wall
+para06          7.55s audio    1.82s wall
+para07         15.03s audio    1.83s wall
+para08         10.57s audio    1.19s wall
+para09          9.45s audio    1.97s wall
+para10         18.93s audio    2.32s wall
+para11         12.65s audio    2.83s wall
+para12         15.10s audio    2.94s wall
+stress00        7.95s audio    3.49s wall
+stress01       10.65s audio    1.65s wall
+stress02        7.42s audio    2.00s wall
+stress03        3.85s audio    0.71s wall
+stress04        8.22s audio    1.52s wall
+stress05        5.12s audio    0.90s wall
+stress06        8.47s audio    1.64s wall
+stress07        7.58s audio    2.67s wall
+stress08        4.62s audio    0.86s wall
+stress09       10.55s audio    1.55s wall
+patho00        32.30s audio    7.28s wall
+patho01         3.48s audio    0.61s wall
+patho02         4.67s audio    0.53s wall
+patho03         4.17s audio    0.50s wall
+patho04         4.28s audio    0.61s wall
+long00         91.88s audio   11.88s wall
+long01         97.85s audio   13.86s wall
+long02         92.17s audio   16.32s wall
+long03         65.78s audio    7.42s wall
+long04         72.65s audio    8.78s wall
+long05         62.73s audio    6.63s wall
+long06         71.42s audio    7.51s wall
+TOTAL 894.3s audio in 140.7s wall (RTF x6.36)

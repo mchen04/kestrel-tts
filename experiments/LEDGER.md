@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 51 | 2026-08-01 | does SpeechBERTScore resolve heads that MCD calls identical? | agrees on big gaps; separates the 0.08 dB ladder by >3x its own noise | agrees (system r=-0.965); ladder spread 0.00022 F1 **below** its own 0.00085 self-noise, 0/15 pairs \|t\|>2 | **KILL** | hypothesis "MCD is blunt" falsified by an independent SSL metric — the DDSP ladder really is flat; metric kept as an addition to the battery |
 | 50 | 2026-08-01 | are the unverified speed/footprint frontier rows real? | all three chapter walls within ±25 %; ~10 M params; `ship-q8` ≈15 s not 13 s | `student-fast` 0.261 s (+9 %), `student` 1.106 s (−1 %), `ship-q8` 15.04 s, params 9.93 M ✓ | **KEEP** | frontier table replaced with measured values; found `student` = 90 M/1.09 GB (largest preset), and quantization gives **no** wall-clock win (fp32 14.27 s ≤ q4 ≤ q8 15.04 s) |
 | — | 2026-08-01 | ledger seeded from frozen `metrics.json` files; docs audited | — | see frontier table | — | found two prose errors (F0 RMSE, `student-fast` drift tail); speed rows unverified — no `mlx` installed |
 
@@ -31,6 +32,13 @@ pass bar for a vocoder head.
 | duration drift % | 0 / 0 | 0.011 / 0.227 | 0.013 / 0.329 | 0.022 / **0.329** ✓ | 4.97 / **50.30** ✗ |
 | F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 31.82 / 52.81 |
 | spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.980 / 0.921 |
+| SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
+
+SpeechBERTScore (WavLM-large L14, added cycle 51, `experiments/51-speechbertscore/sbs.py`) is
+**additive and gates nothing**. Higher is better; its self-noise floor is 0.99915, so differences
+below ~0.00085 are not real. System-level agreement with MCD is r = −0.965; per-item agreement
+within `student` is only r = −0.46. `ship-q8` was re-rendered for this row; no control render of the
+true teacher decoder exists on disk, hence the `—`.
 
 Sources: `experiments/23-final/metrics_refactor.json` (`student`, shipped code),
 `metrics_v2c.json` (`student-fast`), `experiments/11-ship-q8/metrics.json`.

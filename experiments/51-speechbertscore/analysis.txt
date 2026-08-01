@@ -1,0 +1,45 @@
+n items = 55
+
+system       SBS F1   MCD dB
+floor       0.99915      nan
+ship-q8     0.99649      nan
+refactor    0.96300   11.828
+v3f         0.96290   11.783
+v3e         0.96279   11.800
+v3c         0.96290   11.839
+v3b         0.96289   11.861
+v3d         0.96288   11.845
+v2c         0.93961   13.781
+v3          0.94788   13.850
+
+--- paired deltas within the MCD-flat ladder (SBS) ---
+pair                      dSBS      sem       t    dMCD
+v3b vs v3c            -0.00001  0.00030   -0.03   0.022
+v3b vs v3d             0.00001  0.00043    0.03   0.016
+v3b vs v3e             0.00010  0.00044    0.23   0.061
+v3b vs v3f            -0.00001  0.00043   -0.02   0.078
+v3b vs refactor       -0.00011  0.00048   -0.24   0.033
+v3c vs v3d             0.00002  0.00038    0.06  -0.006
+v3c vs v3e             0.00011  0.00039    0.28   0.039
+v3c vs v3f             0.00000  0.00040    0.00   0.056
+v3c vs refactor       -0.00010  0.00042   -0.25   0.011
+v3d vs v3e             0.00009  0.00019    0.48   0.045
+v3d vs v3f            -0.00002  0.00020   -0.11   0.062
+v3d vs refactor       -0.00013  0.00024   -0.53   0.017
+v3e vs v3f            -0.00011  0.00016   -0.70   0.017
+v3e vs refactor       -0.00022  0.00019   -1.15  -0.028
+v3f vs refactor       -0.00011  0.00016   -0.67  -0.045
+
+pairs with |t|>2: 0/15
+ladder SBS spread (max-min of means): 0.00022
+ladder MCD spread: 0.078 dB
+metric self-noise (floor mean, 1-F1): 0.00085
+
+--- big-gap sanity (should be large & same sign as MCD) ---
+refactor vs v3         dSBS +0.01512 t=   5.31  dMCD -2.022
+refactor vs v2c        dSBS +0.02340 t=  11.49  dMCD -1.953
+ship-q8 vs refactor    dSBS +0.03349 t=  26.08  dMCD -11.828
+floor vs ship-q8       dSBS +0.00266 t=   4.32  dMCD +0.000
+
+system-level corr(SBS mean, MCD) over 8 systems: r=-0.9648
+per-item corr within `student` (n=55): r=-0.4587
