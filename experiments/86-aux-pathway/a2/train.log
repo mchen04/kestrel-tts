@@ -1,0 +1,2 @@
+step 0 loss 15.927 ema 15.927 val_mag 14.570 val_ri 0.9833 0.07s/it
+step 2000 loss 14.517 ema 14.837 val_mag 13.806 val_ri 0.9784 0.04s/it

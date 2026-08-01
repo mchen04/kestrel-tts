@@ -1,0 +1,7 @@
+arm                           UTMOS     gain   range      F0    dF0     vuv
+student-fast                 3.9763  +0.0000       -   31.82  +0.00   29.38
+plain head (c85)             3.9948  +0.0185  0.0171   32.42  +0.60   29.85
+complex residual (c84)       4.1474  +0.1711  0.0101   34.05  +2.23   39.78
+AUX log-mag (this)           4.1754  +0.1991  0.0708   31.57  -0.25   29.93
+
+falsifier: aux >= +0.12 -> aux gain +0.1991  FIRED

@@ -1,0 +1,13 @@
+import sys, json, warnings; warnings.filterwarnings("ignore")
+from pathlib import Path
+sys.path.insert(0,".")
+import numpy as np, soundfile as sf, mlx.core as mx
+from fastkoko.student import StudentKokoro
+from fastkoko.models.vocoder import AuxMaskHead
+sd=sys.argv[1]
+out=Path(f"experiments/86-aux-pathway/render_a{sd}"); out.mkdir(parents=True,exist_ok=True)
+eng=StudentKokoro(mckpt=f"experiments/86-aux-pathway/a{sd}", head_cls=AuxMaskHead)
+eng.head.res_scale=0.01; mx.eval(eng.head.parameters())
+for it in json.load(open("eval/manifest.json"))["items"]:
+    sf.write(out/f"{it['id']}.wav", np.asarray(eng.synth_chapter(it["text"])[0],dtype=np.float32).reshape(-1), 24000)
+print("wrote", len(list(out.glob("*.wav"))))

@@ -285,10 +285,12 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   residual output — with the trunk frozen the residual gives +0.024 MOS and no pitch damage, and
   without residual layers the same retrain gives nothing (cycle 53). They are inseparable at this
   architecture; shipped opt-in as `student-natural` / `student-fast-natural` (step-2000 snapshot,
-  cycle 82; reproduced across 3 seeds, cycle 84). **Cycles 81/85 bracket the mechanism**: residual
-  layers alone +0.024, trainable trunk alone +0.019, **both +0.171** — entirely interactional, ~4× the
-  sum of parts, with the residual acting as a training-time degree of freedom rather than a runtime
-  component (0.00 % of output energy). Steer all further texture work by UTMOS. Still dead: the RI-loss arms
+  cycle 82; reproduced across 3 seeds, cycle 84). **Cycles 81/85/86 settled the mechanism**: residual
+  layers alone +0.024, trainable trunk alone +0.019, both +0.171 — entirely interactional. **Cycle 86
+  then showed it is not about complex residuals at all**: an auxiliary *log-magnitude* pathway of the
+  same capacity gains **+0.199** with **no pitch or voicing cost**, and now ships. The mechanism is
+  "briefly retrain a head that has spare trainable capacity"; the insertion point is free, and the
+  log-magnitude placement is better because it never perturbs harmonic phase. Steer all further texture work by UTMOS. Still dead: the RI-loss arms
   (cycle 53, −0.005/−0.019, n.s.) and the adversarial residual as shipped (cycle 56, −0.121).
 - Regression and 100-way-classification duration students — 2–17 % drift, errors correlated.
 - Second GPU stream (no overlap under lazy eval); CPU stream (3× slower).

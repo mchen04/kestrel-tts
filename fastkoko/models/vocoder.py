@@ -165,3 +165,38 @@ class DeadBinResMaskHead(ResMaskHead):
         rre = self.res_scale * self.res_re(h).astype(mx.float32) * dead
         rim = self.res_scale * self.res_im(h).astype(mx.float32) * dead
         return sre + env * nr + rre, sim + env * ni + rim
+
+
+class AuxMaskHead(MaskHead):
+    """Control for cycle 86: same extra capacity as ResMaskHead, inserted into the log-magnitude
+    path (mask and noise logits) instead of the complex spectrum. Zero-initialised."""
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128, res_scale=0.01):
+        super().__init__(in_dim=in_dim, dim=dim, blocks=blocks, sdim=sdim)
+        self.aux_m = nn.Linear(dim, NBINS)
+        self.aux_n = nn.Linear(dim, NBINS)
+        self.res_scale = res_scale
+        self.zero_residual()
+
+    def zero_residual(self):
+        for lin in (self.aux_m, self.aux_n):
+            lin.weight = mx.zeros_like(lin.weight)
+            if hasattr(lin, "bias"):
+                lin.bias = mx.zeros_like(lin.bias)
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        B, F, _ = h.shape
+        m_log = self.mask_head(h).astype(mx.float32) + self.res_scale * self.aux_m(h).astype(mx.float32)
+        n_log = self.nz_head(h).astype(mx.float32) + self.res_scale * self.aux_n(h).astype(mx.float32)
+        M = mx.exp(mx.clip(m_log, -12.0, 8.0))
+        ph = self.phs_head(h).astype(mx.float32)
+        env = mx.exp(mx.clip(n_log, -14.0, 6.0))
+        tre, tim = self.template(f0c, theta)
+        c, sn = mx.cos(ph), mx.sin(ph)
+        sre = M * (tre * c - tim * sn); sim = M * (tre * sn + tim * c)
+        if noise is None:
+            nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
+        else:
+            nr, ni = noise
+        return sre + env * nr, sim + env * ni

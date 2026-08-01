@@ -360,10 +360,12 @@ class StudentAdapter:
 
     def __init__(self, fast=False, natural=False):
         if natural:
-            from .models.vocoder import ResMaskHead
-            # cycle 82: step-2000 snapshot, selected by battery (UTMOS 4.145, F0 33.34)
-            # rather than by where training happened to stop (step 20000: 4.132, F0 43.88).
-            ck = "weights/kestrel_res_step2000"
+            # cycle 86: AuxMaskHead (auxiliary log-magnitude pathway) strictly dominates the
+            # complex-residual head it replaces -- UTMOS 4.2162 vs 4.1450, and it carries NO pitch
+            # or voicing regression (F0 32.49 vs baseline 31.82; vuv 30.17 vs 29.38), where the
+            # residual cost +1.5 Hz and +12 pp. Selected by battery over 3 seeds.
+            from .models.vocoder import AuxMaskHead as ResMaskHead
+            ck = "weights/kestrel_aux_s2"
             self.engine = (StudentKokoro(mckpt=ck, head_cls=ResMaskHead) if fast
                            else StudentKokoroV3(mckpt=ck, head_cls=ResMaskHead))
         else:
