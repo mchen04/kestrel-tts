@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 91 | 2026-08-01 | is cycle 54's architectural ceiling real *perceptually*, or an SBS artifact? | oracle scores near the teacher (NISQA ≥4.85, UTMOS ≥4.3) → cycle 54 was an SBS artifact | **oracle ceiling NISQA 4.6962, UTMOS 4.2004, DNSMOS 3.2471** — far closer to `student` than teacher on all three. Reachable fraction of the gap: SBS 15.3 %, NISQA 19.6 %, DNSMOS 30.3 %, UTMOS 40.3 % | **KEEP** | the ceiling is **real on every instrument** — cycle 54's conclusion survives the critique that overturned cycles 75–86. But its headline "84.7 % architectural" was single-instrument; corrected to **60–80 %, instrument-dependent**. Also: the harmonic-only oracle scores *higher* on UTMOS (4.3586) than the full ceiling while NISQA rates it far lower — the same split that caused cycle 88's withdrawal |
 | 90 | 2026-08-01 | is there a middle operating point between 0.26 s and 15 s? | lands between the two, nearer `student-fast` | **ties `student-fast`**: NISQA 4.7071 vs 4.7432, UTMOS 3.9574 vs 3.9763, DNSMOS 3.1836 vs 3.1439 — at **3.75× the wall-clock** | **KILL** | cycle 61's reference-aware verdict **confirmed** by all three perceptual instruments. Bounds cycle 75's lesson: reference-aware metrics were wrong about the trained heads and right here — timing changes are visible to every instrument, spectral fine structure only to UTMOS. The 57× frontier gap is real and only a *vocoder* improvement can fill it. Also fixed: cycle 88's nisqa install silently downgraded torch 2.13→2.2 and broke UTMOS; re-verified UTMOS reproduces bit-identically |
 | 89 | 2026-08-01 | do the three instruments agree on the shipped frontier? | NISQA reproduces teacher ≈ `ship-q8` > students | **yes** — all three put teacher ≈ `ship-q8` on top and students clearly below; Spearman NISQA–UTMOS **+0.80**, UTMOS–DNSMOS +0.70. Minor splits: `student` vs `student-fast` (tied, order flips) and where real speech sits (DNSMOS out of step, per cycle 73) | **KEEP** | the frontier ordering is stable across three independent predictors, so cycle 88's withdrawal was **not** arbitrary vote-picking: the trained heads are the *one* place UTMOS diverges sharply from both others — the signature of moving a predictor without moving quality. NISQA added to the frontier table |
 | 88 | 2026-08-01 | does a third naturalness predictor break the UTMOS/DNSMOS tie? | NISQA sides with UTMOS (same training task) | **NISQA −0.5630 (t=−7.21)** for the shipped aux head and **−0.7163 (t=−8.51)** for the residual — a *large* regression. With DNSMOS −0.013, **2 of 3 instruments say worse; UTMOS is the outlier** | **KILL** | **`student-natural` and `student-fast-natural` WITHDRAWN**, executing the falsifier written in PLAN.md. Twelve cycles (75–86) were steered by a single instrument and two of them shipped. No measured quality win survives from the residual/aux heads; the reproducibility, interaction and saturation findings do. New rule in RESEARCH.md: a ship-grade claim needs two independent instruments agreeing |
@@ -107,7 +108,13 @@ indistinguishable (`sig_mos` +0.013, t=0.62). So 3.43/5 reflects the metric's sc
 (t=0.96). Instrument caveat: DNSMOS is trained for enhancement, not TTS naturalness — trust the
 ordering, not the absolute values.
 
-**MaskHead's measured ceiling (cycle 54): SBS 0.96853.** With oracle mask, oracle phase, oracle f0
+**MaskHead's measured ceiling — confirmed on 4 instruments (cycles 54, 91).** Oracle mask/phase/f0
+scores NISQA 4.6962, UTMOS 4.2004, DNSMOS 3.2471, SBS 0.96853 — far below the teacher on every one.
+Fraction of the student→teacher gap it can reach: **SBS 15.3 %, NISQA 19.6 %, DNSMOS 30.3 %, UTMOS
+40.3 %**, i.e. **60–80 % architectural depending on instrument** (cycle 54's "84.7 %" was the
+SBS-only figure and should not be quoted as instrument-independent).
+
+Original single-instrument statement: With oracle mask, oracle phase, oracle f0
 and a perfect-magnitude noise path, the current parameterization cannot exceed this. The shipped
 `student` is at **99.4 % of it**, so only **15.3 %** of the floor-to-student gap is reachable by any
 training and **84.7 % is architectural**. Cause: 66.6 % of STFT bins lie outside the harmonic

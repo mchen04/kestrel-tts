@@ -1,0 +1,13 @@
+system                      NISQA    UTMOS   DNSMOS      SBS
+teacher                    4.9483   4.4773   3.4326  0.99915
+ship-q8                    4.9518   4.4757   3.4320  0.99649
+ORACLE ceiling (c54)       4.6962   4.2004   3.2471  0.96853
+oracle harmonic only       4.3243   4.3586        -  0.94547
+student                    4.6348   4.0131   3.1665  0.96300
+student-fast               4.7432   3.9763   3.1439  0.93961
+
+SBS said: ceiling 0.96853 vs student 0.96300 -> only 15.3% of the gap reachable
+UTMOS says: ceiling 4.2004 vs student 4.0131 vs teacher 4.4773
+  -> ceiling closes 40.3% of the student->teacher gap
+NISQA says: ceiling 4.6962 vs student 4.6348 vs teacher 4.9483
+  -> ceiling closes 19.6% of the student->teacher gap

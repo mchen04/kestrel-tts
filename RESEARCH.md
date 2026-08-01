@@ -276,9 +276,12 @@ Do not re-run without a specific new fact. Detail in `docs/history/PROCESS.md` �
   so "too slow to converge" is no longer a comparison against a viable alternative. A *residual*
   formulation (template as base + learned complex correction) starts at today's quality rather than
   from scratch and is the cheap way around the original cause of death.
-- **Improving MaskHead by any means** (cycle 54): measured ceiling SBS 0.96853 with oracle mask,
-  phase, f0 and perfect-magnitude noise; shipped head is at 99.4 % of it. 84.7 % of the gap is
-  beyond the parameterization. Needs a fact that changes the ceiling measurement, not a better loss.
+- **Improving MaskHead by any means** (cycles 54, 91): measured ceiling with oracle mask, phase, f0
+  and perfect-magnitude noise, **confirmed on four instruments** — NISQA 4.6962, UTMOS 4.2004,
+  DNSMOS 3.2471, SBS 0.96853, all far below the teacher. **60–80 % of the gap is beyond the
+  parameterization** (instrument-dependent; cycle 54's "84.7 %" was SBS-only). Needs a fact that
+  changes the ceiling measurement, not a better loss — and unlike cycles 75–86's conclusions, this
+  one survives the multi-instrument critique.
 - ~~DDSP ladder is flat (cycles 51)~~ — **REOPENED by cycle 75.** UTMOS (reference-free,
   naturalness-trained) spreads the same v3b→v3f ladder by **0.1003 MOS — 56× its self-noise and 22 %
   of the whole teacher−student gap — with 7/10 pairs significant**, where SBS gave 0/15. Cycle 51's
