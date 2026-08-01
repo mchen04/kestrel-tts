@@ -193,9 +193,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    (`ref_s = pack[len(ps)-1]`). **Cycle 60 tried the obvious remedy and it failed**: uniform-random
    style augmentation made mean drift *worse* (8.74 % vs 4.97 %) and lost to a matched natural-only
    control on all six battery metrics, while *reducing* style sensitivity — random styles carry no
-   information about the chunk they are paired with, so the head learns to ignore style. Untested and
-   still open: sampling styles in a **neighbourhood** of `len(ps)-1` rather than uniformly, so the
-   augmented mapping resembles the one used at inference. Then the modelling question:
+   information about the chunk they are paired with, so the head learns to ignore style. **Cycles 61–62 then priced and cornered the problem.** Exact teacher
+   durations cost +0.72 s (too much to ship) but are worth **mel L1 1.618 → 0.591, F0 −42 %,
+   vuv −61 %** — the drift is inflating the fidelity rows, not just the exactness one. Fine-tuning
+   `dur_head` on a frozen encoder saturates in <1000 steps and captures ~none of that; training the
+   encoder with a duration-only loss damages the `ten` features. **The one recipe left is the original
+   joint objective (`4·ten + 2·dur + f0 + n`) — a full ProsodyStudent retrain**, now with a measured
+   prize and a known-good script (`train_prosody.py`). That is the best-specified open cycle here.
+   Also still untested: neighbourhood style jitter rather than uniform-random. Then the modelling question:
    residual correction, monotonic-alignment constraints, ordinal/soft-count objectives, or a tiny
    distilled exact scan — the exact path currently costs ~0.9 s.
 4. **Dispatch floor (~20–30 µs × ~10k kernels).** Fused Metal kernels, graph capture, CoreML/ANE

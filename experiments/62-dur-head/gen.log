@@ -1,0 +1,10 @@
+Fetching 56 files:   0%|          | 0/56 [00:00<?, ?it/s]Fetching 56 files: 100%|██████████| 56/56 [00:00<00:00, 2632.07it/s]
+Creating new KokoroPipeline for language: a
+chunks=6000 excluded=0
+  0/6000
+  1000/6000
+  2000/6000
+  3000/6000
+  4000/6000
+  5000/6000
+saved 6000 to data/dur_raw
