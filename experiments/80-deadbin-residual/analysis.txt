@@ -1,0 +1,7 @@
+arm                             UTMOS  harvestF0  autocorrF0
+student-fast                   3.9763      31.82       44.32
+residual (unmasked)            4.1316      43.88       75.15
+residual (dead-bin only)       4.0376      43.90       75.06
+
+UTMOS gain vs student-fast: unmasked +0.1553 | dead-bin +0.0613
+F0 damage is IDENTICAL with harmonic bins untouched -> the residual is not its cause

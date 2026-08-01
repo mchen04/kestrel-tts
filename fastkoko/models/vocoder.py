@@ -134,3 +134,34 @@ class ResMaskHead(MaskHead):
         rre = self.res_scale * self.res_re(h).astype(mx.float32)
         rim = self.res_scale * self.res_im(h).astype(mx.float32)
         return sre + env * nr + rre, sim + env * ni + rim
+
+
+class DeadBinResMaskHead(ResMaskHead):
+    """ResMaskHead whose residual is confined to bins the harmonic template cannot reach.
+
+    Cycle 54 measured that 66.6% of STFT bins carry no template energy and absorb 100% of the
+    oracle residual. Writing the learned residual only there leaves harmonic peaks bit-exact, so
+    F0 estimation reads the same harmonic structure as the plain head (cycle 80).
+    """
+
+    DEAD_REL = 1e-3
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        B, F, _ = h.shape
+        M = mx.exp(mx.clip(self.mask_head(h).astype(mx.float32), -12.0, 8.0))
+        ph = self.phs_head(h).astype(mx.float32)
+        env = mx.exp(mx.clip(self.nz_head(h).astype(mx.float32), -14.0, 6.0))
+        tre, tim = self.template(f0c, theta)
+        c, sn = mx.cos(ph), mx.sin(ph)
+        sre = M * (tre * c - tim * sn)
+        sim = M * (tre * sn + tim * c)
+        if noise is None:
+            nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
+        else:
+            nr, ni = noise
+        magT = mx.sqrt(tre * tre + tim * tim)
+        dead = (magT < self.DEAD_REL * mx.max(magT)).astype(mx.float32)
+        rre = self.res_scale * self.res_re(h).astype(mx.float32) * dead
+        rim = self.res_scale * self.res_im(h).astype(mx.float32) * dead
+        return sre + env * nr + rre, sim + env * ni + rim
