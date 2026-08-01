@@ -159,6 +159,12 @@ legitimate next cycle.
 
 Ordered by expected value. **Re-rank every cycle; add freely; this list is expected to churn.**
 
+0. **The objective is the blocker (cycles 54–55, the current frontier of the diagnosis).** The head
+   cannot express the gap (ceiling SBS 0.9685 vs 0.99915 floor), and when given capacity that can,
+   pointwise losses drive it to zero energy — measured, not inferred. The next cycles belong to
+   *distributional* objectives: a discriminator targeted at the inter-harmonic band, distribution
+   matching, or conditioned-stochastic generation. `experiments/20-distill/disc.py` already exists.
+   Kokoro's own decoder was GAN-trained; this student essentially was not.
 1. **The texture gap — the standing blocker.** MCD ~11.8 vs the 3.98 control bar; content and
    prosody are at parity but timbre is audibly hazy (diagnosed as inter-harmonic haze). Angles:
    flow-matching / consistency / rectified-flow heads; discriminator ensembles and adversarial

@@ -1,0 +1,11 @@
+step 0 loss 15.494 ema 15.494 val_mag 14.187 val_ri 1.2830 0.08s/it
+step 2000 loss 14.925 ema 14.818 val_mag 14.268 val_ri 1.3517 0.04s/it
+step 4000 loss 14.413 ema 14.778 val_mag 13.625 val_ri 1.0524 0.04s/it
+step 6000 loss 14.953 ema 14.695 val_mag 13.669 val_ri 1.2555 0.04s/it
+step 8000 loss 14.916 ema 14.661 val_mag 13.926 val_ri 1.1550 0.05s/it
+step 10000 loss 14.371 ema 14.752 val_mag 13.617 val_ri 1.1123 0.06s/it
+step 12000 loss 14.747 ema 14.572 val_mag 13.936 val_ri 1.0666 0.06s/it
+step 14000 loss 14.816 ema 14.536 val_mag 14.003 val_ri 1.2176 0.06s/it
+step 16000 loss 14.660 ema 14.543 val_mag 13.829 val_ri 0.9689 0.06s/it
+step 18000 loss 13.924 ema 14.561 val_mag 13.638 val_ri 1.1120 0.06s/it
+step 20000 loss 14.896 ema 14.461 val_mag 13.839 val_ri 1.0918 0.06s/it

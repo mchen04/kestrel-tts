@@ -1,0 +1,11 @@
+n=55
+floor                    0.99915
+MaskHead oracle ceiling  0.96853   <-- the bar this cycle had to cross
+base20k (matched-step)   0.96306
+shipped student          0.96300
+RESIDUAL head 20k        0.96251   <-- BELOW the ceiling
+residual vs shipped    -0.00050  t= -1.67
+residual vs base20k    -0.00055  t= -1.98
+base20k vs shipped     +0.00006  t=  0.37
+
+self-noise = 0.00085
