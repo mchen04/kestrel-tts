@@ -1,0 +1,13 @@
+config                                UTMOS    NISQA
+teacher                              4.4773   4.9483
+ident (harness sanity)               4.4771        -
+refmag = teacher mag + STUDENT phase   3.2792   4.5404
+stumag = STUDENT mag + teacher phase   3.4873   4.5826
+student                              4.0131   4.6348
+
+harness sanity: ident should ~= teacher -> 4.4771 vs 4.4773 (delta -0.0002)
+
+cycle 52 said (SBS): oracle PHASE closes 22.6%, oracle MAGNITUDE 14.3%
+both hybrids here score BELOW the student on both perceptual instruments:
+  refmag   UTMOS -0.7339 vs student, NISQA -0.0944 vs student
+  stumag   UTMOS -0.5258 vs student, NISQA -0.0522 vs student
