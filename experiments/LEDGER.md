@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 107 | 2026-08-02 | does the superior checkpoint pass every gate, and what ships? | battery repeats 105's parity pattern; robustness drift identical by category; WER deltas within ±2 pp | **all gates passed**: drift identical to 4 dp on the manifest AND in all 7 robustness categories; MCD 13.79 ≈ 13.78; spk 0.9807; robustness WER **17.17 % vs 17.52 % (better)**, worst category +1.28 pp; wall **0.271 s vs 0.251 s (+8 %)**, RSS equal | **KEEP — `student-fast` SWITCHED HEADS** | first default change produced by the loop: `SFNoiseHead` (42 k adv steps) is the fast head; MaskHead preserved as `student-fast-mask`; `student-fast-sf` now an alias. Trade stated per §1: +8 % wall and −0.10 NISQA (n.s.) for +0.107 UTMOS (t=4.35) and +0.053 DNSMOS (t=3.54). Frontier table updated with both columns. **§10 milestone retired on its second clause** (MCD unchanged while two perceptual instruments improve → MCD cannot see the win; steering stack is the 4b trio) and replaced: halve the UTMOS gap to the teacher with NISQA corroborating. SBS on the new head: not yet run, noted in the table |
 | 106 | 2026-08-02 | does doubling the adversarial dose push SFNoiseHead past MaskHead on two instruments, or has it plateaued? | UTMOS crosses 4.03 but NISQA doesn't follow → no two-instrument superiority | **superiority achieved — prediction wrong in the good direction**: final checkpoint (42 k generator steps) scores **UTMOS 4.0828 (+0.1065 vs MaskHead, t=4.35)** and **DNSMOS 3.1964 (+0.0525, t=3.54)** — two independent instruments significantly above — with NISQA 4.6431 at parity (t=−1.64, n.s.); WER 5.31 %. Both curves still rising at budget end | **KEEP** | **first head to exceed the incumbent under invariant 4b** — the same two-instrument rule that withdrew the `*-natural` presets (there: UTMOS alone, NISQA −0.56 t=−7.2; here: two agree, third neutral). Prediction missed that DNSMOS, consistently above from 15 k steps on, would carry the second vote — the bar is any two instruments, not UTMOS+NISQA specifically. Mid-run dip at 25–31 k (post-resume re-equilibration) recovered; warns against single-checkpoint reads. Named next: cycle-105 battery + gates on the step-45000 checkpoint, re-point `student-fast-sf`, then the default-preset question as a gated decision |
 | 105 | 2026-08-02 | does gen_18000 pass the reference-aware battery, confirming or contradicting the perceptual parity? | drift identical to 4 dp; spk ≥0.97; F0 ±15 %; MCD/mel near student-fast, possibly slightly worse | **every row at parity or better**: drift 4.9713/50.2994 identical to 4 dp ✓, MCD 13.68 (<13.78), mel 1.614 (<1.618), F0 31.51 (<31.82), spk **0.9800** (isolated-venv instrument validated by exact reproduction of the frozen 0.9796 first), artifacts statistically identical, WER 5.46 % | **KEEP — shipped `student-fast-sf`, opt-in** | the cycle-75 metric-family divergence did not materialise: this head matches the incumbent on BOTH families at once — no other head variant has. Default unchanged (parity ≠ superiority; only DNSMOS claims a win and 4b needs two). Also found+fixed: `--spk` silently broken in the main venv since cycle 88's torch downgrade; repaired via isolated venv without touching the instrument stack. Path to default: resume adversarial until two instruments show superiority, re-run this battery |
 | 104 | 2026-08-02 | does the proven GAN recipe move SFNoiseHead the way it moved MaskHead? | UTMOS ≥3.80, NISQA ≥4.0 at the battery-selected checkpoint; WER <7 % | **both exceeded**: selected `gen_18000` (15 k generator steps) scores **UTMOS 3.9557 (t=−1.01 vs MaskHead, parity), NISQA 4.6432 (t=−1.89, parity), DNSMOS 3.1979 (t=+3.78, significantly ABOVE)**, WER 5.46 %; gen_22000 hits UTMOS 4.0079 (nominally above the incumbent) but is significantly below on NISQA, so 4b selects 18000. No collapse; curve still rising at budget end | **KEEP** (program milestone; nothing ships) | **the standing texture blocker is broken as an architecture problem**: a replacement head with a lifted ceiling reaches incumbent parity from 35 k total steps (vs 52 k) at 1.22× head cost. Chain resolved in order: objective (55) → cost (93/94) → topology (100/101) → stability (102) → stochastic path (103) → adversarial dose (56/95, here). Process note: step-rate estimate was 5–6× optimistic; budget extension written before 1× per §6, early checkpoint reads recovered the timeline. Named next: (a) full frozen battery + gates on gen_18000 (prerequisite for any preset), (b) resume adversarial from saved gen+disc state — first head to *exceed* MaskHead on two instruments clears 4b for a ship claim |
@@ -80,18 +81,24 @@ eval manifest), not from prose. Reference points: the **self-noise floor** is
 pipeline) is `experiments/22-head-eval/metrics_control.json` — that control, not the floor, is the
 pass bar for a vocoder head.
 
-| metric (mean/worst) | floor | control | `ship-q8` | `student` | `student-fast` |
-|---|---|---|---|---|---|
-| MCD dB | 1.86 / 2.47 | **3.98** / 17.49 | 3.89 / 13.31 | **11.83** / 19.43 ✗ | 13.78 / 22.03 ✗ |
-| mel L1 | 0.077 / 0.105 | 0.183 / 0.927 | 0.182 / 0.910 | 0.552 / 1.076 | 1.618 / 2.679 |
-| duration drift % | 0 / 0 | 0.011 / 0.227 | 0.013 / 0.329 | 0.022 / **0.329** ✓ | 4.97 / **50.30** ✗ |
-| F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 31.82 / 52.81 |
-| spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.980 / 0.921 |
-| SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.93961 / — |
-| DNSMOS ovrl_mos ↑ (reference-free, cycle 72) | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
-| **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | 3.9763 |
-| **NISQA ↑ (reference-free, quality-trained, cycle 88)** | **4.9483** | — | 4.9518 | 4.6348 | 4.7432 |
-| **DNSMOS ovrl ↑ (reference-free, enhancement-trained, cycle 72)** | 3.4326 | — | 3.4320 | 3.1665 | 3.1439 |
+**`student-fast` switched heads in cycle 107** (MaskHead → `SFNoiseHead`, cycles 101–106): the
+new head beats the old on UTMOS (t=4.35) and DNSMOS (t=3.54) with NISQA at parity (t=−1.64) —
+the invariant-4b two-instrument bar — and passes every reference-aware and robustness gate. The
+old head's column is preserved as `student-fast-mask` (opt-in). New-head sources:
+`experiments/107-sf-default/metrics_step45000.json`, `spk_step45000.json`,
+`experiments/104-sf-adversarial/{utmos,nisqa,dnsmos,asr}final2.json`.
+
+| metric (mean/worst) | floor | control | `ship-q8` | `student` | `student-fast` (SF head, cycle 107) | `student-fast-mask` (old default) |
+|---|---|---|---|---|---|---|
+| MCD dB | 1.86 / 2.47 | **3.98** / 17.49 | 3.89 / 13.31 | **11.83** / 19.43 ✗ | 13.79 / 21.84 ✗ | 13.78 / 22.03 ✗ |
+| mel L1 | 0.077 / 0.105 | 0.183 / 0.927 | 0.182 / 0.910 | 0.552 / 1.076 | 1.620 / 2.690 | 1.618 / 2.679 |
+| duration drift % | 0 / 0 | 0.011 / 0.227 | 0.013 / 0.329 | 0.022 / **0.329** ✓ | 4.97 / **50.30** ✗ (identical — shared timing path) | 4.97 / **50.30** ✗ |
+| F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 32.05 / 54.70 | 31.82 / 52.81 |
+| spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.981 / 0.901 | 0.980 / 0.921 |
+| SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | — (not yet run on SF head) | 0.93961 / — |
+| **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | **4.0828** | 3.9763 |
+| **NISQA ↑ (reference-free, quality-trained, cycle 88)** | **4.9483** | — | 4.9518 | 4.6348 | 4.6431 | 4.7432 |
+| **DNSMOS ovrl ↑ (reference-free, enhancement-trained, cycle 72)** | 3.4326 | — | 3.4320 | 3.1665 | **3.1964** | 3.1439 |
 
 **Three-instrument agreement (cycle 89):** all three rank teacher ≈ `ship-q8` at the top and the
 students clearly below (Spearman NISQA–UTMOS +0.80). `student` and `student-fast` are **tied** — the
@@ -185,7 +192,8 @@ items of `eval/manifest.json` (163.4 s audio; 168.3 s for `student-fast`).
 
 | config | chapter wall | RTF × | short wall | peak RSS | active params |
 |---|---|---|---|---|---|
-| `student-fast` | **0.261 s** | 645 | 10.5 ms | 539.8 MB | **9.93 M** |
+| `student-fast` (SF head, re-measured cycle 107, same-session pair) | **0.271 s** | 622 | — | 484.4 MB | ~10.5 M |
+| `student-fast-mask` (old default, same-session pair) | **0.251 s** | 671 | 10.5 ms | 488.7 MB | **9.93 M** |
 | `student` | **1.106 s** | 148 | 25.3 ms | **1092.7 MB** | **90.3 M** |
 | `ship-q8` | **15.04 s** | 10.9 | 149 ms | 825.3 MB | 39.8 M (packed) |
 | `ship-q4` | 14.60 s | 11.2 | 159 ms | 824.9 MB | 33.1 M (packed) |

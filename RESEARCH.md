@@ -182,13 +182,15 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    *distributional* objectives: a discriminator targeted at the inter-harmonic band, distribution
    matching, or conditioned-stochastic generation. `experiments/20-distill/disc.py` already exists.
    Kokoro's own decoder was GAN-trained; this student essentially was not.
-1. **The texture gap — head replacement BUILT and at incumbent parity (cycles 100–104).** The
-   source-filter head (`SFNoiseHead` + adversarial polish) reaches statistical parity with
-   MaskHead on UTMOS and NISQA and significantly exceeds it on DNSMOS, at ~1.2× head cost, with
-   its training curve still rising where MaskHead sits at its measured ceiling — see the cycle
-   101–104 LEDGER rows. Open work: (a) the full reference-aware battery + gates on the selected
-   checkpoint (prerequisite for any preset), (b) resumed adversarial training toward *exceeding*
-   the incumbent on two instruments (the 4b ship bar). *Original framing (historical):*
+1. **The texture gap — head replaced and SHIPPED AS THE DEFAULT (cycles 100–107).** The
+   source-filter head (`SFNoiseHead`, 42 k adversarial generator steps) exceeds MaskHead on two
+   independent instruments (UTMOS t=4.35, DNSMOS t=3.54; NISQA parity), passes every
+   reference-aware and robustness gate, and is `student-fast`'s head since cycle 107
+   (old default preserved as `student-fast-mask`). Remaining gap to the teacher: see §10's
+   milestone. Open angles: further adversarial dose (curve still rising, diminishing rate),
+   trunk capacity (~1.5× cost headroom, cycle 94), a feature-space discriminator for cheaper
+   GAN steps (2026-08-02 sweep), and SBS on the new head (not yet run). *Original framing
+   (historical):*
    **The texture gap — previously specified as head replacement (cycles 54, 90, 91, 92).** The
    architectural ceiling is real on four instruments (91); the frontier's 57× speed gap needs a
    *vocoder* improvement, not better timing (90); and there is **no two-instrument evidence of
@@ -356,13 +358,16 @@ Inventing is in scope. Being wrong in public in a `RESULT.md` is in scope. Stopp
 A single concrete near-term target, so cycles have a shared direction. **Replace it when hit or
 when a cycle proves it's the wrong target** — it is a waypoint, never the goal.
 
-> **Current: halve the texture gap.** *(Cycle 54 constrains this: 84.7 % of the gap is outside the
-> current head's representational ceiling, so this milestone cannot be hit without replacing the
-> head. The target stands; the route is now specified.)* Close at least half the distance between the student's
-> current MCD and the control bar, with no regression to WER, duration drift, or speaker-cos —
-> *or* produce a recorded finding that MCD is the wrong instrument for this failure, plus a
-> validated replacement metric to steer by. **Either outcome retires this milestone.**
-> (Current values: see the frontier table in `experiments/LEDGER.md`.)
+> **Current: close half the perceptual gap to the teacher, on two instruments.** From the
+> cycle-107 default (`SFNoiseHead`), close at least half the UTMOS distance to the teacher with
+> NISQA corroborating at least half its own distance, and no regression to the reference-aware
+> battery, robustness gates, WER, or speed beyond a stated trade. (Current values: frontier
+> table in `experiments/LEDGER.md`.)
+>
+> *Previous milestone ("halve the texture gap in MCD, or show MCD is the wrong instrument plus
+> a validated replacement") — **retired by cycle 107 on its second clause**: the replacement
+> head beats the incumbent on two perceptual instruments while MCD is unchanged, and the
+> validated steering stack is UTMOS+NISQA+DNSMOS under invariant 4b.*
 
 ---
 

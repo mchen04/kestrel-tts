@@ -8,7 +8,8 @@ Renders a 163-second chapter on an M2 MacBook (16 GB) in:
 
 | preset | wall | real-time factor | vs stock Kokoro | character |
 |---|---|---|---|---|
-| `student-fast` | **0.239 s** | ×706 | **57× faster** | max speed; timing drift 5 % mean but **50 % worst-case** |
+| `student-fast` | **0.271 s** | ×622 | **~53× faster** | source-filter head (cycles 101–107); timing drift 5 % mean but **50 % worst-case** |
+| `student-fast-mask` | **0.251 s** | ×671 | **~57× faster** | the pre-cycle-107 MaskHead default, kept for comparison |
 | `student` | **1.117 s** | ×146 | **12.3× faster** | bit-exact durations vs the teacher |
 | `ship-q8` (default) | 15.3 s | ×10.7 | ~1× | fully gate-passing, 2.7× smaller |
 
@@ -43,10 +44,11 @@ from fastkoko import from_preset            # package name kept for compatibilit
 engine = from_preset("student-fast")        # or "student", "ship-q8" (default), "ship-q4", "exact"
 audio = engine.synth_all("Your chapter text here.")   # np.float32 @ 24 kHz
 ```
-Opt-in: `student-fast-sf` — a source-filter vocoder head (cycles 101–105) at statistical parity
-with `student-fast` on UTMOS, NISQA and the full reference-aware battery, significantly above it
-on DNSMOS only; one instrument short of the two-instrument bar for a superiority claim, hence
-not the default. ~1.2× the head cost. See `experiments/105-sf-battery/RESULT.md`.
+**Since cycle 107, `student-fast` uses the source-filter head (`SFNoiseHead`, cycles 101–106):**
+it exceeds the previous MaskHead head on two independent perceptual instruments (UTMOS +0.107,
+t=4.35; DNSMOS +0.053, t=3.54; NISQA at parity) and passes every reference-aware and robustness
+gate, at +8 % chapter wall. The old head remains available as `student-fast-mask`;
+`student-fast-sf` is an alias of the new default. See `experiments/107-sf-default/RESULT.md`.
 Epub_Listener integration: `EPUB_KOKORO_PRESET=student-fast`. The gate-passing `ship-q8`
 remains the default provider; Kestrel presets are opt-in until the texture gap closes.
 

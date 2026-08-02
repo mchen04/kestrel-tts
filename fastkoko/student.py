@@ -360,16 +360,18 @@ class StudentAdapter:
 
     def __init__(self, fast=False, natural=False, sf=False):
         if sf:
-            # cycle 104/105: SFNoiseHead — source-filter head (true-sinusoid excitation, bounded
-            # filter, additive noise path; cycles 101-103) + 15k adversarial generator steps.
-            # Statistical parity with MaskHead on UTMOS (3.9557, t=-1.01) and NISQA (4.6432,
-            # t=-1.89), significantly ABOVE on DNSMOS (3.1979, t=+3.78); reference-aware battery
-            # at parity or better on every row (MCD 13.68 vs 13.78, F0 31.51 vs 31.82, spk 0.980,
-            # drift identical to 4 dp); WER 5.46% vs 5.27%. Head cost 1.22x MaskHead. Opt-in:
-            # parity is not superiority (only DNSMOS claims a win; invariant 4b needs two).
+            # cycles 101-107: SFNoiseHead — source-filter head (true-sinusoid excitation, bounded
+            # filter, additive noise path) + 42k adversarial generator steps. THE DEFAULT fast
+            # head since cycle 107: significantly above MaskHead on UTMOS (4.0828, +0.1065,
+            # t=4.35) and DNSMOS (3.1964, +0.0525, t=3.54) — the invariant-4b two-instrument
+            # bar — with NISQA at parity (4.6431, t=-1.64). Reference-aware battery at parity
+            # (MCD 13.79, F0 32.05, spk 0.9807, drift identical to 4 dp); robustness gates all
+            # pass (WER by category within +-1.7 pp, overall better: 17.17% vs 17.52%).
+            # Trade: chapter wall 0.271s vs 0.251s (+8%), RSS equal. The previous MaskHead
+            # default remains available as "student-fast-mask".
             # Measured on the fast path only; V3 combination untested.
             from .models.vocoder import SFNoiseHead
-            ck = "weights/kestrel_sf_gan18k"
+            ck = "weights/kestrel_sf_gan42k"
             self.engine = StudentKokoro(mckpt=ck, head_cls=SFNoiseHead)
         elif natural:
             # cycle 86: AuxMaskHead (auxiliary log-magnitude pathway) strictly dominates the

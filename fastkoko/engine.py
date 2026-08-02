@@ -57,16 +57,17 @@ def from_preset(name: str, **overrides):
     if name in ("student", "student-exact-prosody"):
         from .student import StudentAdapter
         return StudentAdapter(fast=False)
-    if name in ("student-fast",):
-        from .student import StudentAdapter
-        return StudentAdapter(fast=True)
-    if name in ("student-fast-sf",):
-        # cycles 101-105: source-filter head (SFNoiseHead + adversarial polish). Opt-in.
-        # Parity with student-fast on UTMOS/NISQA and the full reference-aware battery;
-        # significantly above it on DNSMOS only — one instrument short of the 4b ship bar
-        # for superiority, hence not the default. See experiments/105-sf-battery/RESULT.md.
+    if name in ("student-fast", "student-fast-sf"):
+        # cycle 107: the source-filter head (SFNoiseHead, cycles 101-106) IS the fast default.
+        # It exceeds the previous MaskHead default on two independent instruments (UTMOS t=4.35,
+        # DNSMOS t=3.54; NISQA parity) — the invariant-4b bar — and passes every reference-aware
+        # and robustness gate, at +8% chapter wall. See experiments/107-sf-default/RESULT.md.
         from .student import StudentAdapter
         return StudentAdapter(fast=True, sf=True)
+    if name in ("student-fast-mask",):
+        # the pre-cycle-107 MaskHead default, kept for comparison and rollback.
+        from .student import StudentAdapter
+        return StudentAdapter(fast=True)
     cfg = dict(PRESETS[name])
     cfg.update(overrides)
     return FastKokoro(**cfg)
