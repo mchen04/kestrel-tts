@@ -1,0 +1,6 @@
+{
+ "MaskHead_ms": 21.47,
+ "SourceFilterHead_ms": 25.2,
+ "BoundedSFHead_ms": 25.69,
+ "bounded_vs_mask": 1.197
+}

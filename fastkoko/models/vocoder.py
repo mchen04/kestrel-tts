@@ -9,6 +9,8 @@ frame-rate head viable at all.
     x (B,F,512) decode features @ 80 fps, f0/n (B,F), style s (B,128), theta (B,F)
       -> mask * template + noise envelope  -> single iSTFT, hop 300
 """
+import math
+
 import mlx.core as mx
 import mlx.nn as nn
 
@@ -249,6 +251,62 @@ class CondHead(MaskHead):
         m = mx.exp(mx.clip(self.mag_head(h).astype(mx.float32), -14.0, 8.0))
         p = self.pha_head(h).astype(mx.float32)
         return m * mx.cos(p), m * mx.sin(p)
+
+
+class BoundedSFHead(MaskHead):
+    """Source-filter head with the filter bounded the way MaskHead's mask is (cycle 102).
+
+    Fixes the three defects that killed cycle 101's SourceFilterHead:
+    1. true sinusoid source — per-sample phase advances linearly within each frame at that
+       frame's f0 (101's mx.repeat held phase constant over 300-sample spans: a staircase);
+    2. alias gate — harmonics with k*f0 above SR/2 - 2*DF are dropped, as the template does;
+    3. bounded filter — exp-clipped log-magnitude plus a phase rotation: exactly the
+       parameterisation MaskHead trains stably with, at the same spectral scale (a windowed
+       unit sinusoid peaks at ~sum(win)/2 = 300, which is also hann_lobe(0)/2 — the template's
+       own scale, so no renormalisation is applied; cycle 102's sanity.py verified this).
+    The source uses cos(k*theta) to match the template's phase convention (verified to <1e-7 rad
+    across frames). Unvoiced frames carry unit-variance spectral noise, voiced a 0.1 floor.
+    """
+
+    K_SRC = 64
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128):
+        super().__init__(in_dim=in_dim, dim=dim, blocks=blocks, sdim=sdim)
+        self.filt_mag = nn.Linear(dim, NBINS)
+        self.filt_phs = nn.Linear(dim, NBINS)
+
+    def _source_spec(self, f0c, theta, noise=None):
+        B, F = f0c.shape
+        T = F * HOP
+        # theta[i] is the fundamental phase at frame i's FIRST sample, i*HOP - NFFT/2 (see
+        # dsp.theta_from_f0); hop-chunk sample j of frame i sits NFFT/2 + j later.
+        off = (mx.arange(HOP).astype(mx.float32) + NFFT // 2)[None, None, :] / SR
+        ph = theta[:, :, None] + 2 * math.pi * f0c[:, :, None] * off  # (B,F,HOP)
+        k = mx.arange(1, self.K_SRC + 1).astype(mx.float32)
+        alias = (f0c[:, :, None] * k[None, None, :] < (SR / 2 - 2 * DF)).astype(mx.float32)
+        voiced = (f0c > 10).astype(mx.float32)[:, :, None]
+        amp = (alias / k[None, None, :]) * voiced                     # (B,F,K)
+        e = mx.sum(mx.cos(ph[..., None] * k[None, None, None, :]) * amp[:, :, None, :], axis=-1)
+        e = e.reshape(B, T)
+        pad = NFFT // 2
+        a = mx.pad(e, [(0, 0), (pad, pad)])
+        idx = mx.arange(F)[:, None] * HOP + mx.arange(NFFT)[None, :]
+        sp = mx.fft.rfft(a[:, idx] * self._win, axis=-1)
+        sre, sim = mx.real(sp), mx.imag(sp)
+        if noise is None:
+            nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
+        else:
+            nr, ni = noise
+        g = (1.0 - 0.9 * voiced)                                      # 1.0 unvoiced, 0.1 voiced
+        return sre + g * nr, sim + g * ni
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        sre, sim = self._source_spec(f0c, theta, noise)
+        M = mx.exp(mx.clip(self.filt_mag(h).astype(mx.float32), -12.0, 8.0))
+        ph = self.filt_phs(h).astype(mx.float32)
+        c, sn = mx.cos(ph), mx.sin(ph)
+        return M * (sre * c - sim * sn), M * (sre * sn + sim * c)
 
 
 class SourceFilterHead(MaskHead):
