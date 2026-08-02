@@ -358,8 +358,20 @@ class StudentAdapter:
     batched student engines. speed scales predicted durations before rounding,
     matching the teacher (fastkoko/engine.py:139)."""
 
-    def __init__(self, fast=False, natural=False):
-        if natural:
+    def __init__(self, fast=False, natural=False, sf=False):
+        if sf:
+            # cycle 104/105: SFNoiseHead — source-filter head (true-sinusoid excitation, bounded
+            # filter, additive noise path; cycles 101-103) + 15k adversarial generator steps.
+            # Statistical parity with MaskHead on UTMOS (3.9557, t=-1.01) and NISQA (4.6432,
+            # t=-1.89), significantly ABOVE on DNSMOS (3.1979, t=+3.78); reference-aware battery
+            # at parity or better on every row (MCD 13.68 vs 13.78, F0 31.51 vs 31.82, spk 0.980,
+            # drift identical to 4 dp); WER 5.46% vs 5.27%. Head cost 1.22x MaskHead. Opt-in:
+            # parity is not superiority (only DNSMOS claims a win; invariant 4b needs two).
+            # Measured on the fast path only; V3 combination untested.
+            from .models.vocoder import SFNoiseHead
+            ck = "weights/kestrel_sf_gan18k"
+            self.engine = StudentKokoro(mckpt=ck, head_cls=SFNoiseHead)
+        elif natural:
             # cycle 86: AuxMaskHead (auxiliary log-magnitude pathway) strictly dominates the
             # complex-residual head it replaces -- UTMOS 4.2162 vs 4.1450, and it carries NO pitch
             # or voicing regression (F0 32.49 vs baseline 31.82; vuv 30.17 vs 29.38), where the

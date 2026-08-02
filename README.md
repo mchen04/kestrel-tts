@@ -43,6 +43,10 @@ from fastkoko import from_preset            # package name kept for compatibilit
 engine = from_preset("student-fast")        # or "student", "ship-q8" (default), "ship-q4", "exact"
 audio = engine.synth_all("Your chapter text here.")   # np.float32 @ 24 kHz
 ```
+Opt-in: `student-fast-sf` — a source-filter vocoder head (cycles 101–105) at statistical parity
+with `student-fast` on UTMOS, NISQA and the full reference-aware battery, significantly above it
+on DNSMOS only; one instrument short of the two-instrument bar for a superiority claim, hence
+not the default. ~1.2× the head cost. See `experiments/105-sf-battery/RESULT.md`.
 Epub_Listener integration: `EPUB_KOKORO_PRESET=student-fast`. The gate-passing `ship-q8`
 remains the default provider; Kestrel presets are opt-in until the texture gap closes.
 

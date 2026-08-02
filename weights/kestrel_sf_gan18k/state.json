@@ -1,0 +1,1 @@
+{"source": "experiments/104-sf-adversarial/gan/gen_18000.safetensors", "head": "SFNoiseHead", "cycle": 105, "generator_steps": 15000, "selected_by": "battery (cycles 104-105): UTMOS 3.9557 (parity t=-1.01), NISQA 4.6432 (parity t=-1.89), DNSMOS 3.1979 (+, t=3.78), WER 5.46%, MCD 13.68, F0 31.51, spk 0.980, drift identical to student-fast"}
