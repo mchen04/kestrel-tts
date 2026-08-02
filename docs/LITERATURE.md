@@ -189,3 +189,19 @@ better and much cheaper, and the voice-identity objection is unchanged. Dead end
 - https://arxiv.org/html/2401.10460v1 (Ultra-Lightweight Neural DDSP Vocoder)
 - https://arxiv.org/pdf/2411.00464 (MDCTCodec)
 - https://arxiv.org/html/2306.00814 (Vocos)
+
+## Sweep — 2026-08-02 (cycle 106, incremental)
+
+Checked for work published since yesterday's targeted sweep (cycle 100). Nothing new that
+changes the resumed-adversarial pick. One older item surfaced that earlier sweeps missed,
+logged for future recipe cycles: **Vocoder-Projected Feature Discriminator** (arXiv 2508.17874)
+— discriminates in a vocoder feature space instead of on waveforms, reducing adversarial
+training cost; relevant if cycle 106+ needs cheaper GAN steps (measured 1.2 s/it here).
+Also confirmed the family precedent: **SF-GAN** (arXiv 2304.13270) is a source-filter GAN
+vocoder — the topology cycles 101–105 built has published adversarial-training precedent.
+
+**Standing dead-end re-check (model switching):** no new candidate; dead end holds.
+
+### Sources
+- https://arxiv.org/html/2508.17874v2 (Vocoder-Projected Feature Discriminator)
+- https://arxiv.org/abs/2304.13270 (SF-GAN)
