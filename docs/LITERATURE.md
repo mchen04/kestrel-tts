@@ -135,3 +135,57 @@ Dead end holds.
 - https://arxiv.org/pdf/2603.08574 (range-null space vocoder)
 - https://arxiv.org/pdf/2401.16812 (SpeechBERTScore)
 - https://www.isca-archive.org/ssw_2025/minixhofer25_ssw.pdf (TTSDS2)
+
+## Sweep — August 2026 (cycle 100, targeted)
+
+The cycle-50 sweep asked a broad question. This one asks the narrow question cycles 95–99 produced:
+**what output stage should replace per-bin linear, at ~0.26 s/chapter on one M2?** Context that
+constrains the answer, all measured in this repo:
+
+- MaskHead's spectral-mask-over-harmonic-template is **capped** at 60–80 % of the gap (cycles 54, 91,
+  confirmed on four instruments).
+- Three per-bin-linear-output variants — no harmonic info, learnable target, harmonic conditioning —
+  all land **1.6–2.1 UTMOS below MaskHead** (cycles 95, 96, 97). That family is closed.
+- A template-free head runs **119× cheaper than the teacher's** (cycle 94), so cost is not the binding
+  constraint; representation is.
+
+### The candidate this sweep surfaced
+
+**HiFTNet** (arXiv 2309.09493, `yl4579/HiFTNet`) — harmonic-plus-noise **source-filter** in the
+time-frequency domain: a sinusoidal excitation is generated from F0 and then *filtered* by the
+network, with iSTFT output. Reported **4× faster than BigVGAN at 1/6 the parameters**.
+
+Why it matters here, specifically:
+1. **It is a third output topology**, distinct from both things this repo has tried. MaskHead
+   *masks* a spectral template; FreeHead predicts bins *independently*. HiFTNet *filters an
+   excitation* — the harmonic structure enters as a time-domain source, not as a spectral constraint,
+   so it is not bounded the way cycle 54 measured MaskHead to be.
+2. **Same lineage.** HiFTNet is by the StyleTTS2 author, and Kokoro is StyleTTS2-family — the
+   conditioning interface should be close to what `fastkoko` already produces.
+3. **The cost claim is in the right order of magnitude** given cycle 94's headroom.
+
+### Also noted, not selected
+- **Spiking Vocos** (arXiv 2509.13049) — energy-efficient Vocos via spiking networks. Optimises
+  energy, not the wall-clock this repo gates on, and adds a training regime with no MLX support.
+- **Aliasing-Free Neural Audio Synthesis** (arXiv 2512.20211, June 2026) — targets music/singing
+  aliasing artifacts; not the failure mode measured here.
+- **Ultra-Lightweight Neural DDSP Vocoder** (arXiv 2401.10460) — DDSP-family, which `MaskHead`
+  already is and whose variant ladder cycles 51/75 closed.
+- **MDCTCodec** (arXiv 2411.00464) — codec-domain; a larger reframing than the head swap in scope.
+
+### What this changes about the plan
+The replacement program has a **named candidate topology** rather than an open design problem:
+source-filter excitation, not spectral masking and not per-bin prediction. Screen it in the
+established order — cost first (~0.26 s/chapter, cycle 93/94), then UTMOS **and** NISQA per
+invariant 4b.
+
+**Standing dead-end re-check (required each sweep): model switching.** Nothing this month is both
+better and much cheaper, and the voice-identity objection is unchanged. Dead end holds.
+
+### Sources
+- https://arxiv.org/abs/2309.09493 · https://github.com/yl4579/HiFTNet (HiFTNet)
+- https://arxiv.org/html/2509.13049v1 (Spiking Vocos)
+- https://arxiv.org/html/2512.20211v3 (Aliasing-Free Neural Audio Synthesis)
+- https://arxiv.org/html/2401.10460v1 (Ultra-Lightweight Neural DDSP Vocoder)
+- https://arxiv.org/pdf/2411.00464 (MDCTCodec)
+- https://arxiv.org/html/2306.00814 (Vocos)
