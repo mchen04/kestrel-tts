@@ -275,7 +275,8 @@ class BoundedSFHead(MaskHead):
         self.filt_mag = nn.Linear(dim, NBINS)
         self.filt_phs = nn.Linear(dim, NBINS)
 
-    def _source_spec(self, f0c, theta, noise=None):
+    def _harmonic_spec(self, f0c, theta):
+        """Pure harmonic excitation -> STFT; no stochastic component."""
         B, F = f0c.shape
         T = F * HOP
         # theta[i] is the fundamental phase at frame i's FIRST sample, i*HOP - NFFT/2 (see
@@ -292,7 +293,11 @@ class BoundedSFHead(MaskHead):
         a = mx.pad(e, [(0, 0), (pad, pad)])
         idx = mx.arange(F)[:, None] * HOP + mx.arange(NFFT)[None, :]
         sp = mx.fft.rfft(a[:, idx] * self._win, axis=-1)
-        sre, sim = mx.real(sp), mx.imag(sp)
+        return mx.real(sp), mx.imag(sp), voiced
+
+    def _source_spec(self, f0c, theta, noise=None):
+        sre, sim, voiced = self._harmonic_spec(f0c, theta)
+        B, F = f0c.shape
         if noise is None:
             nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
         else:
@@ -307,6 +312,36 @@ class BoundedSFHead(MaskHead):
         ph = self.filt_phs(h).astype(mx.float32)
         c, sn = mx.cos(ph), mx.sin(ph)
         return M * (sre * c - sim * sn), M * (sre * sn + sim * c)
+
+
+class SFNoiseHead(BoundedSFHead):
+    """Cycle 103: BoundedSFHead plus MaskHead's additive noise path.
+
+    S = M e^{i phi} HarmonicSource + env * N,  env = exp(clip(nz_head, -14, 6))
+
+    Cycle 102's NISQA veto localised to discontinuity/coloration with the frame-boundary
+    mechanism measured dead. The structural suspect is the inter-harmonic band: MaskHead fills
+    it with stochastic energy via its additive env*noise term, while BoundedSFHead fills it with
+    deterministic Hann leakage phase-locked to the pitch pulses, and aspiration must share the
+    harmonics' multiplicative gain. Here stochastic energy enters additively after the filter
+    (the source is pure harmonic; unvoiced frames are all-noise via env, exactly as MaskHead's
+    template is zero there). nz_head starts from MaskHead's trained values under the gmckpt
+    strict=False load.
+    """
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        sre, sim, _ = self._harmonic_spec(f0c, theta)
+        B, F, _ = h.shape
+        M = mx.exp(mx.clip(self.filt_mag(h).astype(mx.float32), -12.0, 8.0))
+        ph = self.filt_phs(h).astype(mx.float32)
+        env = mx.exp(mx.clip(self.nz_head(h).astype(mx.float32), -14.0, 6.0))
+        c, sn = mx.cos(ph), mx.sin(ph)
+        if noise is None:
+            nr = mx.random.normal((B, F, NBINS)); ni = mx.random.normal((B, F, NBINS))
+        else:
+            nr, ni = noise
+        return M * (sre * c - sim * sn) + env * nr, M * (sre * sn + sim * c) + env * ni
 
 
 class SourceFilterHead(MaskHead):
