@@ -13,7 +13,7 @@ import mlx.core as mx
 import mlx.nn as nn
 
 from .blocks import AdaLN, ConvNeXtBlock
-from .dsp import DF, K_HARM, NBINS, SR, TAPS, hann, hann_lobe, istft
+from .dsp import HOP, NFFT, DF, K_HARM, NBINS, SR, TAPS, hann, hann_lobe, istft
 
 
 class MaskHead(nn.Module):
@@ -249,3 +249,44 @@ class CondHead(MaskHead):
         m = mx.exp(mx.clip(self.mag_head(h).astype(mx.float32), -14.0, 8.0))
         p = self.pha_head(h).astype(mx.float32)
         return m * mx.cos(p), m * mx.sin(p)
+
+
+class SourceFilterHead(MaskHead):
+    """HiFTNet-style source-filter head (cycle 101).
+
+    Excitation is built in the TIME domain from the phase track theta, then STFT'd, so each harmonic
+    carries natural spectral leakage and the inter-harmonic bins are not structurally empty — the
+    limitation cycle 54 measured for MaskHead's spectral-domain template. The network predicts a
+    complex per-bin filter over that source rather than placing harmonics itself.
+    """
+
+    K_SRC = 64          # harmonics in the time-domain excitation
+
+    def __init__(self, in_dim=512, dim=192, blocks=6, sdim=128):
+        super().__init__(in_dim=in_dim, dim=dim, blocks=blocks, sdim=sdim)
+        self.filt_re = nn.Linear(dim, NBINS)
+        self.filt_im = nn.Linear(dim, NBINS)
+
+    def _source_spec(self, f0c, theta):
+        """time-domain harmonic excitation -> STFT (B, F, NBINS) complex parts"""
+        B, F = f0c.shape
+        T = F * HOP
+        # per-sample phase by linear interpolation of the per-frame phase track
+        th = mx.repeat(theta, HOP, axis=1)[:, :T]
+        f0s = mx.repeat(f0c, HOP, axis=1)[:, :T]
+        voiced = (f0s > 10).astype(mx.float32)
+        k = mx.arange(1, self.K_SRC + 1).astype(mx.float32)[None, None, :]
+        e = mx.sum(mx.sin(th[:, :, None] * k) / k, axis=-1) * voiced
+        e = e + 0.03 * mx.random.normal((B, T)) * (1.0 - voiced)
+        pad = NFFT // 2
+        a = mx.pad(e, [(0, 0), (pad, pad)])
+        idx = mx.arange(F)[:, None] * HOP + mx.arange(NFFT)[None, :]
+        sp = mx.fft.rfft(a[:, idx] * self._win, axis=-1)
+        return mx.real(sp), mx.imag(sp)
+
+    def __call__(self, x, f0, n, s, theta, noise=None):
+        h, f0c = self.trunk(x, f0, n, s)
+        sre, sim = self._source_spec(f0c, theta)
+        fre = self.filt_re(h).astype(mx.float32)
+        fim = self.filt_im(h).astype(mx.float32)
+        return sre * fre - sim * fim, sre * fim + sim * fre
