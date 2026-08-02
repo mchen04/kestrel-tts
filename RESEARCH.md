@@ -182,7 +182,14 @@ Ordered by expected value. **Re-rank every cycle; add freely; this list is expec
    *distributional* objectives: a discriminator targeted at the inter-harmonic band, distribution
    matching, or conditioned-stochastic generation. `experiments/20-distill/disc.py` already exists.
    Kokoro's own decoder was GAN-trained; this student essentially was not.
-1. **The texture gap — now fully specified as head replacement (cycles 54, 90, 91, 92).** The
+1. **The texture gap — head replacement BUILT and at incumbent parity (cycles 100–104).** The
+   source-filter head (`SFNoiseHead` + adversarial polish) reaches statistical parity with
+   MaskHead on UTMOS and NISQA and significantly exceeds it on DNSMOS, at ~1.2× head cost, with
+   its training curve still rising where MaskHead sits at its measured ceiling — see the cycle
+   101–104 LEDGER rows. Open work: (a) the full reference-aware battery + gates on the selected
+   checkpoint (prerequisite for any preset), (b) resumed adversarial training toward *exceeding*
+   the incumbent on two instruments (the 4b ship bar). *Original framing (historical):*
+   **The texture gap — previously specified as head replacement (cycles 54, 90, 91, 92).** The
    architectural ceiling is real on four instruments (91); the frontier's 57× speed gap needs a
    *vocoder* improvement, not better timing (90); and there is **no two-instrument evidence of
    unclaimed headroom** inside the existing head (92 — UTMOS says +0.187, NISQA says none). Better
