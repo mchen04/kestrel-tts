@@ -205,3 +205,23 @@ vocoder — the topology cycles 101–105 built has published adversarial-traini
 ### Sources
 - https://arxiv.org/html/2508.17874v2 (Vocoder-Projected Feature Discriminator)
 - https://arxiv.org/abs/2304.13270 (SF-GAN)
+
+## Sweep — 2026-08-04 (cycle 113, targeted: discriminator-lens balancing)
+
+Cycle 112 found the 7-lens ensemble is a NISQA lever that leaves UTMOS range-bound — a lens
+*balancing* question. The field has standard answers:
+- **Improved RVQGAN / DAC** (arXiv 2306.06546): a **loss balancer** that normalizes each loss
+  term by its gradient magnitude so every lens contributes equally to the generator update —
+  the principled version of static down-weighting. The follow-up build if cycle 113's static
+  λ shows signal.
+- **Universal Harmonic Discriminator** (arXiv 2512.03486): a harmonic-structured lens —
+  candidate lens family matched to this repo's source-filter head.
+- **MS-SB-CQT Discriminator** (arXiv 2311.14957): CQT-domain lenses; measured MOS gains when
+  COMBINED with STFT lenses (3.27 → 3.87 on HiFi-GAN) — supports the add-lenses-alongside rule.
+
+**Standing dead-end re-check (model switching):** nothing new; dead end holds.
+
+### Sources
+- https://arxiv.org/pdf/2306.06546 (DAC loss balancer)
+- https://arxiv.org/html/2512.03486 (Universal Harmonic Discriminator)
+- https://arxiv.org/html/2311.14957 (MS-SB-CQT)
