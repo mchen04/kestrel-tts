@@ -1,0 +1,82 @@
+dsx: 609 train / 12 val
+LENSW 10.000 10.000 10.000 10.000 10.000 0.243 0.350
+step 63000 mel 0.3378 ema 0.3378 val_mel 0.4361 3.08s/it
+step 63100 mel 0.3791 ema 0.3963 val_mel nan 1.41s/it
+step 63200 mel 0.3657 ema 0.3689 val_mel nan 1.41s/it
+step 63300 mel 0.3595 ema 0.3639 val_mel nan 1.40s/it
+step 63400 mel 0.3661 ema 0.3664 val_mel nan 1.40s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.363 0.235
+step 63500 mel 0.3837 ema 0.3670 val_mel 0.3775 1.40s/it
+step 63600 mel 0.3766 ema 0.3718 val_mel nan 1.40s/it
+step 63700 mel 0.3876 ema 0.3923 val_mel nan 1.41s/it
+step 63800 mel 0.3686 ema 0.3975 val_mel nan 1.41s/it
+step 63900 mel 0.4010 ema 0.3871 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.269 0.305
+step 64000 mel 0.3689 ema 0.3811 val_mel 0.3707 1.42s/it
+step 64100 mel 0.3643 ema 0.3767 val_mel nan 1.42s/it
+step 64200 mel 0.3687 ema 0.3753 val_mel nan 1.43s/it
+step 64300 mel 0.3654 ema 0.3754 val_mel nan 1.43s/it
+step 64400 mel 0.3746 ema 0.3805 val_mel nan 1.43s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.443 0.211
+step 64500 mel 0.3614 ema 0.3765 val_mel 0.3764 1.43s/it
+step 64600 mel 0.3621 ema 0.3755 val_mel nan 1.43s/it
+step 64700 mel 0.3943 ema 0.3780 val_mel nan 1.43s/it
+step 64800 mel 0.3987 ema 0.3830 val_mel nan 1.42s/it
+step 64900 mel 0.3777 ema 0.3817 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.541 0.195
+step 65000 mel 0.3635 ema 0.3780 val_mel 0.3905 1.42s/it
+step 65100 mel 0.3877 ema 0.3797 val_mel nan 1.42s/it
+step 65200 mel 0.3700 ema 0.3819 val_mel nan 1.42s/it
+step 65300 mel 0.3915 ema 0.3841 val_mel nan 1.42s/it
+step 65400 mel 0.4097 ema 0.3849 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.503 0.200
+step 65500 mel 0.3996 ema 0.3874 val_mel 0.3881 1.42s/it
+step 65600 mel 0.3853 ema 0.3853 val_mel nan 1.42s/it
+step 65700 mel 0.3682 ema 0.3858 val_mel nan 1.42s/it
+step 65800 mel 0.3797 ema 0.3864 val_mel nan 1.42s/it
+step 65900 mel 0.3779 ema 0.3867 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.351 0.253
+step 66000 mel 0.3920 ema 0.3912 val_mel 0.4009 1.43s/it
+step 66100 mel 0.3883 ema 0.3977 val_mel nan 1.43s/it
+step 66200 mel 0.3764 ema 0.3948 val_mel nan 1.43s/it
+step 66300 mel 0.3859 ema 0.3889 val_mel nan 1.42s/it
+step 66400 mel 0.3906 ema 0.3901 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.218 0.420
+step 66500 mel 0.3784 ema 0.3900 val_mel 0.3966 1.42s/it
+step 66600 mel 0.3934 ema 0.3878 val_mel nan 1.42s/it
+step 66700 mel 0.3897 ema 0.3892 val_mel nan 1.42s/it
+step 66800 mel 0.3709 ema 0.3913 val_mel nan 1.42s/it
+step 66900 mel 0.4055 ema 0.3915 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.302 0.272
+step 67000 mel 0.3985 ema 0.3898 val_mel 0.3886 1.42s/it
+step 67100 mel 0.3849 ema 0.3897 val_mel nan 1.42s/it
+step 67200 mel 0.3879 ema 0.3919 val_mel nan 1.42s/it
+step 67300 mel 0.3978 ema 0.3930 val_mel nan 1.42s/it
+step 67400 mel 0.3941 ema 0.3901 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.695 0.181
+step 67500 mel 0.3772 ema 0.3913 val_mel 0.3839 1.42s/it
+step 67600 mel 0.3838 ema 0.3945 val_mel nan 1.42s/it
+step 67700 mel 0.4026 ema 0.4023 val_mel nan 1.42s/it
+step 67800 mel 0.3974 ema 0.4024 val_mel nan 1.42s/it
+step 67900 mel 0.3963 ema 0.4031 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.341 0.248
+step 68000 mel 0.4097 ema 0.3966 val_mel 0.4150 1.42s/it
+step 68100 mel 0.4138 ema 0.3970 val_mel nan 1.42s/it
+step 68200 mel 0.3893 ema 0.3932 val_mel nan 1.42s/it
+step 68300 mel 0.3987 ema 0.3939 val_mel nan 1.42s/it
+step 68400 mel 0.3960 ema 0.3966 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.565 0.192
+step 68500 mel 0.3776 ema 0.3982 val_mel 0.4028 1.42s/it
+step 68600 mel 0.3757 ema 0.3983 val_mel nan 1.42s/it
+step 68700 mel 0.3906 ema 0.3976 val_mel nan 1.42s/it
+step 68800 mel 0.4043 ema 0.3948 val_mel nan 1.42s/it
+step 68900 mel 0.4025 ema 0.3955 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.230 0.377
+step 69000 mel 0.4071 ema 0.3960 val_mel 0.4043 1.42s/it
+step 69100 mel 0.4050 ema 0.4029 val_mel nan 1.42s/it
+step 69200 mel 0.4143 ema 0.4042 val_mel nan 1.42s/it
+step 69300 mel 0.3967 ema 0.4078 val_mel nan 1.42s/it
+step 69400 mel 0.3908 ema 0.4065 val_mel nan 1.42s/it
+LENSW 10.000 10.000 10.000 10.000 10.000 0.307 0.270
+step 69500 mel 0.4303 ema 0.4072 val_mel 0.4270 1.42s/it
+step 69600 mel 0.4066 ema 0.4019 val_mel nan 1.42s/it

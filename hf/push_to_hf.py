@@ -38,6 +38,11 @@ def main():
         if not src.exists():
             raise SystemExit(f"missing {src}")
         shutil.copy(src, stage / src.name)
+    # cycle-113 final default head (dir-style checkpoint, uploaded flat)
+    sf = ROOT / "weights" / "kestrel_sf_lw58k" / "gen.safetensors"
+    if not sf.exists():
+        raise SystemExit(f"missing {sf}")
+    shutil.copy(sf, stage / "kestrel_sf_lw58k.safetensors")
     total = sum(f.stat().st_size for f in stage.iterdir()) / 1e6
     print(f"staged {len(list(stage.iterdir()))} files, {total:.1f} MB")
 

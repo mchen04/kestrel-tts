@@ -266,3 +266,45 @@ revival:       (PARK only) the condition that would bring it back
 ```
 
 *(The prioritised list of open questions lives in `RESEARCH.md` §7 — not duplicated here.)*
+
+---
+
+## Closing summary (2026-08-04 — the program's final state)
+
+The loop was closed by the owner after cycle 113. 64 loop cycles ran (50–113): 26 KEEPs,
+33 KILLs (each with a recorded cause of death), 3 PARKs, plus the phase-1/2 work that preceded
+the ledger. Nothing below edits any row above; this is where each axis finished.
+
+**Fidelity** — the program's centre of mass. The MaskHead vocoder was measured at its
+representational ceiling on four instruments (cycles 54/91), replaced by a source-filter head
+built and debugged across cycles 101–103, taken to incumbent superiority under the
+two-instrument rule (104–107), and then improved twice more by discriminator-side work alone
+(spectral lenses, cycle 111; lens re-balancing, cycle 113). Default preset final state:
+**UTMOS 4.1803, NISQA 4.7199, DNSMOS 3.2374** (teacher: 4.4773 / 4.9483 / 3.4326). The
+frame-wise spectral gate still fails (MCD 13.89 vs 3.98) and was never weakened.
+
+**Intelligibility** — parity throughout: eval WER 5.46 % vs teacher 5.65 %; robustness WER
+16.81 % vs 19.12 %, no category worse than the old default.
+
+**Exactness** — `student` remains the bit-exact-duration operating point; `student-fast`'s
+4.97 / 50.30 drift was diagnosed to its root (seven cycles, 57–65: inherent to the 80 fps
+distilled representation) and priced, not hidden. F0 31.76 Hz, spk-cos 0.981.
+
+**Speed / footprint** — `student-fast` 0.271 s / ×622 per 163 s chapter (the source-filter
+head costs +8 % wall over MaskHead, traded knowingly); ~10.5 M active params; RSS flat.
+
+**Capability / robustness** — streaming TTFA 0.16 s on a 10-hour book, `speed != 1.0`,
+510-phoneme guard, 7-category robustness set: all closed in cycles 66–71 and still standing.
+
+**Standing process rules the record produced** (the transferable asset): two independent
+instruments for any ship-grade claim (4b, cycle 88); never restart a discriminator on a
+trained generator — add lenses alongside a saved ensemble (cycle 110); lens balance is a
+first-class knob (113); select checkpoints by battery, never by loss, and distrust single
+checkpoints at high dose (82, 112); check the estimator before believing a worst-case
+(79, 105, 111).
+
+**Open questions left on the table**: the §10 milestone unfinished (UTMOS at 49 % of its
+target distance, NISQA at 87 %); the DAC-style gradient balancer was mid-first-run when the
+program closed (cycle 114 was stopped at ~4 k steps and records no verdict); harmonic and CQT
+discriminator lenses, SSL-feature lenses, and capture-data scale were named but never run;
+the texture gap to the teacher remains real and honestly stated.

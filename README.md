@@ -79,18 +79,25 @@ bit-exact phoneme path; `student-fast` is fully self-contained.
 
 ## Honest limits
 
-The frozen spectral gates **fail** on texture (not on content): 57× is the current ceiling on this
-hardware — the floor is GPU dispatch overhead — and the students ship opt-in because of it. Other
-current limits: one voice (`af_heart`), English only, `speed != 1.0` unsupported on the student
-presets. Weights are trained on-device from a frozen Kokoro teacher. Every measured dead end and
-the full decision trail are in [docs/history/](docs/history/).
+The frozen spectral gate **fails** on texture (not on content): MCD is 13.89 dB against the 3.98
+control bar, and no parity with the teacher is claimed in a direct A/B — though the final head
+scores within ~0.2–0.3 MOS of the teacher on three independent perceptual predictors (UTMOS
+4.180 vs 4.477, NISQA 4.720 vs 4.948, DNSMOS 3.237 vs 3.433). Other limits: one voice
+(`af_heart`), English only; `student-fast` duration drift is 4.97 % mean but up to 50.3 % on
+adversarial punctuation-dense text (narration stays at 0–8 %). `speed != 1.0` **is** supported
+(cycle 68). Weights are trained on-device from a frozen Kokoro teacher. Every measured dead end
+and the full decision trail are in [experiments/LEDGER.md](experiments/LEDGER.md) and
+[docs/history/](docs/history/).
 
-## Ongoing work
+## Project status — closed
 
-Kestrel is not finished and is not meant to be. [`RESEARCH.md`](RESEARCH.md) is the standing and
-only goal: a permanent loop of sweeping the literature, building what it suggests, measuring
-against the frozen battery, and keeping or discarding on the evidence — aimed at improving *any*
-axis (fidelity, exactness, speed, footprint, capability, robustness), trading freely between them,
-with no target that ends it. The texture gap above is the current blocker.
-[`experiments/LEDGER.md`](experiments/LEDGER.md) is the running record of every cycle, including
-the ones that failed; [`docs/`](docs/README.md) explains where everything lives.
+The research loop that built Kestrel ran **113 recorded cycles** (each with a pre-registered
+prediction, a falsifier, and a KEEP/KILL verdict) and was closed by its owner on 2026-08-04 with
+cycle 113 as the final result. Along the way it replaced the vocoder architecture outright
+(MaskHead → source-filter `SFNoiseHead`, cycles 101–107), shipped three further checkpoint
+upgrades under a two-instrument evidence rule, and raised the default preset from UTMOS
+3.976 → **4.180** while holding intelligibility, timing, and voice identity at parity.
+[`experiments/LEDGER.md`](experiments/LEDGER.md) is the complete record, including every
+failure; the closing summary at its end lists where each axis finished and the questions left
+open. The former standing-goal document is archived at
+[docs/history/RESEARCH_FINAL.md](docs/history/RESEARCH_FINAL.md).

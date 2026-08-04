@@ -4,7 +4,7 @@
 
 | | | |
 |---|---|---|
-| [`../RESEARCH.md`](../RESEARCH.md) | **the goal** | permanent research and discovery loop — the only live objective |
+| [`history/RESEARCH_FINAL.md`](history/RESEARCH_FINAL.md) | **the goal (closed)** | the research loop ran 113 recorded cycles and was closed 2026-08-04; `../RESEARCH.md` is a stub pointing here |
 | [`../README.md`](../README.md) | what Kestrel is | overview, usage, measured standing, honest limits |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | how it works now | module map, data flow, design rationale, sharp edges |
 | [`MODEL_CARD.md`](MODEL_CARD.md) | the shipped models | training data, intended use, limitations |
