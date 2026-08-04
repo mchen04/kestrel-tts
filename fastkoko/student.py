@@ -370,8 +370,12 @@ class StudentAdapter:
             # Trade: chapter wall 0.271s vs 0.251s (+8%), RSS equal. The previous MaskHead
             # default remains available as "student-fast-mask".
             # Measured on the fast path only; V3 combination untested.
+            # Cycle 111 checkpoint update: +2 spectral discriminator lenses alongside the saved
+            # ensemble broke NISQA's 62k-step ceiling — NISQA 4.7808 (+0.1377, t=2.57), UTMOS/
+            # DNSMOS at parity (DNSMOS 3.2114 = best absolute), WER 5.42%, all gates held.
+            # Previous checkpoint preserved at weights/kestrel_sf_gan42k for rollback.
             from .models.vocoder import SFNoiseHead
-            ck = "weights/kestrel_sf_gan42k"
+            ck = "weights/kestrel_sf_spec8k"
             self.engine = StudentKokoro(mckpt=ck, head_cls=SFNoiseHead)
         elif natural:
             # cycle 86: AuxMaskHead (auxiliary log-magnitude pathway) strictly dominates the

@@ -9,6 +9,7 @@ death recorded) · **PARK** (blocked, with a written revival condition).
 | # | date | question | predicted | measured | verdict | why |
 |---|---|---|---|---|---|---|
 | — | — | *(prior phase-1/2 experiments 00–40 predate this ledger; see each directory's `RESULT.md` and `docs/history/PROCESS.md`)* | | | | |
+| 111 | 2026-08-03 | do spectrogram-domain lenses added alongside the saved ensemble move NISQA without costing UTMOS? | NISQA ≥ 4.70 at some checkpoint with UTMOS within −0.05; no equilibrium destruction | **NISQA ceiling broken in 3 k steps**; selected gen_8000: **NISQA 4.7808 (+0.1377, t=2.57)** — the first NISQA gain of the whole adversarial program — UTMOS 4.0680 (parity), DNSMOS 3.2114 (parity, best absolute), WER 5.42 %, rob WER better (16.99 vs 17.17), drift identical, spk 0.9814, F0 patho03 flag cleared by the cycle-79 second-estimator protocol (artifact) | **KEEP — default checkpoint updated** (`weights/kestrel_sf_spec8k`; rollback kept) | the waveform MPD+MSD were blind to what NISQA hears; two cheap log-STFT Conv2d lenses see it immediately. The cycle-110 "add lenses alongside the saved ensemble" clause validated — no equilibrium destruction. NISQA now ABOVE the old MaskHead's all-time (+0.038); head ≥ old default on all three instruments at once, first time. §10: NISQA at 87 % of its milestone target with UTMOS held. Next levers: alternate lens-config dose, spectral-lens weighting, SSL-feature lens |
 | 110 | 2026-08-03 | does capacity help once the disc state is preserved, or is capacity dead three ways? | the run climbs; exceeds shipped by ≥+0.05 UTMOS somewhere (capacity ≥ neutral with saved disc) | climbed steadily to **UTMOS 4.1237 (+0.0409, t=2.67)** — the highest measured, still rising — but under the pre-registered +0.05 bar; NISQA 4.6024 (−0.04, n.s.) | **KILL** (capacity) + **disc-state hypothesis CONFIRMED** | the three-arm table closes it: same 9-block init, saved disc **+0.041 climbing** (110) vs fresh disc **−0.030 never recovering** (109); dose-only saved-pair +0.086 (106). **Capacity closed three ways; the equilibrated discriminator is load-bearing — standing rule: never restart the disc on a trained generator; add lenses alongside a saved ensemble instead.** Milestone consequence: dose is the only working UTMOS lever and NISQA has been flat through 62 k generator steps — the NISQA-corroboration clause needs a recipe/data change (feature-space disc added alongside the saved ensemble, and/or more capture data) |
 | 109 | 2026-08-03 | does identity-initialised depth (blocks 6→9, bit-exact warm start from the shipped default) let the GAN push past the dose curve? | cost ~34 ms passes; final UTMOS ≥ 4.15, NISQA ≥ 4.64 | cost 30.71 ms = 1.375× ✓; identity init verified **exactly** (max Δ = 0.0); but every checkpoint landed **below the bit-identical start** — best 4.0524/4.5491 vs start 4.0828/4.6431; the 3 k dip never recovered | **KILL** | with 108, **capacity is dead in both directions under this recipe** — but the attribution carries a stated confound: 106's *successful* +0.09 continuation resumed an **equilibrated gen+disc pair**, while 108/109 both used fresh discriminators and both lost ground. Suspect: the equilibrated disc state carries the late-run progress, and a fresh disc costs more than 20 k steps recover. **Named decisive follow-up**: resume the identity-depth generator with the SAVED step-45000 disc — climbs → "fresh disc costs the run" (process lesson for every future arm); fails → capacity dead three ways, recipe/data is the only milestone route. Reusable: make_init.py identity-init technique |
 | 108 | 2026-08-02 | does a wider trunk (dim 192→256) beat the shipped default under the identical pointwise→adversarial recipe? | cost 33–38 ms passes; final UTMOS ≥ 4.13 with NISQA ≥ 4.64 | cost ratio 1.32× ✓; training stable (incl. a machine-restart resume at step 14 000); but the wide arm **trailed the 192 chain at every matched dose** (−0.13 to −0.20 UTMOS) and its best checkpoint — UTMOS **3.9291**, NISQA 4.6124 — is below the shipped 4.0828/4.6431 | **KILL** | **naive widening buys nothing on this budget.** Confound stated in the plan before the run: dim 256 cannot warm-start from gmckpt, so this arm lacked the 52 k-step trunk lineage the incumbent chain had (from-scratch pointwise val_mag 17.1 vs 14.5). Named follow-ups: (a) warm-startable capacity (blocks 6→9 at dim 192) to separate width from warm start; (b) the recipe may be the binding constraint, not capacity — feature-space discriminator (2026-08-02 sweep) is the other lever. Side products: SBS backfilled on the shipped default (0.94022, inside self-noise of the old head), restart-resume path exercised end-to-end |
@@ -88,20 +89,24 @@ pass bar for a vocoder head.
 new head beats the old on UTMOS (t=4.35) and DNSMOS (t=3.54) with NISQA at parity (t=−1.64) —
 the invariant-4b two-instrument bar — and passes every reference-aware and robustness gate. The
 old head's column is preserved as `student-fast-mask` (opt-in). New-head sources:
-`experiments/107-sf-default/metrics_step45000.json`, `spk_step45000.json`,
-`experiments/104-sf-adversarial/{utmos,nisqa,dnsmos,asr}final2.json`.
+`experiments/111-spec-disc/metrics_gen8000.json`, `spk_gen8000.json`,
+`experiments/111-spec-disc/{utmos,nisqa,dnsmos,asr}8000.json` (cycle-111 checkpoint update:
++2 spectral discriminator lenses; NISQA +0.1377 t=2.57, others parity, all gates held;
+*F0 worst 89.8 is a harvest artifact on patho03 — second estimator reads 44.03 vs the previous
+checkpoint's 44.48, see cycle 111). Previous-checkpoint sources remain in
+`experiments/107-sf-default/` and `experiments/104-sf-adversarial/`.
 
 | metric (mean/worst) | floor | control | `ship-q8` | `student` | `student-fast` (SF head, cycle 107) | `student-fast-mask` (old default) |
 |---|---|---|---|---|---|---|
-| MCD dB | 1.86 / 2.47 | **3.98** / 17.49 | 3.89 / 13.31 | **11.83** / 19.43 ✗ | 13.79 / 21.84 ✗ | 13.78 / 22.03 ✗ |
-| mel L1 | 0.077 / 0.105 | 0.183 / 0.927 | 0.182 / 0.910 | 0.552 / 1.076 | 1.620 / 2.690 | 1.618 / 2.679 |
+| MCD dB | 1.86 / 2.47 | **3.98** / 17.49 | 3.89 / 13.31 | **11.83** / 19.43 ✗ | 13.86 / 21.69 ✗ | 13.78 / 22.03 ✗ |
+| mel L1 | 0.077 / 0.105 | 0.183 / 0.927 | 0.182 / 0.910 | 0.552 / 1.076 | 1.624 / 2.704 | 1.618 / 2.679 |
 | duration drift % | 0 / 0 | 0.011 / 0.227 | 0.013 / 0.329 | 0.022 / **0.329** ✓ | 4.97 / **50.30** ✗ (identical — shared timing path) | 4.97 / **50.30** ✗ |
-| F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 32.05 / 54.70 | 31.82 / 52.81 |
-| spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.981 / 0.901 | 0.980 / 0.921 |
+| F0 RMSE Hz | 3.72 / 16.88 | 5.24 / 17.87 | 6.09 / 31.99 | **16.19** / 28.54 | 32.25 / 89.8* | 31.82 / 52.81 |
+| spk-cos | 1.000 / 0.998 | 1.000 / 0.998 | 0.999 / 0.998 | 0.983 / 0.933 | 0.9814 / 0.915 | 0.980 / 0.921 |
 | SpeechBERTScore F1 ↑ | 0.99915 / 0.99845 | — | 0.99649 / 0.97891 | 0.96300 / 0.91805 | 0.94022 / 0.86393 (cycle 108 backfill; Δ vs old head inside the 0.00085 self-noise) | 0.93961 / — |
-| **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | **4.0828** | 3.9763 |
-| **NISQA ↑ (reference-free, quality-trained, cycle 88)** | **4.9483** | — | 4.9518 | 4.6348 | 4.6431 | 4.7432 |
-| **DNSMOS ovrl ↑ (reference-free, enhancement-trained, cycle 72)** | 3.4326 | — | 3.4320 | 3.1665 | **3.1964** | 3.1439 |
+| **UTMOS ↑ (reference-free, naturalness-trained, cycle 74)** | **4.4773** | — | 4.4757 | 4.0131 | **4.0680** | 3.9763 |
+| **NISQA ↑ (reference-free, quality-trained, cycle 88)** | **4.9483** | — | 4.9518 | 4.6348 | **4.7808** | 4.7432 |
+| **DNSMOS ovrl ↑ (reference-free, enhancement-trained, cycle 72)** | 3.4326 | — | 3.4320 | 3.1665 | **3.2114** | 3.1439 |
 
 **Three-instrument agreement (cycle 89):** all three rank teacher ≈ `ship-q8` at the top and the
 students clearly below (Spearman NISQA–UTMOS +0.80). `student` and `student-fast` are **tied** — the
