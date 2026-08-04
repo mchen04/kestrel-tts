@@ -37,3 +37,9 @@ artifacts/*transcript*
 
 # local environment
 .venv/
+
+# wind-down (2026-08-04): regenerable experiment binaries never re-enter the repo
+experiments/**/*.safetensors
+experiments/**/render*/
+experiments/**/rob_*/
+experiments/**/*.wav
